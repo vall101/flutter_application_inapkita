@@ -10,6 +10,10 @@ class TampilanPemilik extends StatefulWidget {
 class _TampilanPemilikState extends State<TampilanPemilik> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Container(
+      constraints: BoxConstraints(
+        
+      ),
+    );
   }
 }
