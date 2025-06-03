@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 
-class menudeskripsi extends StatefulWidget {
-  const menudeskripsi({super.key});
+class Menudeskripsi1 extends StatefulWidget {
+  const Menudeskripsi1({super.key});
 
   @override
-  State<menudeskripsi> createState() => _menudeskripsiState();
+  State<Menudeskripsi1> createState() => _Menudeskripsi1State();
 }
 
-class _menudeskripsiState extends State<menudeskripsi> {
+class _Menudeskripsi1State extends State<Menudeskripsi1> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return const Placeholder();
   }
 }
-
