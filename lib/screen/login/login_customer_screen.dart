@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_inapkita/screen/login/login_page.dart';
-import 'package:flutter_application_inapkita/screen/login/register_pager.dart';
+import 'package:flutter_application_inapkita/screen/login/login_customer_form.dart';
+import 'package:flutter_application_inapkita/screen/login/register_customer_screen.dart';
 
 void main() {
   runApp(const InapKitaApp());

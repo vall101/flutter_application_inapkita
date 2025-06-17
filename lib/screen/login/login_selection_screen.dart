@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_inapkita/screen/login/login_user_customer.dart';
+import 'package:flutter_application_inapkita/screen/login/login_customer_screen.dart';
+import 'package:flutter_application_inapkita/screen/login/login_pegawai_form.dart';
 
 void main() {
   runApp(const InapKitaApp());
@@ -16,14 +17,14 @@ class InapKitaApp extends StatelessWidget {
         primaryColor: const Color(0xFF1858EE),
         fontFamily: 'Roboto',
       ),
-      home: const LoginUserScreen(),
+      home: const LoginSelectionScreen(),
       debugShowCheckedModeBanner: false,
     );
   }
 }
 
-class LoginUserScreen extends StatelessWidget {
-  const LoginUserScreen({super.key});
+class LoginSelectionScreen extends StatelessWidget {
+  const LoginSelectionScreen({super.key});
 
   static const Color blueColor = Color.fromARGB(255, 94, 103, 171);
 
@@ -66,12 +67,12 @@ class LoginUserScreen extends StatelessWidget {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () {
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //     builder: (context) => const LoginPage(),
-                    //   ),
-                    // );
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const LoginPegawai(),
+                      ),
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: blueColor,

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_inapkita/screen/login/login_user_screen.dart';
+import 'package:flutter_application_inapkita/screen/login/login_selection_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: LoginUserScreen(),
+      home: LoginSelectionScreen(),
       debugShowCheckedModeBanner: false,
     );
   }
