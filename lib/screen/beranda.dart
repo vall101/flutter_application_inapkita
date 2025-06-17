@@ -109,6 +109,19 @@ class _BerandaState extends State<Beranda> {
                   ),
                 ),
 
+                const SizedBox(height: 12),
+                SizedBox(
+                  height: 100,
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: [
+                      topSpotCard("assets/img2.jpg"),
+                      topSpotCard("assets/img3.jpg"),
+                      topSpotCard("assets/img4.jpg"),
+                    ],
+                  ),
+                ),
+
                 const SizedBox(height: 24),
 
                 // Iconic Places to Visit
@@ -133,6 +146,21 @@ class _BerandaState extends State<Beranda> {
           ),
         ),
       ),
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        selectedItemColor: Colors.blue[700],
+        unselectedItemColor: Colors.grey,
+        currentIndex: 0,
+        onTap: (index) {
+          // Tambahkan logika navigasi jika diperlukan
+        },
+        items: const [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(icon: Icon(Icons.explore), label: 'Explore'),
+          BottomNavigationBarItem(icon: Icon(Icons.bookmark), label: 'Saved'),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
+        ],
+      )
     );
   }
 
