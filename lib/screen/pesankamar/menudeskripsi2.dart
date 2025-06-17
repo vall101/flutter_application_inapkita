@@ -110,7 +110,7 @@ class MenuDeskripsi2 extends StatelessWidget {
                 const Text("Total Payment", style: TextStyle(fontWeight: FontWeight.bold)),
                 const Spacer(),
                 ElevatedButton(
-                  onPressed: () => Navigator.pushNamed(context, '/pesanKamar'),
+                  onPressed: () => Navigator.pushNamed(context, '/pembayaran'),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blueGrey,
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),

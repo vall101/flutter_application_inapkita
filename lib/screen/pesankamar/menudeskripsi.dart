@@ -114,7 +114,7 @@ class _MenuDeskripsiState extends State<MenuDeskripsi> {
                 const Spacer(),
                 ElevatedButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, '/pesanKamar');
+                    Navigator.pushNamed(context, '/pembayaran');
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blueGrey,
