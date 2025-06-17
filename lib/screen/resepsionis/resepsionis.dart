@@ -10,12 +10,5 @@ class Resepsionis extends StatefulWidget {
 class _ResepsionisState extends State<Resepsionis> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: ListView(
-        children: [
-          Text("InapKita")
-        ],
-      ),
-    );
   }
 }
