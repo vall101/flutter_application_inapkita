@@ -8,8 +8,8 @@ class InputRating extends StatefulWidget {
 }
 
 class _InputRatingState extends State<InputRating> {
-  int _rating = 0;
-  TextEditingController _reviewController = TextEditingController();
+  // int _rating = 0;
+  // TextEditingController _reviewController = TextEditingController();
 
   @override
   void dispose() {
