@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'ketersediaan_kamar.dart';
 
 
-
 class ResepsionisHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -40,7 +39,7 @@ class ResepsionisHome extends StatelessWidget {
 
               const SizedBox(height: 20),
 
-              // Ringkasan Hari Ini
+
               Container(
                 padding: const EdgeInsets.all(35),
                 decoration: BoxDecoration(
