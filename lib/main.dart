@@ -3,6 +3,8 @@ import 'screen/pesankamar/menupembayaran.dart';
 import 'screen/pesankamar/menupembayaran2.dart';
 import 'screen/pesankamar/menudeskripsi.dart';
 import 'screen/pesankamar/menudeskripsi2.dart';
+import 'package:flutter_application_inapkita/screen/login/login_selection_screen.dart';
+
 
 //
 void main() {
@@ -17,6 +19,7 @@ class InapKitaApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
+
       initialRoute: '/',
       routes: {
         '/': (context) => MenuDeskripsi(),
@@ -25,6 +28,8 @@ class InapKitaApp extends StatelessWidget {
         '/pembayaran': (context) => MenuPembayaran(),
         '/pembayaran2': (context) => MenuPembayaran2(),
       },
+      home: LoginSelectionScreen(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
