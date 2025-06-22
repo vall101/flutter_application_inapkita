@@ -8,6 +8,7 @@ class MenuDeskripsi extends StatefulWidget {
 
 class _MenuDeskripsiState extends State<MenuDeskripsi> {
   bool isRoomInfoVisible = true;
+  int totalHarga = 1850000; // harga default sebelum promo
 
   @override
   Widget build(BuildContext context) {
@@ -19,14 +20,16 @@ class _MenuDeskripsiState extends State<MenuDeskripsi> {
           children: [
             Center(child: Image.asset('assets/inapkita_logo.png', height: 40)),
             const SizedBox(height: 12),
+            
+            //gambar Villa nya
             SizedBox(
               height: 200,
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: [
-                  Image.network('https://images.pexels.com/photos/2631746/pexels-photo-2631746.jpeg?auto=compress&cs=tinysrgb&w=600', width: 300),
+                  Image.asset('assets/images/villa1.png', width: 300),
                   const SizedBox(width: 8),
-                  Image.network('https://images.pexels.com/photos/1454804/pexels-photo-1454804.jpeg?auto=compress&cs=tinysrgb&w=600', width: 300),
+                  Image.asset('assets/images/villa2.png', width: 300),
                 ],
               ),
             ),
@@ -52,6 +55,8 @@ class _MenuDeskripsiState extends State<MenuDeskripsi> {
               ),
             ),
             const SizedBox(height: 12),
+
+            //Room Info dan Check Riview
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -74,7 +79,9 @@ class _MenuDeskripsiState extends State<MenuDeskripsi> {
                     ),
                   ),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/review');
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blueGrey,
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
@@ -84,19 +91,39 @@ class _MenuDeskripsiState extends State<MenuDeskripsi> {
               ],
             ),
             const SizedBox(height: 16),
+
+            // Tombol Use Promo
             ElevatedButton.icon(
-              onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (_) => MenuDeskripsi2()));
+              onPressed: () async {
+                final promoHarga = await Navigator.push<int>(
+                  context,
+                  MaterialPageRoute(builder: (_) => const MenuPromo()),
+                );
+
+                if (promoHarga != null) {
+                  setState(() {
+                    totalHarga = promoHarga;
+                  });
+
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => MenuDeskripsi2(totalHarga: promoHarga),
+                    ),
+                  );
+                }
               },
               icon: const Icon(Icons.local_offer, color: Colors.white),
               label: const Text("Use promo", style: TextStyle(color: Colors.white)),
               style: ElevatedButton.styleFrom(
-                backgroundColor: Color(0xFF4C5C88),
+                backgroundColor: const Color(0xFF4C5C88),
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
                 padding: const EdgeInsets.symmetric(vertical: 14),
               ),
             ),
             const SizedBox(height: 12),
+
+            // Total dan Reservation
             Row(
               children: [
                 InkWell(
@@ -108,13 +135,13 @@ class _MenuDeskripsiState extends State<MenuDeskripsi> {
                     ],
                   ),
                 ),
-                const Text("Rp 1.850.000", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                Text("Rp ${totalHarga.toString()}", style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
                 const SizedBox(width: 4),
                 const Text("Total Payment", style: TextStyle(fontWeight: FontWeight.bold)),
                 const Spacer(),
                 ElevatedButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, '/pesanKamar');
+                    Navigator.pushNamed(context, '/pembayaran');
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blueGrey,
@@ -129,5 +156,5 @@ class _MenuDeskripsiState extends State<MenuDeskripsi> {
         ),
       ),
     );
-  }
+  }//
 }
