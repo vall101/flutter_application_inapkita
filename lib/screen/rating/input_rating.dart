@@ -12,6 +12,12 @@ class _InputRatingState extends State<InputRating> {
   // TextEditingController _reviewController = TextEditingController();
 
   @override
+  void dispose() {
+    _reviewController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
@@ -85,7 +91,7 @@ class _InputRatingState extends State<InputRating> {
               ],
             ),
           ),
-           SizedBox(height: 16),
+          SizedBox(height: 16),
           ClipRRect(
             borderRadius: BorderRadius.circular(16),
             child: Image.asset('assets/room.jpg'),
@@ -128,9 +134,114 @@ class _InputRatingState extends State<InputRating> {
               ],
             ),
           ),
+          SizedBox(height: 20),
+          Container(
+            padding: const EdgeInsets.all(16),
+            decoration: BoxDecoration(
+              color: const Color(0xFFEAF7FE),
+              borderRadius: BorderRadius.circular(16),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  'Review Traveler The Villa in Bali',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 12),
+                Row(
+                  children: const [
+                    CircleAvatar(
+                      backgroundColor: Colors.blue,
+                      child: Icon(Icons.info, color: Colors.white, size: 16),
+                      radius: 12,
+                    ),
+                    SizedBox(width: 8),
+                    Text('Imbuh'),
+                  ],
+                ),
+                const SizedBox(height: 12),
+                Container(
+                  decoration: BoxDecoration(
+                    color: Colors.grey[200],
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  padding: const EdgeInsets.symmetric(horizontal: 12),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: TextField(
+                          controller: _reviewController,
+                          maxLines: 3,
+                          decoration: const InputDecoration(
+                            border: InputBorder.none,
+                            hintText: 'Give your opinion about the place',
+                          ),
+                        ),
+                      ),
+                      IconButton(
+                        icon: const Icon(Icons.send, color: Colors.grey),
+                        onPressed: () {
+                          if (_reviewController.text.isEmpty || _rating == 0) return;
+                          Navigator.pushNamed(
+                            context,
+                            '/rating',
+                            arguments: {
+                              'nama': 'Imbuh',
+                              'komentar': _reviewController.text,
+                              'rating': _rating,
+                            },
+                          );
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+          SizedBox(height: 16),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/rating');
+              },
+              child: Text("Lihat Review"),
+              style: ElevatedButton.styleFrom(
+                minimumSize: Size(double.infinity, 50),
+                backgroundColor: Colors.blue[800],
+                foregroundColor: Colors.white,
+              ),
+            ),
+          ),
         ],
       ),
-    ); 
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(
+          color: Color(0xFF3E5A88),
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(20),
+            topRight: Radius.circular(20),
+          ),
+        ),
+        child: BottomNavigationBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          type: BottomNavigationBarType.fixed,
+          selectedItemColor: Colors.white,
+          unselectedItemColor: Colors.white,
+          showSelectedLabels: false,
+          showUnselectedLabels: false,
+          items: const [
+            BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
+            BottomNavigationBarItem(icon: Icon(Icons.history), label: ''),
+            BottomNavigationBarItem(icon: Icon(Icons.local_offer), label: ''),
+            BottomNavigationBarItem(icon: Icon(Icons.person), label: ''),
+          ],
+        ),
+      ),
+    );
   }
 }
-//
+ 
