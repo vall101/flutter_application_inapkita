@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 class MenuDeskripsi2 extends StatelessWidget {
+  final int totalHarga;
+  const MenuDeskripsi2({super.key, required this.totalHarga});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,10 +18,10 @@ class MenuDeskripsi2 extends StatelessWidget {
               height: 200,
               child: ListView(
                 scrollDirection: Axis.horizontal,
-                children: [
-                  Image.network('https://images.pexels.com/photos/2631746/pexels-photo-2631746.jpeg?auto=compress&cs=tinysrgb&w=600', width: 300),
+                 children: [
+                  Image.asset('assets/images/villa1.png', width: 300),
                   const SizedBox(width: 8),
-                  Image.network('https://images.pexels.com/photos/1454804/pexels-photo-1454804.jpeg?auto=compress&cs=tinysrgb&w=600', width: 300),
+                  Image.asset('assets/images/villa2.png', width: 300),
                 ],
               ),
             ),
@@ -99,13 +102,13 @@ class MenuDeskripsi2 extends StatelessWidget {
                 ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
-                    Text("10%", style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold)),
-                    Text("Rp 1.850.000", style: TextStyle(decoration: TextDecoration.lineThrough)),
+                  children: [
+                    const Text("10%", style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold)),
+                    const Text("Rp 1.850.000", style: TextStyle(decoration: TextDecoration.lineThrough)),
                   ],
                 ),
                 const SizedBox(width: 8),
-                const Text("Rp 1.665.000", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                Text("Rp ${totalHarga.toString()}", style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
                 const SizedBox(width: 4),
                 const Text("Total Payment", style: TextStyle(fontWeight: FontWeight.bold)),
                 const Spacer(),
