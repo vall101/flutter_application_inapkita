@@ -16,7 +16,7 @@ class _InputRatingState extends State<InputRating> {
     _reviewController.dispose();
     super.dispose();
   }
-  
+
 //halaman input rating
   @override
   Widget build(BuildContext context) {
@@ -201,6 +201,7 @@ class _InputRatingState extends State<InputRating> {
               ],
             ),
           ),
+          //tombol review
           SizedBox(height: 16),
           Padding(
             padding: const EdgeInsets.all(8.0),

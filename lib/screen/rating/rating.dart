@@ -10,30 +10,6 @@ class _RatingState extends State<Rating> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.white,
-        centerTitle: true,
-        title: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Image.asset(
-              'assets/logoinapkita.png',
-              height: 30,
-            ),
-            const SizedBox(width: 8),
-            Text(
-              'InapKita',
-              style: TextStyle(
-                color: Colors.blue[800],
-                fontWeight: FontWeight.bold,
-                fontSize: 18,
-              ),
-            ),
-          ],
-        ),
-      ),
 
       body: ListView(
         padding: const EdgeInsets.all(16.0),
