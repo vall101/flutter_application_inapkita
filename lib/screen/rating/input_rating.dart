@@ -16,7 +16,8 @@ class _InputRatingState extends State<InputRating> {
     _reviewController.dispose();
     super.dispose();
   }
-
+  
+//halaman input rating
   @override
   Widget build(BuildContext context) {
     return Scaffold(
