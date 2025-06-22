@@ -6,7 +6,7 @@ class Rating extends StatefulWidget {
   @override
   State<Rating> createState() => _RatingState();
 }
-
+//
 class _RatingState extends State<Rating> {
   @override
   Widget build(BuildContext context) {
