@@ -113,7 +113,6 @@ class _KetersediaanKamarScreenState extends State<KetersediaanKamarScreen> {
         ),
       ),
     );
-    
     'nomorKamar': '104',
   };
 
