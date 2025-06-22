@@ -67,7 +67,7 @@ class _RatingState extends State<Rating> {
           Container(
             padding: EdgeInsets.all(12),
             decoration: BoxDecoration(
-              color: Colors.blue[50],
+              color: Colors.blue[50], 
               borderRadius: BorderRadius.circular(12),
             ),
             child: Row(
