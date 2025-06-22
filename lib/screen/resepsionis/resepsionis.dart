@@ -39,7 +39,7 @@ class ResepsionisHome extends StatelessWidget {
 
               const SizedBox(height: 20),
 
-              // Ringkasan Hari Ini (ringkasan pemesanan)
+
               Container(
                 padding: const EdgeInsets.all(35),
                 decoration: BoxDecoration(
