@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+// Import semua screen yang dibutuhkan
 import 'screen/resepsionis/resepsionis.dart';
 import 'screen/beranda/beranda.dart';
 import 'screen/beranda/riwayat_pesan.dart';
@@ -9,6 +11,8 @@ import 'screen/pesankamar/menupembayaran2.dart';
 import 'screen/pesankamar/menudeskripsi.dart';
 import 'screen/pesankamar/menudeskripsi2.dart';
 import 'screen/login/login_selection_screen.dart';
+import 'screen/rating/rating.dart';
+import 'screen/rating/input_rating.dart';
 
 void main() {
   runApp(const InapKitaApp());
@@ -36,12 +40,14 @@ class InapKitaApp extends StatelessWidget {
         '/pembayaran': (context) => const MenuPembayaran(),
         '/pembayaran2': (context) => const MenuPembayaran2(),
         '/pesanKamar': (context) => const PesanKamarPage(),
+        '/inputRating': (context) => const InputRating(),
+        '/rating': (context) => const Rating(),
       },
     );
   }
 }
 
-// Navigasi bawah untuk user biasa
+// === Navigasi bawah untuk user ===
 class MainNavigation extends StatefulWidget {
   const MainNavigation({super.key});
 
@@ -85,7 +91,7 @@ class _MainNavigationState extends State<MainNavigation> {
   }
 }
 
-// Tambahan halaman-halaman umum
+// === Halaman umum ===
 class ChatAdminPage extends StatelessWidget {
   const ChatAdminPage({super.key});
 
