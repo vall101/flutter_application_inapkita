@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class MenuPembayaran2 extends StatelessWidget {
-  const MenuPembayaran2({super.key});
+  const MenuPembayaran2({super.key, required totalHarga});
 
   @override
   Widget build(BuildContext context) {
