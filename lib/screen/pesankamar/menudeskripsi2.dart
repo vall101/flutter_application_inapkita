@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_inapkita/screen/resepsionis/menupromo.dart';
-import 'menudeskripsi2.dart';
-
+import 'package:flutter_application_inapkita/screen/diskon/menudiskon.dart';
+import 'menupembayaran.dart';
 
 class MenuDeskripsi2 extends StatelessWidget {
   final int totalHarga;
