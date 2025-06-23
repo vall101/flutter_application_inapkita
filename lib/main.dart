@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'screen/resepsionis/resepsionis.dart';
 import 'screen/beranda/beranda.dart';
-import 'screen/beranda/riwayat_pesan.dart';
-import 'screen/beranda/kosong.dart'; // Tidak dipakai jika sudah ganti dengan MenuDiskonPage
+import 'screen/beranda/riwayat_pesan.dart'; // Tidak dipakai jika sudah ganti dengan MenuDiskonPage
 import 'screen/beranda/profile.dart';
 import 'screen/pesankamar/menupembayaran.dart';
 import 'screen/pesankamar/menupembayaran2.dart';
