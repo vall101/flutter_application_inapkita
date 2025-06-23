@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_inapkita/screen/diskon/menudiskon.dart';
 import 'menudeskripsi2.dart';
+import 'menudiskon.dart';
 
 class MenuDeskripsi extends StatefulWidget {
   @override
@@ -21,8 +21,8 @@ class _MenuDeskripsiState extends State<MenuDeskripsi> {
           children: [
             Center(child: Image.asset('assets/inapkita_logo.png', height: 40)),
             const SizedBox(height: 12),
-            
-            //gambar Villa nya
+
+            // Ganti image carousel pakai asset lokal
             SizedBox(
               height: 200,
               child: ListView(
@@ -35,8 +35,10 @@ class _MenuDeskripsiState extends State<MenuDeskripsi> {
               ),
             ),
             const SizedBox(height: 16),
+
             const Text("The Villa in Bali", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
             const SizedBox(height: 12),
+
             Container(
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
@@ -57,7 +59,7 @@ class _MenuDeskripsiState extends State<MenuDeskripsi> {
             ),
             const SizedBox(height: 12),
 
-            //Room Info dan Check Riview
+            // Room info dan Check Review
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -98,7 +100,7 @@ class _MenuDeskripsiState extends State<MenuDeskripsi> {
               onPressed: () async {
                 final promoHarga = await Navigator.push<int>(
                   context,
-                  MaterialPageRoute(builder: (_) => const Diskon()),
+                  MaterialPageRoute(builder: (_) => const MenuPromo()),
                 );
 
                 if (promoHarga != null) {
@@ -106,12 +108,15 @@ class _MenuDeskripsiState extends State<MenuDeskripsi> {
                     totalHarga = promoHarga;
                   });
 
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (_) => MenuDeskripsi2(totalHarga: promoHarga),
+                Navigator.push(
+  context,
+  MaterialPageRoute(
+    builder: (_) => MenuDeskripsi2(
+      totalHarga: promoHarga,
+      diskonPersen: 10,
                     ),
-                  );
+                  )
+                );
                 }
               },
               icon: const Icon(Icons.local_offer, color: Colors.white),
@@ -142,7 +147,11 @@ class _MenuDeskripsiState extends State<MenuDeskripsi> {
                 const Spacer(),
                 ElevatedButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, '/pembayaran');
+  Navigator.pushNamed(
+    context,
+    '/pembayaran',
+    arguments: {'totalHarga': totalHarga},
+  );
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blueGrey,
@@ -157,5 +166,5 @@ class _MenuDeskripsiState extends State<MenuDeskripsi> {
         ),
       ),
     );
-  }//
+  }
 }
