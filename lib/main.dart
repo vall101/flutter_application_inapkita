@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'screen/resepsionis/resepsionis.dart';
 import 'screen/beranda/beranda.dart';
 import 'screen/beranda/riwayat_pesan.dart';
 import 'screen/beranda/kosong.dart';
@@ -19,7 +20,7 @@ class InapKitaApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'InapKita',
+      title: "InapKita",
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -28,16 +29,19 @@ class InapKitaApp extends StatelessWidget {
       routes: {
         '/': (context) => const LoginSelectionScreen(),
         '/main': (context) => const MainNavigation(),
+        '/resepsionis': (context) => const ResepsionisHome(),
         '/deskripsi': (context) => const MenuDeskripsi(),
         '/deskripsi2': (context) => const MenuDeskripsi2(),
         '/chatAdmin': (context) => const ChatAdminPage(),
         '/pembayaran': (context) => const MenuPembayaran(),
         '/pembayaran2': (context) => const MenuPembayaran2(),
+        '/pesanKamar': (context) => const PesanKamarPage(),
       },
     );
   }
 }
 
+// Navigasi bawah untuk user biasa
 class MainNavigation extends StatefulWidget {
   const MainNavigation({super.key});
 
@@ -81,6 +85,7 @@ class _MainNavigationState extends State<MainNavigation> {
   }
 }
 
+// Tambahan halaman-halaman umum
 class ChatAdminPage extends StatelessWidget {
   const ChatAdminPage({super.key});
 

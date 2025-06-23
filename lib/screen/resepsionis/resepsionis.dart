@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
-import 'ketersediaan_kamar.dart'; // pastikan file ini sesuai dengan tujuan navigasi
+import 'ketersediaan_kamar.dart';
 
 class ResepsionisHome extends StatelessWidget {
   const ResepsionisHome({super.key});
 
-import 'ketersediaan_kamar.dart';
-
-
-class ResepsionisHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,8 +28,9 @@ class ResepsionisHome extends StatelessWidget {
                   const SizedBox(width: 10),
                   Container(
                     padding: const EdgeInsets.symmetric(
-                      horizontal: 30, vertical: 8),
-                        horizontal: 30, vertical: 8),
+                      horizontal: 30,
+                      vertical: 8,
+                    ),
                     decoration: BoxDecoration(
                       color: Colors.blue[100],
                       borderRadius: BorderRadius.circular(12),
@@ -54,7 +51,7 @@ class ResepsionisHome extends StatelessWidget {
                       color: Colors.grey.shade300,
                       blurRadius: 5,
                       offset: const Offset(0, 3),
-                    )
+                    ),
                   ],
                 ),
                 child: Column(
@@ -83,15 +80,16 @@ class ResepsionisHome extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => KetersediaanKamarScreen(),
+                      builder: (context) => const KetersediaanKamarScreen(),
                     ),
                   );
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFF3E5A88),
                   padding: const EdgeInsets.symmetric(
-                    horizontal: 40, vertical: 16),
-                      horizontal: 40, vertical: 16),
+                    horizontal: 40,
+                    vertical: 16,
+                  ),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
                   ),
@@ -114,10 +112,6 @@ class ResepsionisHome extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(title),
-          Text(count.toString()),
         children: [
           const CircleAvatar(
             radius: 10,
