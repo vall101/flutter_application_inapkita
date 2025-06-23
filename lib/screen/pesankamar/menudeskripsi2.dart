@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_inapkita/screen/diskon/menudiskon.dart';
 import 'menupembayaran.dart';
-import 'menu_promo.dart';
 
 class MenuDeskripsi2 extends StatelessWidget {
   final int totalHarga;
@@ -101,7 +101,7 @@ class MenuDeskripsi2 extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (_) => const MenuPromo()),
+                  MaterialPageRoute(builder: (_) => const MenuDiskonPage()),
                 );
               },
               icon: const Icon(Icons.local_offer, color: Colors.white),
