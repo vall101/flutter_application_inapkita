@@ -15,7 +15,6 @@ class _KetersediaanKamarScreenState extends State<KetersediaanKamarScreen> {
     };
   });
 
-  // Informasi User/ data tamu
   final Map<String, dynamic> dataTamu = {
     'nama': 'Jefri',
     'telepon': '+62 8881269765',
@@ -114,6 +113,15 @@ class _KetersediaanKamarScreenState extends State<KetersediaanKamarScreen> {
         ),
       ),
     );
-    
+    'nomorKamar': '104',
+  };
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: Text('Tampilan Ketersediaan Kamar'),
+      ),
+    );
   }
 }

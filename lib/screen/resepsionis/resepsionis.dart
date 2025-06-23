@@ -4,6 +4,10 @@ import 'ketersediaan_kamar.dart'; // pastikan file ini sesuai dengan tujuan navi
 class ResepsionisHome extends StatelessWidget {
   const ResepsionisHome({super.key});
 
+import 'ketersediaan_kamar.dart';
+
+
+class ResepsionisHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,6 +33,7 @@ class ResepsionisHome extends StatelessWidget {
                   Container(
                     padding: const EdgeInsets.symmetric(
                       horizontal: 30, vertical: 8),
+                        horizontal: 30, vertical: 8),
                     decoration: BoxDecoration(
                       color: Colors.blue[100],
                       borderRadius: BorderRadius.circular(12),
@@ -39,8 +44,6 @@ class ResepsionisHome extends StatelessWidget {
               ),
 
               const SizedBox(height: 20),
-
-              // Ringkasan Hari Ini
               Container(
                 padding: const EdgeInsets.all(35),
                 decoration: BoxDecoration(
@@ -88,6 +91,7 @@ class ResepsionisHome extends StatelessWidget {
                   backgroundColor: const Color(0xFF3E5A88),
                   padding: const EdgeInsets.symmetric(
                     horizontal: 40, vertical: 16),
+                      horizontal: 40, vertical: 16),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
                   ),
@@ -114,6 +118,19 @@ class ResepsionisHome extends StatelessWidget {
         children: [
           Text(title),
           Text(count.toString()),
+        children: [
+          const CircleAvatar(
+            radius: 10,
+            backgroundColor: Colors.blue,
+          ),
+          const SizedBox(width: 10),
+          Expanded(
+            child: Text(title),
+          ),
+          Text(
+            count.toString(),
+            style: const TextStyle(fontWeight: FontWeight.bold),
+          ),
         ],
       ),
     );
