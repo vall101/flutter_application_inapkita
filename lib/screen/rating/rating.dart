@@ -78,7 +78,7 @@ class _RatingState extends State<Rating> {
               ),
             ],
           ),
-          //
+          
           SizedBox(height: 16),
           Container(
             padding: EdgeInsets.all(12),
