@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'ketersediaan_kamar.dart'; // pastikan file ini sesuai dengan tujuan navigasi
+import 'ketersediaan_kamar.dart'; 
 
 class ResepsionisHome extends StatelessWidget {
   const ResepsionisHome({super.key});
@@ -14,16 +14,24 @@ class ResepsionisHome extends StatelessWidget {
           child: Column(
             children: [
               Center(
-                child: Image.asset('assets/inapkita_logo.png', height: 40),
+                child: Image.network(
+                  'https://i.imgur.com/otiEOBD.png', // Ganti dengan URL untuk foto profil
+                  height: 40,
+                  errorBuilder: (context, error, stackTrace) =>
+                      const Icon(Icons.error),
+                ),
               ),
               const SizedBox(height: 12),
 
               // Informasi User
               Row(
                 children: [
-                  const CircleAvatar(
-                    radius: 25,
-                    backgroundImage: AssetImage('assets/ujang.jpg'),
+                  CircleAvatar(
+                      radius: 25,
+                      backgroundImage: NetworkImage('https://i.imgur.com/jytf69h.jpeg'),
+                      onBackgroundImageError: (error, stackTrace) {
+                      debugPrint('Gagal memuat foto profil: $error');
+                    },
                   ),
                   const SizedBox(width: 10),
                   Container(
@@ -114,7 +122,7 @@ class ResepsionisHome extends StatelessWidget {
         children: [
           Text(title),
           Text(count.toString()),
-        ],
+        ], //
       ),
     );
   }
