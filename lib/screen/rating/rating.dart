@@ -10,35 +10,7 @@ class Rating extends StatefulWidget {
 class _RatingState extends State<Rating> {
   @override
   Widget build(BuildContext context) {
-<<<<<<< Updated upstream
-    return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.white,
-        centerTitle: true,
-        title: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Image.asset(
-              'assets/logoinapkita.png',
-              height: 30,
-            ),
-            const SizedBox(width: 8),
-            Text(
-              'InapKita',
-              style: TextStyle(
-                color: Colors.blue[800],
-                fontWeight: FontWeight.bold,
-                fontSize: 18,
-              ),
-            ),
-          ],
-        ),
-      ),
-
-=======
-     final Map<String, dynamic>? newReview =
+    final Map<String, dynamic>? newReview =
         ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>?;
 
     List<Map<String, dynamic>> reviews = [
@@ -61,31 +33,32 @@ class _RatingState extends State<Rating> {
         title: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Image.asset(
-              'assets/logo.png',
-              height: 30,
-            ),
-            const SizedBox(width: 8),
-            Text(
-              'InapKita',
-              style: TextStyle(
-                color: Colors.blue[800],
-                fontWeight: FontWeight.bold,
-                fontSize: 18,
-              ),
+           Image.network(
+              'https://i.imgur.com/otiEOBD.png',
+              height: 70,
+              errorBuilder: (context, error, stackTrace) {
+               return Icon(Icons.error, color: Colors.red);
+              },
             ),
           ],
         ),
       ),
->>>>>>> Stashed changes
       body: ListView(
         padding: const EdgeInsets.all(16.0),
         children: [
           Row(
             children: [
-              CircleAvatar(
-                radius: 30,
-                backgroundImage: AssetImage('assets/villa.jpg'),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(16),
+                child: Image.network(
+                  'https://www.topacapulcohotels.com/data/Pics/450x450w/16562/1656218/1656218557/pic-desa-di-bali-villas-kerobokan-80361-kerobokan-bali-1.JPEG',
+                  height: 60,
+                  width: 60,
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) {
+                    return Icon(Icons.error, color: Colors.red);
+                  },
+                ),
               ),
               SizedBox(width: 12),
               Column(
@@ -99,20 +72,13 @@ class _RatingState extends State<Rating> {
                     children: [
                       Icon(Icons.star, color: Colors.amber, size: 16),
                       Text(' 4.8 (36k+ reviews)', style: TextStyle(fontSize: 12)),
-<<<<<<< Updated upstream
-                   ],
-=======
                     ],
->>>>>>> Stashed changes
                   ),
                 ],
               ),
             ],
           ),
-<<<<<<< Updated upstream
-=======
-                    
->>>>>>> Stashed changes
+          
           SizedBox(height: 16),
           Container(
             padding: EdgeInsets.all(12),
@@ -133,15 +99,17 @@ class _RatingState extends State<Rating> {
               ],
             ),
           ),
-<<<<<<< Updated upstream
-        ],
-      ),
-    ); 
-=======
           SizedBox(height: 16),
           ClipRRect(
             borderRadius: BorderRadius.circular(16),
-            child: Image.asset('assets/room.jpg'),
+            child: Image.network(
+              'https://instapay.id/blog/wp-content/uploads/2023/05/penginapan-1024x682.jpg',
+              height: 180,
+              fit: BoxFit.cover,
+              errorBuilder: (context, error, stackTrace) {
+                return Icon(Icons.error, color: Colors.red);
+              },
+            ),
           ),
           SizedBox(height: 16),
           Container(
@@ -269,6 +237,5 @@ class _RatingState extends State<Rating> {
         ],
       ),
     );
->>>>>>> Stashed changes
   }
 }
