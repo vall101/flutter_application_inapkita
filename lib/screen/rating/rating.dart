@@ -170,6 +170,7 @@ class _RatingState extends State<Rating> {
           ),
         ],
       ),
+      //bottomnavigation
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
           color: Color(0xFF3E5A88),
