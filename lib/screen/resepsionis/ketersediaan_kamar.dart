@@ -38,10 +38,13 @@ class _KetersediaanKamarScreenState extends State<KetersediaanKamarScreen> {
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              const CircleAvatar(
-                radius: 30,
-                backgroundImage: AssetImage('assets/ujang.jpg'),
-              ),
+              CircleAvatar(
+                radius: 25,
+                backgroundImage: NetworkImage('https://i.imgur.com/jytf69h.jpeg'),
+                onBackgroundImageError: (error, stackTrace) {
+                debugPrint('Gagal memuat foto profil: $error');
+              },
+            ),
               const SizedBox(height: 10),
               Text(
                 dataTamu['nama'],
@@ -97,23 +100,99 @@ class _KetersediaanKamarScreenState extends State<KetersediaanKamarScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color(0xFF3E5A88),
+     return Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(
-        child: Column(
-          children: [
-            // Bagian atas logo dan judul
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            children: [
+              Center(
+                child: Image.network(
+                  'https://i.imgur.com/otiEOBD.png', // Ganti dengan URL untuk foto profil
+                  height: 40,
+                  errorBuilder: (context, error, stackTrace) =>
+                      const Icon(Icons.error),
+                ),
+              ),
+              const SizedBox(height: 12),
+
+
+            // Baris BackButton + Tulisan
             Container(
               color: Colors.white,
-              padding: const EdgeInsets.all(12),
-              child: Center(
-                child: Image.asset('assets/inapkita_logo.png', height: 40),
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              child: Row(
+                children: [
+                  BackButton(color: Colors.black),
+                  const SizedBox(width: 8),
+                  const Text(
+                    'Ketersediaan Kamar',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+
+            const SizedBox(height: 16),
+
+            // Grid Kamar
+            Expanded(
+              child: Container(
+                padding: const EdgeInsets.all(45),
+                decoration: const BoxDecoration(
+                  color: Color(0xFF3E5A88),
+                  borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+                ),
+                child: GridView.builder(
+                  itemCount: kamarList.length,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 3,
+                    crossAxisSpacing: 12,
+                    mainAxisSpacing: 12,
+                  ),
+                  itemBuilder: (context, index) {
+                    final kamar = kamarList[index];
+                    final nomor = kamar['nomor'];
+                    final isTerisi = kamar['terisi'];
+
+                    return GestureDetector(
+                      onTap: () => showDetailTamu(context, nomor, isTerisi),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: isTerisi ? Colors.green[400] : Colors.grey[300],
+                          borderRadius: BorderRadius.circular(12),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black26,
+                              blurRadius: 4,
+                              offset: const Offset(0, 2),
+                            )
+                          ],
+                        ),
+                        child: Center(
+                          child: Text(
+                            nomor,
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color: isTerisi ? Colors.white : Colors.black87,
+                            ),
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                ),
               ),
             ),
           ],
         ),
-      ),
+      ),),
     );
-    
   }
 }
