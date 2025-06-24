@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_inapkita/screen/diskon/menudiskon.dart';
 import 'menudeskripsi2.dart';
 
-
 class MenuDeskripsi extends StatefulWidget {
   @override
   State<MenuDeskripsi> createState() => _MenuDeskripsiState();
@@ -20,18 +19,39 @@ class _MenuDeskripsiState extends State<MenuDeskripsi> {
         child: ListView(
           padding: const EdgeInsets.all(16),
           children: [
-            Center(child: Image.asset('assets/inapkita_logo.png', height: 40)),
+            Center(
+              child: Image.network(
+                'https://i.imgur.com/otiEOBD.png', // Logo InapKita
+                height: 40,
+              ),
+            ),
             const SizedBox(height: 12),
 
-            // Ganti image carousel pakai asset lokal
+            // Gambar villa
             SizedBox(
               height: 200,
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: [
-                  Image.asset('assets/images/villa1.png', width: 300),
+                  Image.network(
+                    'https://semenmerahputih.com/_ipx/f_webp/https://cms.semenmerahputih.com/storage/4878/conversions/desain-kamar-mandi-converted.jpg',
+                    width: 300,
+                  ),
                   const SizedBox(width: 8),
-                  Image.asset('assets/images/villa2.png', width: 300),
+                  Image.network(
+                    'https://instapay.id/blog/wp-content/uploads/2023/05/penginapan-1024x682.jpg',
+                    width: 300,
+                  ),
+                  const SizedBox(width: 8),
+                  Image.network(
+                    'https://www.saniharto.com/assets/gallery/3d-rendering-modern-interior-designjpg.jpeg',
+                    width: 300,
+                  ), 
+                  const SizedBox(width: 8),
+                  Image.network(
+                    'https://editorial.femaledaily.com/wp-content/uploads/2022/06/tips-mudah-dekor-dapur-dan-ruang-makan-dari-IKEA-1.jpg',
+                    width: 300,
+                  ),
                 ],
               ),
             ),
@@ -60,7 +80,6 @@ class _MenuDeskripsiState extends State<MenuDeskripsi> {
             ),
             const SizedBox(height: 12),
 
-            // Room info dan Check Review
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -96,7 +115,6 @@ class _MenuDeskripsiState extends State<MenuDeskripsi> {
             ),
             const SizedBox(height: 16),
 
-            // Tombol Use Promo
             ElevatedButton.icon(
               onPressed: () async {
                 final promoHarga = await Navigator.push<int>(
@@ -109,15 +127,15 @@ class _MenuDeskripsiState extends State<MenuDeskripsi> {
                     totalHarga = promoHarga;
                   });
 
-                Navigator.push(
-  context,
-  MaterialPageRoute(
-    builder: (_) => MenuDeskripsi2(
-      totalHarga: promoHarga,
-      diskonPersen: 10,
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => MenuDeskripsi2(
+                        totalHarga: promoHarga,
+                        diskonPersen: 10,
+                      ),
                     ),
-                  )
-                );
+                  );
                 }
               },
               icon: const Icon(Icons.local_offer, color: Colors.white),
@@ -130,7 +148,6 @@ class _MenuDeskripsiState extends State<MenuDeskripsi> {
             ),
             const SizedBox(height: 12),
 
-            // Total dan Reservation
             Row(
               children: [
                 InkWell(
@@ -148,11 +165,11 @@ class _MenuDeskripsiState extends State<MenuDeskripsi> {
                 const Spacer(),
                 ElevatedButton(
                   onPressed: () {
-  Navigator.pushNamed(
-    context,
-    '/pembayaran',
-    arguments: {'totalHarga': totalHarga},
-  );
+                    Navigator.pushNamed(
+                      context,
+                      '/pembayaran',
+                      arguments: {'totalHarga': totalHarga},
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blueGrey,
