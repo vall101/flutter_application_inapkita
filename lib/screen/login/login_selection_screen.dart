@@ -38,31 +38,22 @@ class LoginSelectionScreen extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Image.asset(
-                'assets/images/Logo_apk.png',
-                width: 80,
-                height: 80,
+               Image.network(
+                'https://i.imgur.com/SbeKTyI.png',
+                width: 200,
+                height: 200,
                 fit: BoxFit.contain,
                 semanticLabel:
-                    'InapKita logo with a blue person shape and a white house inside',
-              ),
-              const SizedBox(height: 0),
-              Text(
-                'InapKita',
-                style: TextStyle(
-                  color: blueColor,
-                  fontSize: 20,
-                  fontWeight: FontWeight.w600,
-                  shadows: const [
-                    Shadow(
-                      offset: Offset(0, 2),
-                      blurRadius: 2,
-                      color: Color.fromRGBO(0, 0, 0, 0.3),
+                'InapKita logo with a blue person shape and a white house inside',
+                loadingBuilder: (context, child, loadingProgress) {
+                  if (loadingProgress == null) return child;
+                  return const CircularProgressIndicator();
+                  },
+                  errorBuilder: (context, error, stackTrace) {
+                    return const Icon(Icons.error, color: Colors.red);
+                    },
                     ),
-                  ],
-                ),
-              ),
-              const SizedBox(height: 40),
+              const SizedBox(height: 0),
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
@@ -128,3 +119,4 @@ class LoginSelectionScreen extends StatelessWidget {
     );
   }
 }
+
