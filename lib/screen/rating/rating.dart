@@ -34,7 +34,7 @@ class _RatingState extends State<Rating> {
           mainAxisSize: MainAxisSize.min,
           children: [
            Image.network(
-              'https://i.imgur.com/otiEOBD.png',
+              'https://i.imgur.com/otiEOBD.png', //logo inapkita
               height: 70,
               errorBuilder: (context, error, stackTrace) {
                return Icon(Icons.error, color: Colors.red);
@@ -78,7 +78,7 @@ class _RatingState extends State<Rating> {
               ),
             ],
           ),
-          
+          //alamat villa
           SizedBox(height: 16),
           Container(
             padding: EdgeInsets.all(12),
