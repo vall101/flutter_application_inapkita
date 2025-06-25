@@ -9,7 +9,7 @@ class InputRating extends StatefulWidget {
 
 class _InputRatingState extends State<InputRating> {
   int _rating = 0;
-  TextEditingController _reviewController = TextEditingController();
+  final TextEditingController _reviewController = TextEditingController();
 
   @override
   void dispose() {
@@ -34,6 +34,15 @@ class _InputRatingState extends State<InputRating> {
               errorBuilder: (context, error, stackTrace) {
                return Icon(Icons.error, color: Colors.red);
               },
+            Image.asset('assets/logoinapkita.png', height: 30),
+            const SizedBox(width: 8),
+            Text(
+              'InapKita',
+              style: TextStyle(
+                color: Colors.blue[800],
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
+              ),
             ),
           ],
         ),
@@ -41,6 +50,7 @@ class _InputRatingState extends State<InputRating> {
       body: ListView(
         padding: const EdgeInsets.all(16.0),
         children: [
+          // Info tempat
           Row(
             children: [
                ClipRRect(
@@ -57,33 +67,39 @@ class _InputRatingState extends State<InputRating> {
               ),
 
               SizedBox(width: 12),
+              const CircleAvatar(
+                radius: 30,
+                backgroundImage: AssetImage('assets/villa.jpg'),
+              ),
+              const SizedBox(width: 12),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                     'The Villa in Bali',
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                   Row(
-                    children: [
+                    children: const [
                       Icon(Icons.star, color: Colors.amber, size: 16),
-                      Text(' 4.8 (36k+ reviews)', style: TextStyle(fontSize: 12)),
+                      SizedBox(width: 4),
+                      Text('4.8 (36k+ reviews)', style: TextStyle(fontSize: 12)),
                     ],
                   ),
                 ],
               ),
             ],
           ),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           Container(
-            padding: EdgeInsets.all(12),
+            padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(
               color: Colors.blue[50],
               borderRadius: BorderRadius.circular(12),
             ),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
+              children: const [
                 Icon(Icons.location_on, color: Colors.black),
                 SizedBox(width: 8),
                 Expanded(
@@ -94,7 +110,7 @@ class _InputRatingState extends State<InputRating> {
               ],
             ),
           ),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           ClipRRect(
           borderRadius: BorderRadius.circular(16),
           child: Image.network(
@@ -107,11 +123,12 @@ class _InputRatingState extends State<InputRating> {
           ),
         ),
           SizedBox(height: 16),
+          const SizedBox(height: 16),
 
-          // Review dan Rating
+          // Input Rating
           Container(
             width: double.infinity,
-            padding: EdgeInsets.all(16),
+            padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
               color: Colors.blue[50],
               borderRadius: BorderRadius.circular(16),
@@ -119,11 +136,11 @@ class _InputRatingState extends State<InputRating> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text(
+                const Text(
                   'Review and Rating The Villa in Bali',
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
-                SizedBox(height: 8),
+                const SizedBox(height: 8),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: List.generate(5, (index) {
@@ -140,11 +157,14 @@ class _InputRatingState extends State<InputRating> {
                     );
                   }),
                 ),
-                Icon(Icons.emoji_emotions, color: Colors.blue),
+                const Icon(Icons.emoji_emotions, color: Colors.blue),
               ],
             ),
           ),
-          SizedBox(height: 20),
+
+          const SizedBox(height: 20),
+
+          // Input Komentar
           Container(
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
@@ -155,7 +175,7 @@ class _InputRatingState extends State<InputRating> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Text(
-                  'Review Traveler The Villa in Bali',
+                  'Tulis Review Kamu',
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 12),
@@ -163,7 +183,7 @@ class _InputRatingState extends State<InputRating> {
                   children: const [
                     CircleAvatar(
                       backgroundColor: Colors.blue,
-                      child: Icon(Icons.info, color: Colors.white, size: 16),
+                      child: Icon(Icons.person, color: Colors.white, size: 16),
                       radius: 12,
                     ),
                     SizedBox(width: 8),
@@ -185,7 +205,7 @@ class _InputRatingState extends State<InputRating> {
                           maxLines: 3,
                           decoration: const InputDecoration(
                             border: InputBorder.none,
-                            hintText: 'Give your opinion about the place',
+                            hintText: 'Tulis pendapat kamu tentang tempat ini...',
                           ),
                         ),
                       ),
@@ -193,6 +213,7 @@ class _InputRatingState extends State<InputRating> {
                         icon: const Icon(Icons.send, color: Colors.grey),
                         onPressed: () {
                           if (_reviewController.text.isEmpty || _rating == 0) return;
+
                           Navigator.pushNamed(
                             context,
                             '/rating',
@@ -210,25 +231,26 @@ class _InputRatingState extends State<InputRating> {
               ],
             ),
           ),
-          SizedBox(height: 16),
+
+          const SizedBox(height: 16),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: ElevatedButton(
               onPressed: () {
                 Navigator.pushNamed(context, '/rating');
               },
-              child: Text("Lihat Review"),
               style: ElevatedButton.styleFrom(
-                minimumSize: Size(double.infinity, 50),
+                minimumSize: const Size(double.infinity, 50),
                 backgroundColor: Colors.blue[800],
                 foregroundColor: Colors.white,
               ),
+              child: const Text("Lihat Review"),
             ),
           ),
         ],
       ),
       bottomNavigationBar: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: Color(0xFF3E5A88),
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(20),
@@ -254,4 +276,3 @@ class _InputRatingState extends State<InputRating> {
     );
   }
 }
- 

@@ -39,6 +39,15 @@ class _RatingState extends State<Rating> {
               errorBuilder: (context, error, stackTrace) {
                return Icon(Icons.error, color: Colors.red);
               },
+            Image.asset('assets/logo.png', height: 30),
+            const SizedBox(width: 8),
+            Text(
+              'InapKita',
+              style: TextStyle(
+                color: Colors.blue[800],
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
+              ),
             ),
           ],
         ),
@@ -59,17 +68,20 @@ class _RatingState extends State<Rating> {
                     return Icon(Icons.error, color: Colors.red);
                   },
                 ),
+              const CircleAvatar(
+                radius: 30,
+                backgroundImage: AssetImage('assets/villa.jpg'),
               ),
-              SizedBox(width: 12),
+              const SizedBox(width: 12),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                     'The Villa in Bali',
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                   Row(
-                    children: [
+                    children: const [
                       Icon(Icons.star, color: Colors.amber, size: 16),
                       Text(' 4.8 (36k+ reviews)', style: TextStyle(fontSize: 12)),
                     ],
@@ -80,15 +92,24 @@ class _RatingState extends State<Rating> {
           ),
           
           SizedBox(height: 16),
+                      SizedBox(width: 4),
+                      Text('4.8 (36k+ reviews)', style: TextStyle(fontSize: 12)),
+                    ],
+                  ),
+                ],
+              ),
+            ],
+          ),
+          const SizedBox(height: 16),
           Container(
-            padding: EdgeInsets.all(12),
+            padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(
               color: Colors.blue[50],
               borderRadius: BorderRadius.circular(12),
             ),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
+              children: const [
                 Icon(Icons.location_on, color: Colors.black),
                 SizedBox(width: 8),
                 Expanded(
@@ -100,6 +121,7 @@ class _RatingState extends State<Rating> {
             ),
           ),
           SizedBox(height: 16),
+          const SizedBox(height: 16),
           ClipRRect(
             borderRadius: BorderRadius.circular(16),
             child: Image.network(
@@ -111,10 +133,10 @@ class _RatingState extends State<Rating> {
               },
             ),
           ),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           Container(
             width: double.infinity,
-            padding: EdgeInsets.all(16),
+            padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
               color: Colors.blue[50],
               borderRadius: BorderRadius.circular(16),
@@ -122,30 +144,23 @@ class _RatingState extends State<Rating> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text(
+                const Text(
                   'Review and Rating The Villa in Bali',
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
-                SizedBox(height: 8),
+                const SizedBox(height: 8),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: List.generate(5, (index) {
-                    return IconButton(
-                      icon: Icon(
-                        Icons.star,
-                        color: Colors.amber,
-                      ),
-                      onPressed: () {
-                        setState(() {});
-                      },
-                    );
-                  }),
+                  children: List.generate(
+                    5,
+                    (index) => const Icon(Icons.star, color: Colors.amber),
+                  ),
                 ),
-                Icon(Icons.emoji_emotions, color: Colors.blue),
+                const Icon(Icons.emoji_emotions, color: Colors.blue),
               ],
             ),
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           Container(
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
@@ -172,7 +187,7 @@ class _RatingState extends State<Rating> {
       ),
       //bottomnavigationbar
       bottomNavigationBar: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: Color(0xFF3E5A88),
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(20),
