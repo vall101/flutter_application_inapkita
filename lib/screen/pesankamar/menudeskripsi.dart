@@ -19,24 +19,47 @@ class _MenuDeskripsiState extends State<MenuDeskripsi> {
         child: ListView(
           padding: const EdgeInsets.all(16),
           children: [
-            Center(child: Image.asset('assets/inapkita_logo.png', height: 40)),
+            Center(
+              child: Image.network(
+                'https://i.imgur.com/otiEOBD.png', // Logo InapKita
+                height: 40,
+              ),
+            ),
             const SizedBox(height: 12),
-            
-            //gambar Villa nya
+
+            // Gambar villa
             SizedBox(
               height: 200,
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: [
-                  Image.asset('assets/images/villa1.png', width: 300),
+                  Image.network(
+                    'https://semenmerahputih.com/_ipx/f_webp/https://cms.semenmerahputih.com/storage/4878/conversions/desain-kamar-mandi-converted.jpg',
+                    width: 300,
+                  ),
                   const SizedBox(width: 8),
-                  Image.asset('assets/images/villa2.png', width: 300),
+                  Image.network(
+                    'https://instapay.id/blog/wp-content/uploads/2023/05/penginapan-1024x682.jpg',
+                    width: 300,
+                  ),
+                  const SizedBox(width: 8),
+                  Image.network(
+                    'https://www.saniharto.com/assets/gallery/3d-rendering-modern-interior-designjpg.jpeg',
+                    width: 300,
+                  ), 
+                  const SizedBox(width: 8),
+                  Image.network(
+                    'https://editorial.femaledaily.com/wp-content/uploads/2022/06/tips-mudah-dekor-dapur-dan-ruang-makan-dari-IKEA-1.jpg',
+                    width: 300,
+                  ),
                 ],
               ),
             ),
             const SizedBox(height: 16),
+
             const Text("The Villa in Bali", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
             const SizedBox(height: 12),
+
             Container(
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
@@ -57,7 +80,6 @@ class _MenuDeskripsiState extends State<MenuDeskripsi> {
             ),
             const SizedBox(height: 12),
 
-            //Room Info dan Check Riview
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -93,12 +115,11 @@ class _MenuDeskripsiState extends State<MenuDeskripsi> {
             ),
             const SizedBox(height: 16),
 
-            // Tombol Use Promo
             ElevatedButton.icon(
               onPressed: () async {
                 final promoHarga = await Navigator.push<int>(
                   context,
-                  MaterialPageRoute(builder: (_) => const Diskon()),
+                  MaterialPageRoute(builder: (_) => const MenuDiskonPage()),
                 );
 
                 if (promoHarga != null) {
@@ -109,7 +130,10 @@ class _MenuDeskripsiState extends State<MenuDeskripsi> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (_) => MenuDeskripsi2(totalHarga: promoHarga),
+                      builder: (_) => MenuDeskripsi2(
+                        totalHarga: promoHarga,
+                        diskonPersen: 10,
+                      ),
                     ),
                   );
                 }
@@ -124,7 +148,6 @@ class _MenuDeskripsiState extends State<MenuDeskripsi> {
             ),
             const SizedBox(height: 12),
 
-            // Total dan Reservation
             Row(
               children: [
                 InkWell(
@@ -142,7 +165,11 @@ class _MenuDeskripsiState extends State<MenuDeskripsi> {
                 const Spacer(),
                 ElevatedButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, '/pembayaran');
+                    Navigator.pushNamed(
+                      context,
+                      '/pembayaran',
+                      arguments: {'totalHarga': totalHarga},
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blueGrey,
@@ -157,5 +184,5 @@ class _MenuDeskripsiState extends State<MenuDeskripsi> {
         ),
       ),
     );
-  }//
+  }
 }

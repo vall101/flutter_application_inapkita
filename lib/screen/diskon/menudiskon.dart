@@ -5,6 +5,22 @@ class MenuDiskonPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double hargaNormal = 1850000;
+
+    // Fungsi untuk navigasi ke MenuDeskripsi2 dengan diskon
+    void navigateWithPromo(double diskon) {
+      double hargaPromo = hargaNormal - (hargaNormal * diskon);
+
+      Navigator.pushReplacementNamed(
+        context,
+        '/deskripsi2',
+        arguments: {
+          'totalHarga': hargaPromo.toInt(),
+          'diskonPersen': (diskon * 100).toInt(),
+        },
+      );
+    }
+
     return Scaffold(
       backgroundColor: Colors.white,
 
@@ -137,9 +153,23 @@ class MenuDiskonPage extends StatelessWidget {
                 // Kartu Diskon
                 Column(
                   children: [
-                    _buildDiskonCard('10% New User'),
-                    _buildDiskonCard('30% New User'),
-                    _buildDiskonCard('50% New User'),
+                    PromoCard(
+                      title: "10% New User",
+                      description:
+                          "2x coupon discount - No Minimum Purchase",
+                      onTap: () => navigateWithPromo(0.10),
+                    ),
+                    PromoCard(
+                      title: "30% Special Deal",
+                      description:
+                          "Applicable for bookings above Rp1.000.000",
+                      onTap: () => navigateWithPromo(0.30),
+                    ),
+                    PromoCard(
+                      title: "50% Flash Sale",
+                      description: "Limited time only!",
+                      onTap: () => navigateWithPromo(0.50),
+                    ),
                   ],
                 ),
               ],
@@ -176,51 +206,54 @@ class MenuDiskonPage extends StatelessWidget {
       ),
     );
   }
+}
 
-  // Kartu diskon builder
-  Widget _buildDiskonCard(String title) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 8),
-      child: Container(
-        padding: const EdgeInsets.all(15),
-        decoration: BoxDecoration(
-          color: Colors.blueGrey[50],
-          borderRadius: BorderRadius.circular(12),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.shade300,
-              blurRadius: 3,
-              offset: const Offset(0, 2),
-            ),
-          ],
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(title,
-                style:
-                    const TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
-            const SizedBox(height: 4),
-            const Text(
-              '· 2x coupon discount - No Minimum Purchase',
-              style: TextStyle(color: Colors.black54, fontSize: 13),
-            )
-          ],
+  class PromoCard extends StatelessWidget {
+  final String title;
+  final String description;
+  final VoidCallback onTap;
+
+  const PromoCard({
+    super.key,
+    required this.title,
+    required this.description,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 8),
+        child: Container(
+          padding: const EdgeInsets.all(15),
+          decoration: BoxDecoration(
+            color: Colors.blueGrey[50],
+            borderRadius: BorderRadius.circular(12),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.shade300,
+                blurRadius: 3,
+                offset: const Offset(0, 2),
+              ),
+            ],
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(title,
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold, fontSize: 16)),
+              const SizedBox(height: 4),
+              Text(
+                description,
+                style: const TextStyle(color: Colors.black54, fontSize: 13),
+              )
+            ],
+          ),
         ),
       ),
     );
-  }
-}
-class Diskon extends StatefulWidget {
-  const Diskon({super.key});
-
-  @override
-  State<Diskon> createState() => _DiskonState();
-}
-
-class _DiskonState extends State<Diskon> {
-  @override
-  Widget build(BuildContext context) {
-    return const Placeholder();
   }
 }

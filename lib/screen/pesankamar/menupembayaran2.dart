@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class MenuPembayaran2 extends StatelessWidget {
-  const MenuPembayaran2({super.key});
+  const MenuPembayaran2({super.key, required totalHarga});
 
   @override
   Widget build(BuildContext context) {
@@ -14,15 +14,15 @@ class MenuPembayaran2 extends StatelessWidget {
               padding: const EdgeInsets.all(16),
               children: [
                 Center(
-                  child: Image.asset(
-                    'assets/images/inapkita_logo.png',
+                  child: Image.network(
+                    'https://i.imgur.com/otiEOBD.png', // Logo InapKita
                     height: 40,
                   ),
                 ),
                 const SizedBox(height: 16),
                 ClipRRect(
                   borderRadius: BorderRadius.circular(12),
-                  child: Image.asset('assets/images/kamar1.jpg'),
+                  child: Image.network('https://instapay.id/blog/wp-content/uploads/2023/05/penginapan-1024x682.jpg'),
                 ),
                 const SizedBox(height: 16),
                 const Center(
@@ -65,13 +65,13 @@ class MenuPembayaran2 extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
                   child: Column(
                     children: [
-                      buildPaymentMethod('assets/images/bri.png', 'BRI Virtual Account'),
+                      buildPaymentMethod('https://buatlogoonline.com/wp-content/uploads/2022/10/Logo-Bank-BRI.png', 'BRI Virtual Account'),
                       const SizedBox(height: 12),
-                      buildPaymentMethod('assets/images/bca.png', 'BCA'),
+                      buildPaymentMethod('https://asset-2.tstatic.net/bangka/foto/bank/images/20220117-logo-bca.jpg', 'BCA'),
                       const SizedBox(height: 12),
-                      buildPaymentMethod('assets/images/mandiri.png', 'Livin’ by Mandiri'),
+                      buildPaymentMethod('https://cdn.idntimes.com/content-images/post/20240430/livin-by-mandiri-d26f696e05b637e5c8f4878f7f040f96.png', 'Livin’ by Mandiri'),
                       const SizedBox(height: 12),
-                      buildPaymentMethod('assets/images/dana.png', 'Dana'),
+                      buildPaymentMethod('https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Logo_dana_blue.svg/2560px-Logo_dana_blue.svg.png', 'Dana'),
                       const SizedBox(height: 24),
                       SizedBox(
                         width: double.infinity,
@@ -105,8 +105,8 @@ class MenuPembayaran2 extends StatelessWidget {
       ),
     );
   }
-//
-  Widget buildPaymentMethod(String imagePath, String label) {
+
+  Widget buildPaymentMethod(String imageUrl, String label) {
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
@@ -115,7 +115,7 @@ class MenuPembayaran2 extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 12),
       child: Row(
         children: [
-          Image.asset(imagePath, height: 32),
+          Image.network(imageUrl, height: 32),
           const SizedBox(width: 12),
           Text(
             label,
@@ -169,7 +169,7 @@ class OrderSuccessPopup extends StatelessWidget {
             const SizedBox(height: 10),
             ClipRRect(
               borderRadius: BorderRadius.circular(10),
-              child: Image.asset('assets/images/kamar1.jpg', height: 80),
+              child: Image.network('https://instapay.id/blog/wp-content/uploads/2023/05/penginapan-1024x682.jpg', height: 80),
             ),
             const SizedBox(height: 10),
             const Text(

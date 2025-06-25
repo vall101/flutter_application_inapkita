@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'screen/resepsionis/resepsionis.dart';
 import 'screen/beranda/beranda.dart';
-import 'screen/beranda/riwayat_pesan.dart';
-import 'screen/beranda/kosong.dart';
+import 'screen/beranda/riwayat_pesan.dart'; // Tidak dipakai jika sudah ganti dengan MenuDiskonPage
 import 'screen/beranda/profile.dart';
 import 'screen/pesankamar/menupembayaran.dart';
 import 'screen/pesankamar/menupembayaran2.dart';
@@ -11,6 +10,7 @@ import 'screen/pesankamar/menudeskripsi2.dart';
 import 'screen/login/login_selection_screen.dart';
 import 'screen/rating/rating.dart';
 import 'screen/rating/input_rating.dart';
+import 'screen/diskon/menudiskon.dart'; // Pastikan file ini ada
 
 void main() {
   runApp(const InapKitaApp());
@@ -32,14 +32,44 @@ class InapKitaApp extends StatelessWidget {
         '/': (context) => const LoginSelectionScreen(),
         '/main': (context) => const MainNavigation(),
         '/resepsionis': (context) => const ResepsionisHome(),
-        '/deskripsi': (context) => const MenuDeskripsi(),
-        '/deskripsi2': (context) => const MenuDeskripsi2(),
+        '/deskripsi': (context) => MenuDeskripsi(),
         '/chatAdmin': (context) => const ChatAdminPage(),
-        '/pembayaran': (context) => const MenuPembayaran(),
-        '/pembayaran2': (context) => const MenuPembayaran2(),
+        '/review': (context) => const Rating(),
         '/pesanKamar': (context) => const PesanKamarPage(),
         '/inputRating': (context) => const InputRating(),
         '/rating': (context) => const Rating(),
+        '/diskon': (context) => const MenuDiskonPage(), // Route untuk diskon
+      },
+      onGenerateRoute: (settings) {
+        if (settings.name == '/deskripsi2') {
+          final args = settings.arguments as Map<String, dynamic>;
+          return MaterialPageRoute(
+            builder: (_) => MenuDeskripsi2(
+              totalHarga: args['totalHarga'],
+              diskonPersen: args['diskonPersen'],
+            ),
+          );
+        }
+
+        if (settings.name == '/pembayaran') {
+          final args = settings.arguments as Map<String, dynamic>;
+          return MaterialPageRoute(
+            builder: (_) => MenuPembayaran(
+              totalHarga: args['totalHarga'],
+            ),
+          );
+        }
+
+        if (settings.name == '/pembayaran2') {
+          final args = settings.arguments as Map<String, dynamic>;
+          return MaterialPageRoute(
+            builder: (_) => MenuPembayaran2(
+              totalHarga: args['totalHarga'],
+            ),
+          );
+        }
+
+        return null;
       },
     );
   }
@@ -59,7 +89,7 @@ class _MainNavigationState extends State<MainNavigation> {
   final List<Widget> _pages = [
     const BerandaPage(),
     const RiwayatPemesananPage(),
-    const NotFoundPage(),
+    const MenuDiskonPage(), // Gantikan kosong dengan menu diskon
     const ProfilePage(),
   ];
 

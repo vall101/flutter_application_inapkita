@@ -1,33 +1,69 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_inapkita/screen/diskon/menudiskon.dart';
+import 'menupembayaran.dart';
 
 class MenuDeskripsi2 extends StatelessWidget {
   final int totalHarga;
-  const MenuDeskripsi2({super.key, required this.totalHarga});
+  final int diskonPersen;
+
+  const MenuDeskripsi2({
+    super.key,
+    required this.totalHarga,
+    required this.diskonPersen,
+  });
 
   @override
   Widget build(BuildContext context) {
+    final int hargaNormal = 1850000;
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
         child: ListView(
           padding: const EdgeInsets.all(16),
           children: [
-            Center(child: Image.asset('assets/inapkita_logo.png', height: 40)),
+            // Logo pakai image.network
+            Center(
+              child: Image.network(
+                'https://i.imgur.com/otiEOBD.png', // Logo InapKita
+                height: 40,
+              ),
+            ),
             const SizedBox(height: 12),
+
+            // Gambar villa 
             SizedBox(
               height: 200,
               child: ListView(
                 scrollDirection: Axis.horizontal,
-                 children: [
-                  Image.asset('assets/images/villa1.png', width: 300),
+                children: [
+                  Image.network(
+                    'https://semenmerahputih.com/_ipx/f_webp/https://cms.semenmerahputih.com/storage/4878/conversions/desain-kamar-mandi-converted.jpg',
+                    width: 300,
+                  ),
                   const SizedBox(width: 8),
-                  Image.asset('assets/images/villa2.png', width: 300),
+                  Image.network(
+                    'https://instapay.id/blog/wp-content/uploads/2023/05/penginapan-1024x682.jpg',
+                    width: 300,
+                  ),
+                  const SizedBox(width: 8),
+                  Image.network(
+                    'https://www.saniharto.com/assets/gallery/3d-rendering-modern-interior-designjpg.jpeg',
+                    width: 300,
+                  ), 
+                  const SizedBox(width: 8),
+                  Image.network(
+                    'https://editorial.femaledaily.com/wp-content/uploads/2022/06/tips-mudah-dekor-dapur-dan-ruang-makan-dari-IKEA-1.jpg',
+                    width: 300,
+                  ),
                 ],
               ),
             ),
             const SizedBox(height: 16),
+
             const Text("The Villa in Bali", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
             const SizedBox(height: 12),
+
             Container(
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
@@ -47,6 +83,7 @@ class MenuDeskripsi2 extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 12),
+
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -68,7 +105,7 @@ class MenuDeskripsi2 extends StatelessWidget {
                   ),
                 ),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () => Navigator.pushNamed(context, '/review'),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blueGrey,
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
@@ -78,42 +115,70 @@ class MenuDeskripsi2 extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 16),
+
             ElevatedButton.icon(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => const MenuDiskonPage()),
+                );
+              },
               icon: const Icon(Icons.local_offer, color: Colors.white),
               label: const Text("Use promo", style: TextStyle(color: Colors.white)),
               style: ElevatedButton.styleFrom(
-                backgroundColor: Color(0xFF4C5C88),
+                backgroundColor: const Color(0xFF4C5C88),
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
                 padding: const EdgeInsets.symmetric(vertical: 14),
               ),
             ),
             const SizedBox(height: 12),
+
             Row(
               children: [
                 InkWell(
                   onTap: () => Navigator.pushNamed(context, '/chatAdmin'),
-                  child: Row(
-                    children: const [
+                  child: const Row(
+                    children: [
                       Icon(Icons.chat_bubble_outline, size: 28),
                       SizedBox(width: 4),
                     ],
                   ),
                 ),
+
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text("10%", style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold)),
-                    const Text("Rp 1.850.000", style: TextStyle(decoration: TextDecoration.lineThrough)),
+                    Text(
+                      "$diskonPersen%",
+                      style: const TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
+                    ),
+                    const Text(
+                      "Rp 1850000",
+                      style: TextStyle(decoration: TextDecoration.lineThrough),
+                    ),
                   ],
                 ),
                 const SizedBox(width: 8),
-                Text("Rp ${totalHarga.toString()}", style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+
+                Text(
+                  "Rp $totalHarga",
+                  style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
                 const SizedBox(width: 4),
                 const Text("Total Payment", style: TextStyle(fontWeight: FontWeight.bold)),
                 const Spacer(),
+
                 ElevatedButton(
-                  onPressed: () => Navigator.pushNamed(context, '/pembayaran'),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => MenuPembayaran(
+                          totalHarga: totalHarga,
+                        ),
+                      ),
+                    );
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blueGrey,
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
@@ -129,4 +194,3 @@ class MenuDeskripsi2 extends StatelessWidget {
     );
   }
 }
-//

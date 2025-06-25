@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class MenuPembayaran extends StatelessWidget {
-  const MenuPembayaran({super.key});
+  const MenuPembayaran({super.key, required int totalHarga});
 
   @override
   Widget build(BuildContext context) {
@@ -11,23 +11,24 @@ class MenuPembayaran extends StatelessWidget {
         child: ListView(
           padding: const EdgeInsets.all(16),
           children: [
-            // Logo
+            // Logo pakai image.network
             Center(
-              child: Image.asset(
-                'assets/images/inapkita_logo.png',
+              child: Image.network(
+                'https://i.imgur.com/otiEOBD.png', // Logo InapKita
                 height: 40,
               ),
             ),
             const SizedBox(height: 16),
 
-            // Gambar kamar
+            // Gambar kamar pakai image.network
             ClipRRect(
               borderRadius: BorderRadius.circular(12),
-              child: Image.asset('assets/images/kamar1.jpg'),
+              child: Image.network(
+                'https://instapay.id/blog/wp-content/uploads/2023/05/penginapan-1024x682.jpg', 
+              ),
             ),
             const SizedBox(height: 16),
 
-            // Judul villa
             const Center(
               child: Text(
                 "The Villa in Bali",
@@ -36,7 +37,6 @@ class MenuPembayaran extends StatelessWidget {
             ),
             const SizedBox(height: 20),
 
-            // Price Detail Section
             const Text(
               "Price Details",
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
@@ -52,7 +52,6 @@ class MenuPembayaran extends StatelessWidget {
             ),
             const Divider(height: 32),
 
-            // Total Price
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: const [
@@ -68,7 +67,6 @@ class MenuPembayaran extends StatelessWidget {
             ),
             const SizedBox(height: 24),
 
-            // Payment Methods Section
             Container(
               decoration: BoxDecoration(
                 color: const Color(0xFF4C5C88),
@@ -77,22 +75,32 @@ class MenuPembayaran extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
               child: Column(
                 children: [
-                  buildPaymentMethod('assets/images/bri.png', 'BRI Virtual Account'),
+                  buildPaymentMethod(
+                    'https://buatlogoonline.com/wp-content/uploads/2022/10/Logo-Bank-BRI.png',
+                    'BRI Virtual Account',
+                  ),
                   const SizedBox(height: 12),
-                  buildPaymentMethod('assets/images/bca.png', 'BCA'),
+                  buildPaymentMethod(
+                    'https://asset-2.tstatic.net/bangka/foto/bank/images/20220117-logo-bca.jpg',
+                    'BCA',
+                  ),
                   const SizedBox(height: 12),
-                  buildPaymentMethod('assets/images/mandiri.png', 'Livin’ by Mandiri'),
+                  buildPaymentMethod(
+                    'https://cdn.idntimes.com/content-images/post/20240430/livin-by-mandiri-d26f696e05b637e5c8f4878f7f040f96.png',
+                    'Livin’ by Mandiri',
+                  ),
                   const SizedBox(height: 12),
-                  buildPaymentMethod('assets/images/dana.png', 'Dana'),
+                  buildPaymentMethod(
+                    'https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Logo_dana_blue.svg/2560px-Logo_dana_blue.svg.png',
+                    'Dana',
+                  ),
                   const SizedBox(height: 24),
 
-                  // Tombol Payment
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
                       onPressed: () {
                         Navigator.pushNamed(context, '/pembayaran2');
-                        // Aksi ketika tombol ditekan
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.grey[700],
@@ -116,8 +124,8 @@ class MenuPembayaran extends StatelessWidget {
     );
   }
 
-  // Widget metode pembayaran
-  Widget buildPaymentMethod(String imagePath, String label) {
+  // Metode pembayaran pakai image.network
+  Widget buildPaymentMethod(String imageUrl, String label) {
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
@@ -126,7 +134,7 @@ class MenuPembayaran extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 12),
       child: Row(
         children: [
-          Image.asset(imagePath, height: 32),
+          Image.network(imageUrl, height: 32),
           const SizedBox(width: 12),
           Text(
             label,
