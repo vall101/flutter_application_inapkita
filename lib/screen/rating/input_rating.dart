@@ -28,12 +28,13 @@ class _InputRatingState extends State<InputRating> {
         title: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-           Image.network(
+            Image.network(
               'https://i.imgur.com/otiEOBD.png',
               height: 70,
               errorBuilder: (context, error, stackTrace) {
-               return Icon(Icons.error, color: Colors.red);
+                return Icon(Icons.error, color: Colors.red);
               },
+            ),
             Image.asset('assets/logoinapkita.png', height: 30),
             const SizedBox(width: 8),
             Text(

@@ -8,6 +8,21 @@ class Rating extends StatefulWidget {
 }
 
 class _RatingState extends State<Rating> {
+  // Add the controller for review input
+  late final TextEditingController _reviewController;
+
+  @override
+  void initState() {
+    super.initState();
+    _reviewController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    _reviewController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final Map<String, dynamic>? newReview =
@@ -33,12 +48,13 @@ class _RatingState extends State<Rating> {
         title: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-           Image.network(
+            Image.network(
               'https://i.imgur.com/otiEOBD.png', //logo inapkita
               height: 70,
               errorBuilder: (context, error, stackTrace) {
-               return Icon(Icons.error, color: Colors.red);
+                return Icon(Icons.error, color: Colors.red);
               },
+            ),
             Image.asset('assets/logo.png', height: 30),
             const SizedBox(width: 8),
             Text(
@@ -68,6 +84,7 @@ class _RatingState extends State<Rating> {
                     return Icon(Icons.error, color: Colors.red);
                   },
                 ),
+              ),
               const CircleAvatar(
                 radius: 30,
                 backgroundImage: AssetImage('assets/villa.jpg'),
@@ -84,16 +101,6 @@ class _RatingState extends State<Rating> {
                     children: const [
                       Icon(Icons.star, color: Colors.amber, size: 16),
                       Text(' 4.8 (36k+ reviews)', style: TextStyle(fontSize: 12)),
-                    ],
-                  ),
-                ],
-              ),
-            ],
-          ),
-          
-          SizedBox(height: 16),
-                      SizedBox(width: 4),
-                      Text('4.8 (36k+ reviews)', style: TextStyle(fontSize: 12)),
                     ],
                   ),
                 ],
@@ -120,7 +127,6 @@ class _RatingState extends State<Rating> {
               ],
             ),
           ),
-          SizedBox(height: 16),
           const SizedBox(height: 16),
           ClipRRect(
             borderRadius: BorderRadius.circular(16),
@@ -157,6 +163,33 @@ class _RatingState extends State<Rating> {
                   ),
                 ),
                 const Icon(Icons.emoji_emotions, color: Colors.blue),
+                const SizedBox(height: 16),
+                // Add a TextField for review input
+                TextField(
+                  controller: _reviewController,
+                  decoration: const InputDecoration(
+                    hintText: 'Tulis review Anda di sini...',
+                    border: OutlineInputBorder(),
+                  ),
+                  maxLines: 2,
+                ),
+                const SizedBox(height: 8),
+                ElevatedButton(
+                  onPressed: () {
+                    // Example: Add review to the list (you can implement your own logic)
+                    if (_reviewController.text.trim().isNotEmpty) {
+                      setState(() {
+                        reviews.add({
+                          'nama': 'Anda',
+                          'komentar': _reviewController.text.trim(),
+                          'rating': 5, // You can add rating selection logic
+                        });
+                        _reviewController.clear();
+                      });
+                    }
+                  },
+                  child: const Text('Kirim Review'),
+                ),
               ],
             ),
           ),
