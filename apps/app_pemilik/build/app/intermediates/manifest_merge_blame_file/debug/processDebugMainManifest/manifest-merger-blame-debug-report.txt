@@ -1,0 +1,216 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.test_pemilk_flutter_application"
+4    android:versionCode="1"
+5    android:versionName="1.0.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="21"
+9        android:targetSdkVersion="35" />
+10    <!--
+11         The INTERNET permission is required for development. Specifically,
+12         the Flutter tool needs it to communicate with the running application
+13         to allow setting breakpoints, to provide hot reload, etc.
+14    -->
+15    <uses-permission android:name="android.permission.INTERNET" />
+15-->D:\Android Project\flutter_application_inapkita\apps\app_pemilik\android\app\src\debug\AndroidManifest.xml:6:5-66
+15-->D:\Android Project\flutter_application_inapkita\apps\app_pemilik\android\app\src\debug\AndroidManifest.xml:6:22-64
+16    <!--
+17     Required to query activities that can process text, see:
+18         https://developer.android.com/training/package-visibility and
+19         https://developer.android.com/reference/android/content/Intent#ACTION_PROCESS_TEXT.
+20
+21         In particular, this is used by the Flutter engine in io.flutter.plugin.text.ProcessTextPlugin.
+22    -->
+23    <queries>
+23-->D:\Android Project\flutter_application_inapkita\apps\app_pemilik\android\app\src\main\AndroidManifest.xml:39:5-44:15
+24        <intent>
+24-->D:\Android Project\flutter_application_inapkita\apps\app_pemilik\android\app\src\main\AndroidManifest.xml:40:9-43:18
+25            <action android:name="android.intent.action.PROCESS_TEXT" />
+25-->D:\Android Project\flutter_application_inapkita\apps\app_pemilik\android\app\src\main\AndroidManifest.xml:41:13-72
+25-->D:\Android Project\flutter_application_inapkita\apps\app_pemilik\android\app\src\main\AndroidManifest.xml:41:21-70
+26
+27            <data android:mimeType="text/plain" />
+27-->D:\Android Project\flutter_application_inapkita\apps\app_pemilik\android\app\src\main\AndroidManifest.xml:42:13-50
+27-->D:\Android Project\flutter_application_inapkita\apps\app_pemilik\android\app\src\main\AndroidManifest.xml:42:19-48
+28        </intent>
+29    </queries>
+30
+31    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+31-->D:\Android Project\flutter_application_inapkita\apps\app_pemilik\android\app\src\main\AndroidManifest.xml:46:5-79
+31-->D:\Android Project\flutter_application_inapkita\apps\app_pemilik\android\app\src\main\AndroidManifest.xml:46:22-77
+32    <uses-permission android:name="android.permission.CAMERA" />
+32-->D:\Android Project\flutter_application_inapkita\apps\app_pemilik\android\app\src\main\AndroidManifest.xml:47:5-64
+32-->D:\Android Project\flutter_application_inapkita\apps\app_pemilik\android\app\src\main\AndroidManifest.xml:47:22-62
+33    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+33-->D:\Android Project\flutter_application_inapkita\apps\app_pemilik\android\app\src\main\AndroidManifest.xml:48:5-75
+33-->D:\Android Project\flutter_application_inapkita\apps\app_pemilik\android\app\src\main\AndroidManifest.xml:48:22-73
+34
+35    <permission
+35-->[androidx.core:core:1.13.1] C:\Users\ACER\.gradle\caches\8.10.2\transforms\8cf478dec41eed746328fa8046755ba2\transformed\core-1.13.1\AndroidManifest.xml:22:5-24:47
+36        android:name="com.example.test_pemilk_flutter_application.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+36-->[androidx.core:core:1.13.1] C:\Users\ACER\.gradle\caches\8.10.2\transforms\8cf478dec41eed746328fa8046755ba2\transformed\core-1.13.1\AndroidManifest.xml:23:9-81
+37        android:protectionLevel="signature" />
+37-->[androidx.core:core:1.13.1] C:\Users\ACER\.gradle\caches\8.10.2\transforms\8cf478dec41eed746328fa8046755ba2\transformed\core-1.13.1\AndroidManifest.xml:24:9-44
+38
+39    <uses-permission android:name="com.example.test_pemilk_flutter_application.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+39-->[androidx.core:core:1.13.1] C:\Users\ACER\.gradle\caches\8.10.2\transforms\8cf478dec41eed746328fa8046755ba2\transformed\core-1.13.1\AndroidManifest.xml:26:5-97
+39-->[androidx.core:core:1.13.1] C:\Users\ACER\.gradle\caches\8.10.2\transforms\8cf478dec41eed746328fa8046755ba2\transformed\core-1.13.1\AndroidManifest.xml:26:22-94
+40
+41    <application
+42        android:name="android.app.Application"
+43        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+43-->[androidx.core:core:1.13.1] C:\Users\ACER\.gradle\caches\8.10.2\transforms\8cf478dec41eed746328fa8046755ba2\transformed\core-1.13.1\AndroidManifest.xml:28:18-86
+44        android:debuggable="true"
+45        android:extractNativeLibs="true"
+46        android:icon="@mipmap/ic_launcher"
+47        android:label="test_pemilk_flutter_application" >
+48        <activity
+49            android:name="com.example.test_pemilk_flutter_application.MainActivity"
+50            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+51            android:exported="true"
+52            android:hardwareAccelerated="true"
+53            android:launchMode="singleTop"
+54            android:taskAffinity=""
+55            android:theme="@style/LaunchTheme"
+56            android:windowSoftInputMode="adjustResize" >
+57
+58            <!--
+59                 Specifies an Android theme to apply to this Activity as soon as
+60                 the Android process has started. This theme is visible to the user
+61                 while the Flutter UI initializes. After that, this theme continues
+62                 to determine the Window background behind the Flutter UI.
+63            -->
+64            <meta-data
+65                android:name="io.flutter.embedding.android.NormalTheme"
+66                android:resource="@style/NormalTheme" />
+67
+68            <intent-filter>
+69                <action android:name="android.intent.action.MAIN" />
+70
+71                <category android:name="android.intent.category.LAUNCHER" />
+72            </intent-filter>
+73        </activity>
+74        <!--
+75             Don't delete the meta-data below.
+76             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
+77        -->
+78        <meta-data
+79            android:name="flutterEmbedding"
+80            android:value="2" />
+81
+82        <provider
+82-->[:image_picker_android] D:\Android Project\flutter_application_inapkita\apps\app_pemilik\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:9:9-17:20
+83            android:name="io.flutter.plugins.imagepicker.ImagePickerFileProvider"
+83-->[:image_picker_android] D:\Android Project\flutter_application_inapkita\apps\app_pemilik\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:10:13-82
+84            android:authorities="com.example.test_pemilk_flutter_application.flutter.image_provider"
+84-->[:image_picker_android] D:\Android Project\flutter_application_inapkita\apps\app_pemilik\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:11:13-74
+85            android:exported="false"
+85-->[:image_picker_android] D:\Android Project\flutter_application_inapkita\apps\app_pemilik\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:12:13-37
+86            android:grantUriPermissions="true" >
+86-->[:image_picker_android] D:\Android Project\flutter_application_inapkita\apps\app_pemilik\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:13:13-47
+87            <meta-data
+87-->[:image_picker_android] D:\Android Project\flutter_application_inapkita\apps\app_pemilik\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:14:13-16:75
+88                android:name="android.support.FILE_PROVIDER_PATHS"
+88-->[:image_picker_android] D:\Android Project\flutter_application_inapkita\apps\app_pemilik\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:15:17-67
+89                android:resource="@xml/flutter_image_picker_file_paths" />
+89-->[:image_picker_android] D:\Android Project\flutter_application_inapkita\apps\app_pemilik\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:16:17-72
+90        </provider> <!-- Trigger Google Play services to install the backported photo picker module. -->
+91        <service
+91-->[:image_picker_android] D:\Android Project\flutter_application_inapkita\apps\app_pemilik\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:19:9-31:19
+92            android:name="com.google.android.gms.metadata.ModuleDependencies"
+92-->[:image_picker_android] D:\Android Project\flutter_application_inapkita\apps\app_pemilik\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:20:13-78
+93            android:enabled="false"
+93-->[:image_picker_android] D:\Android Project\flutter_application_inapkita\apps\app_pemilik\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:21:13-36
+94            android:exported="false" >
+94-->[:image_picker_android] D:\Android Project\flutter_application_inapkita\apps\app_pemilik\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:22:13-37
+95            <intent-filter>
+95-->[:image_picker_android] D:\Android Project\flutter_application_inapkita\apps\app_pemilik\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:24:13-26:29
+96                <action android:name="com.google.android.gms.metadata.MODULE_DEPENDENCIES" />
+96-->[:image_picker_android] D:\Android Project\flutter_application_inapkita\apps\app_pemilik\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:25:17-94
+96-->[:image_picker_android] D:\Android Project\flutter_application_inapkita\apps\app_pemilik\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:25:25-91
+97            </intent-filter>
+98
+99            <meta-data
+99-->[:image_picker_android] D:\Android Project\flutter_application_inapkita\apps\app_pemilik\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:28:13-30:36
+100                android:name="photopicker_activity:0:required"
+100-->[:image_picker_android] D:\Android Project\flutter_application_inapkita\apps\app_pemilik\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:29:17-63
+101                android:value="" />
+101-->[:image_picker_android] D:\Android Project\flutter_application_inapkita\apps\app_pemilik\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:30:17-33
+102        </service>
+103
+104        <uses-library
+104-->[androidx.window:window:1.2.0] C:\Users\ACER\.gradle\caches\8.10.2\transforms\5093ab42d2307deb2d7ac0b7f5718c38\transformed\jetified-window-1.2.0\AndroidManifest.xml:23:9-25:40
+105            android:name="androidx.window.extensions"
+105-->[androidx.window:window:1.2.0] C:\Users\ACER\.gradle\caches\8.10.2\transforms\5093ab42d2307deb2d7ac0b7f5718c38\transformed\jetified-window-1.2.0\AndroidManifest.xml:24:13-54
+106            android:required="false" />
+106-->[androidx.window:window:1.2.0] C:\Users\ACER\.gradle\caches\8.10.2\transforms\5093ab42d2307deb2d7ac0b7f5718c38\transformed\jetified-window-1.2.0\AndroidManifest.xml:25:13-37
+107        <uses-library
+107-->[androidx.window:window:1.2.0] C:\Users\ACER\.gradle\caches\8.10.2\transforms\5093ab42d2307deb2d7ac0b7f5718c38\transformed\jetified-window-1.2.0\AndroidManifest.xml:26:9-28:40
+108            android:name="androidx.window.sidecar"
+108-->[androidx.window:window:1.2.0] C:\Users\ACER\.gradle\caches\8.10.2\transforms\5093ab42d2307deb2d7ac0b7f5718c38\transformed\jetified-window-1.2.0\AndroidManifest.xml:27:13-51
+109            android:required="false" />
+109-->[androidx.window:window:1.2.0] C:\Users\ACER\.gradle\caches\8.10.2\transforms\5093ab42d2307deb2d7ac0b7f5718c38\transformed\jetified-window-1.2.0\AndroidManifest.xml:28:13-37
+110
+111        <provider
+111-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\ACER\.gradle\caches\8.10.2\transforms\e80aa748ff6540407d8dba61c0d945fe\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:24:9-32:20
+112            android:name="androidx.startup.InitializationProvider"
+112-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\ACER\.gradle\caches\8.10.2\transforms\e80aa748ff6540407d8dba61c0d945fe\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:25:13-67
+113            android:authorities="com.example.test_pemilk_flutter_application.androidx-startup"
+113-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\ACER\.gradle\caches\8.10.2\transforms\e80aa748ff6540407d8dba61c0d945fe\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:26:13-68
+114            android:exported="false" >
+114-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\ACER\.gradle\caches\8.10.2\transforms\e80aa748ff6540407d8dba61c0d945fe\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:27:13-37
+115            <meta-data
+115-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\ACER\.gradle\caches\8.10.2\transforms\e80aa748ff6540407d8dba61c0d945fe\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:29:13-31:52
+116                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+116-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\ACER\.gradle\caches\8.10.2\transforms\e80aa748ff6540407d8dba61c0d945fe\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:30:17-78
+117                android:value="androidx.startup" />
+117-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\ACER\.gradle\caches\8.10.2\transforms\e80aa748ff6540407d8dba61c0d945fe\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:31:17-49
+118            <meta-data
+118-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ACER\.gradle\caches\8.10.2\transforms\5f7dcf6815bacc3ae7f099ba801348de\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:29:13-31:52
+119                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+119-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ACER\.gradle\caches\8.10.2\transforms\5f7dcf6815bacc3ae7f099ba801348de\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:30:17-85
+120                android:value="androidx.startup" />
+120-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ACER\.gradle\caches\8.10.2\transforms\5f7dcf6815bacc3ae7f099ba801348de\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:31:17-49
+121        </provider>
+122
+123        <receiver
+123-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ACER\.gradle\caches\8.10.2\transforms\5f7dcf6815bacc3ae7f099ba801348de\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:34:9-52:20
+124            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+124-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ACER\.gradle\caches\8.10.2\transforms\5f7dcf6815bacc3ae7f099ba801348de\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:35:13-76
+125            android:directBootAware="false"
+125-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ACER\.gradle\caches\8.10.2\transforms\5f7dcf6815bacc3ae7f099ba801348de\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:36:13-44
+126            android:enabled="true"
+126-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ACER\.gradle\caches\8.10.2\transforms\5f7dcf6815bacc3ae7f099ba801348de\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:37:13-35
+127            android:exported="true"
+127-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ACER\.gradle\caches\8.10.2\transforms\5f7dcf6815bacc3ae7f099ba801348de\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:38:13-36
+128            android:permission="android.permission.DUMP" >
+128-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ACER\.gradle\caches\8.10.2\transforms\5f7dcf6815bacc3ae7f099ba801348de\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:39:13-57
+129            <intent-filter>
+129-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ACER\.gradle\caches\8.10.2\transforms\5f7dcf6815bacc3ae7f099ba801348de\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:40:13-42:29
+130                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+130-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ACER\.gradle\caches\8.10.2\transforms\5f7dcf6815bacc3ae7f099ba801348de\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:41:17-91
+130-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ACER\.gradle\caches\8.10.2\transforms\5f7dcf6815bacc3ae7f099ba801348de\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:41:25-88
+131            </intent-filter>
+132            <intent-filter>
+132-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ACER\.gradle\caches\8.10.2\transforms\5f7dcf6815bacc3ae7f099ba801348de\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:43:13-45:29
+133                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+133-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ACER\.gradle\caches\8.10.2\transforms\5f7dcf6815bacc3ae7f099ba801348de\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:44:17-85
+133-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ACER\.gradle\caches\8.10.2\transforms\5f7dcf6815bacc3ae7f099ba801348de\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:44:25-82
+134            </intent-filter>
+135            <intent-filter>
+135-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ACER\.gradle\caches\8.10.2\transforms\5f7dcf6815bacc3ae7f099ba801348de\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:46:13-48:29
+136                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+136-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ACER\.gradle\caches\8.10.2\transforms\5f7dcf6815bacc3ae7f099ba801348de\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:47:17-88
+136-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ACER\.gradle\caches\8.10.2\transforms\5f7dcf6815bacc3ae7f099ba801348de\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:47:25-85
+137            </intent-filter>
+138            <intent-filter>
+138-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ACER\.gradle\caches\8.10.2\transforms\5f7dcf6815bacc3ae7f099ba801348de\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:49:13-51:29
+139                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+139-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ACER\.gradle\caches\8.10.2\transforms\5f7dcf6815bacc3ae7f099ba801348de\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:50:17-95
+139-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\ACER\.gradle\caches\8.10.2\transforms\5f7dcf6815bacc3ae7f099ba801348de\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:50:25-92
+140            </intent-filter>
+141        </receiver>
+142    </application>
+143
+144</manifest>
