@@ -33,6 +33,12 @@ class _RatingState extends State<Rating> {
         title: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
+           Image.network(
+              'https://i.imgur.com/otiEOBD.png', //logo inapkita
+              height: 70,
+              errorBuilder: (context, error, stackTrace) {
+               return Icon(Icons.error, color: Colors.red);
+              },
             Image.asset('assets/logo.png', height: 30),
             const SizedBox(width: 8),
             Text(
@@ -51,6 +57,17 @@ class _RatingState extends State<Rating> {
         children: [
           Row(
             children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(16),
+                child: Image.network(
+                  'https://www.topacapulcohotels.com/data/Pics/450x450w/16562/1656218/1656218557/pic-desa-di-bali-villas-kerobokan-80361-kerobokan-bali-1.JPEG',
+                  height: 60,
+                  width: 60,
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) {
+                    return Icon(Icons.error, color: Colors.red);
+                  },
+                ),
               const CircleAvatar(
                 radius: 30,
                 backgroundImage: AssetImage('assets/villa.jpg'),
@@ -66,6 +83,15 @@ class _RatingState extends State<Rating> {
                   Row(
                     children: const [
                       Icon(Icons.star, color: Colors.amber, size: 16),
+                      Text(' 4.8 (36k+ reviews)', style: TextStyle(fontSize: 12)),
+                    ],
+                  ),
+                ],
+              ),
+            ],
+          ),
+          //
+          SizedBox(height: 16),
                       SizedBox(width: 4),
                       Text('4.8 (36k+ reviews)', style: TextStyle(fontSize: 12)),
                     ],
@@ -94,10 +120,18 @@ class _RatingState extends State<Rating> {
               ],
             ),
           ),
+          SizedBox(height: 16),
           const SizedBox(height: 16),
           ClipRRect(
             borderRadius: BorderRadius.circular(16),
-            child: Image.asset('assets/room.jpg'),
+            child: Image.network(
+              'https://instapay.id/blog/wp-content/uploads/2023/05/penginapan-1024x682.jpg',
+              height: 180,
+              fit: BoxFit.cover,
+              errorBuilder: (context, error, stackTrace) {
+                return Icon(Icons.error, color: Colors.red);
+              },
+            ),
           ),
           const SizedBox(height: 16),
           Container(
@@ -151,6 +185,7 @@ class _RatingState extends State<Rating> {
           ),
         ],
       ),
+      //bottomnavigation
       bottomNavigationBar: Container(
         decoration: const BoxDecoration(
           color: Color(0xFF3E5A88),
