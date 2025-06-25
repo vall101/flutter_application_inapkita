@@ -49,6 +49,7 @@ class _RatingState extends State<Rating> {
           mainAxisSize: MainAxisSize.min,
           children: [
             Image.network(
+              'https://i.imgur.com/otiEOBD.png', //image
               'https://i.imgur.com/otiEOBD.png', //logo inapkita
               height: 70,
               errorBuilder: (context, error, stackTrace) {
@@ -157,10 +158,17 @@ class _RatingState extends State<Rating> {
                 const SizedBox(height: 8),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: List.generate(
-                    5,
-                    (index) => const Icon(Icons.star, color: Colors.amber),
-                  ),
+                  children: List.generate(5, (index) {
+                    return IconButton(
+                      icon: const Icon(
+                        Icons.star,
+                        color: Colors.amber,
+                      ),
+                      onPressed: () {
+                        setState(() {});
+                      },
+                    );
+                  }),
                 ),
                 const Icon(Icons.emoji_emotions, color: Colors.blue),
                 const SizedBox(height: 16),
@@ -218,7 +226,6 @@ class _RatingState extends State<Rating> {
           ),
         ],
       ),
-      //bottomnavigationbar
       bottomNavigationBar: Container(
         decoration: const BoxDecoration(
           color: Color(0xFF3E5A88),
