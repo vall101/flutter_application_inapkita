@@ -1,6 +1,6 @@
 # pemilk_flutter_application
 
-Aplikasi Flutter modern untuk manajemen properti, dirancang untuk memudahkan pengelolaan listing properti, check-in, dan data resepsionis.
+Aplikasi Flutter modern untuk manajemen properti, dirancang untuk memudahkan pengelolaan listing properti, check-in, dan data resepsionis pada aplikasi inapkita.
 
 ## Fitur Unggulan
 - Tambah & kelola data properti
