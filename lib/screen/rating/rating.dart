@@ -29,10 +29,26 @@ class _RatingState extends State<Rating> {
         ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>?;
 
     List<Map<String, dynamic>> reviews = [
-      {'nama': 'Imbuh', 'komentar': 'Tempatnya sangat nyaman dan bersih', 'rating': 5},
-      {'nama': 'Vanilaa', 'komentar': 'Tempatnya sangat luas dan fasilitasnya lengkap', 'rating': 5},
-      {'nama': 'Nopal Pangestu', 'komentar': 'Tempatnya sangat aesthetic', 'rating': 4},
-      {'nama': 'Imbuh 2', 'komentar': 'Fasilitas yang disediakan sangat bagus', 'rating': 5},
+      {
+        'nama': 'Imbuh',
+        'komentar': 'Tempatnya sangat nyaman dan bersih',
+        'rating': 5,
+      },
+      {
+        'nama': 'Vanilaa',
+        'komentar': 'Tempatnya sangat luas dan fasilitasnya lengkap',
+        'rating': 5,
+      },
+      {
+        'nama': 'Nopal Pangestu',
+        'komentar': 'Tempatnya sangat aesthetic',
+        'rating': 4,
+      },
+      {
+        'nama': 'Imbuh 2',
+        'komentar': 'Fasilitas yang disediakan sangat bagus',
+        'rating': 5,
+      },
     ];
 
     if (newReview != null) {
@@ -49,7 +65,6 @@ class _RatingState extends State<Rating> {
           mainAxisSize: MainAxisSize.min,
           children: [
             Image.network(
-              'https://i.imgur.com/otiEOBD.png', //image
               'https://i.imgur.com/otiEOBD.png', //logo inapkita
               height: 70,
               errorBuilder: (context, error, stackTrace) {
@@ -101,7 +116,10 @@ class _RatingState extends State<Rating> {
                   Row(
                     children: const [
                       Icon(Icons.star, color: Colors.amber, size: 16),
-                      Text(' 4.8 (36k+ reviews)', style: TextStyle(fontSize: 12)),
+                      Text(
+                        ' 4.8 (36k+ reviews)',
+                        style: TextStyle(fontSize: 12),
+                      ),
                     ],
                   ),
                 ],
@@ -160,10 +178,7 @@ class _RatingState extends State<Rating> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: List.generate(5, (index) {
                     return IconButton(
-                      icon: const Icon(
-                        Icons.star,
-                        color: Colors.amber,
-                      ),
+                      icon: const Icon(Icons.star, color: Colors.amber),
                       onPressed: () {
                         setState(() {});
                       },
@@ -217,9 +232,16 @@ class _RatingState extends State<Rating> {
                 ),
                 const SizedBox(height: 16),
                 Column(
-                  children: reviews
-                      .map((r) => _buildReviewItem(r['nama'], r['komentar'], r['rating']))
-                      .toList(),
+                  children:
+                      reviews
+                          .map(
+                            (r) => _buildReviewItem(
+                              r['nama'],
+                              r['komentar'],
+                              r['rating'],
+                            ),
+                          )
+                          .toList(),
                 ),
               ],
             ),
@@ -289,7 +311,7 @@ class _RatingState extends State<Rating> {
                 ),
               ],
             ),
-          )
+          ),
         ],
       ),
     );

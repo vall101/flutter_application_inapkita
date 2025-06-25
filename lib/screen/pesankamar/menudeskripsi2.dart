@@ -144,7 +144,7 @@ class MenuDeskripsi2 extends StatelessWidget {
                     ],
                   ),
                 ),
-
+                const SizedBox(width: 8), // Add spacing between chat and price info
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -159,7 +159,6 @@ class MenuDeskripsi2 extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(width: 8),
-
                 Text(
                   "Rp $totalHarga",
                   style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
@@ -167,7 +166,6 @@ class MenuDeskripsi2 extends StatelessWidget {
                 const SizedBox(width: 4),
                 const Text("Total Payment", style: TextStyle(fontWeight: FontWeight.bold)),
                 const Spacer(),
-
                 ElevatedButton(
                   onPressed: () {
                     Navigator.push(
