@@ -78,7 +78,7 @@ class _RatingState extends State<Rating> {
               ),
             ],
           ),
-          //
+          
           SizedBox(height: 16),
           Container(
             padding: EdgeInsets.all(12),
@@ -170,7 +170,7 @@ class _RatingState extends State<Rating> {
           ),
         ],
       ),
-      //bottomnavigation
+      //bottomnavigationbar
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
           color: Color(0xFF3E5A88),
