@@ -33,21 +33,12 @@ class _RatingState extends State<Rating> {
         title: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-           Image.network(
-              'https://i.imgur.com/otiEOBD.png', //logo inapkita
+            Image.network(
+              'https://i.imgur.com/otiEOBD.png',
               height: 70,
               errorBuilder: (context, error, stackTrace) {
-               return Icon(Icons.error, color: Colors.red);
+                return Icon(Icons.error, color: Colors.red);
               },
-            Image.asset('assets/logo.png', height: 30),
-            const SizedBox(width: 8),
-            Text(
-              'InapKita',
-              style: TextStyle(
-                color: Colors.blue[800],
-                fontWeight: FontWeight.bold,
-                fontSize: 18,
-              ),
             ),
           ],
         ),
@@ -68,9 +59,6 @@ class _RatingState extends State<Rating> {
                     return Icon(Icons.error, color: Colors.red);
                   },
                 ),
-              const CircleAvatar(
-                radius: 30,
-                backgroundImage: AssetImage('assets/villa.jpg'),
               ),
               const SizedBox(width: 12),
               Column(
@@ -84,16 +72,6 @@ class _RatingState extends State<Rating> {
                     children: const [
                       Icon(Icons.star, color: Colors.amber, size: 16),
                       Text(' 4.8 (36k+ reviews)', style: TextStyle(fontSize: 12)),
-                    ],
-                  ),
-                ],
-              ),
-            ],
-          ),
-          
-          SizedBox(height: 16),
-                      SizedBox(width: 4),
-                      Text('4.8 (36k+ reviews)', style: TextStyle(fontSize: 12)),
                     ],
                   ),
                 ],
@@ -120,7 +98,6 @@ class _RatingState extends State<Rating> {
               ],
             ),
           ),
-          SizedBox(height: 16),
           const SizedBox(height: 16),
           ClipRRect(
             borderRadius: BorderRadius.circular(16),
@@ -151,10 +128,17 @@ class _RatingState extends State<Rating> {
                 const SizedBox(height: 8),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: List.generate(
-                    5,
-                    (index) => const Icon(Icons.star, color: Colors.amber),
-                  ),
+                  children: List.generate(5, (index) {
+                    return IconButton(
+                      icon: const Icon(
+                        Icons.star,
+                        color: Colors.amber,
+                      ),
+                      onPressed: () {
+                        setState(() {});
+                      },
+                    );
+                  }),
                 ),
                 const Icon(Icons.emoji_emotions, color: Colors.blue),
               ],
@@ -185,7 +169,6 @@ class _RatingState extends State<Rating> {
           ),
         ],
       ),
-      //bottomnavigationbar
       bottomNavigationBar: Container(
         decoration: const BoxDecoration(
           color: Color(0xFF3E5A88),
