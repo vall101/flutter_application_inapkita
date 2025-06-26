@@ -41,14 +41,14 @@ class ResepsionisPage extends StatelessWidget {
         },
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: const Color(0xFF3B5998),
+        backgroundColor: const Color(0xFF4B5E93),
         onPressed: () {
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => const CreateResepsionisPage()),
           );
         },
-        child: const Icon(Icons.add, size: 32),
+        child: const Icon(Icons.add, size: 32, color: Colors.white),
       ),
     );
   }
