@@ -10,13 +10,22 @@ class PropertyDataPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: const Color(0xFF3B5998), // konsisten dengan home_page.dart
         centerTitle: true,
+        iconTheme: const IconThemeData(color: Colors.white),
         title: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
             Image.asset('assets/images/inap_logo_2.png', height: 32),
-            SizedBox(width: 8),
-            Text('InapKita'),
+            const SizedBox(width: 8),
+            const Text(
+              'InapKita',
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
+              ),
+            ),
           ],
         ),
       ),
@@ -39,7 +48,7 @@ class PropertyDataPage extends StatelessWidget {
         },
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Color(0xFF4B5E93),
+        backgroundColor: const Color(0xFF4B5E93), // konsisten warna aksen
         onPressed: () {
           Navigator.push(
             context,
