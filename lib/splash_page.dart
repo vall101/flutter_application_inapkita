@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'main.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key}); // gunakan super.key
@@ -14,9 +13,7 @@ class _SplashPageState extends State<SplashPage> {
   void initState() {
     super.initState();
     Timer(const Duration(seconds: 3), () {
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (_) => const InapKitaApp()),
-      );
+      Navigator.of(context).pushReplacementNamed('/');
     });
   }
 
