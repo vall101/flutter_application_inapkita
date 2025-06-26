@@ -11,6 +11,7 @@ import 'screen/login/login_selection_screen.dart';
 import 'screen/rating/rating.dart';
 import 'screen/rating/input_rating.dart';
 import 'screen/diskon/menudiskon.dart'; // Pastikan file ini ada
+import 'screen/pemilik/home_page.dart';
 import 'splash_page.dart';
 
 void main() {
@@ -41,6 +42,7 @@ class InapKitaApp extends StatelessWidget {
         '/inputRating': (context) => const InputRating(),
         '/rating': (context) => const Rating(),
         '/diskon': (context) => const MenuDiskonPage(), // Route untuk diskon
+        '/pemilikHome': (context) => const HomePage(), // Route untuk HomePage Pemilik
       },
       onGenerateRoute: (settings) {
         if (settings.name == '/deskripsi2') {
