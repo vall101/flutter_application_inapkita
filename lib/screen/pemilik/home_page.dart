@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'add_property_page.dart';
 import 'property_data_page.dart';
 import 'resepsionis_page.dart';
 
@@ -107,24 +106,6 @@ class HomePage extends StatelessWidget {
             const SizedBox(height: 32),
             Row(
               children: [
-                Expanded(
-                  child: AnimatedContainer(
-                    duration: const Duration(milliseconds: 200),
-                    curve: Curves.easeInOut,
-                    child: buildMenuCard(
-                      "Add Property",
-                      "assets/images/property1.jpg",
-                      () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (_) => AddPropertyPage()),
-                        );
-                      },
-                      aspectRatio: 1,
-                    ),
-                  ),
-                ),
-                const SizedBox(width: 16),
                 Expanded(
                   child: AnimatedContainer(
                     duration: const Duration(milliseconds: 200),
