@@ -11,6 +11,7 @@ import 'screen/login/login_selection_screen.dart';
 import 'screen/rating/rating.dart';
 import 'screen/rating/input_rating.dart';
 import 'screen/diskon/menudiskon.dart'; // Pastikan file ini ada
+import 'splash_page.dart';
 
 void main() {
   runApp(const InapKitaApp());
@@ -27,8 +28,9 @@ class InapKitaApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       debugShowCheckedModeBanner: false,
-      initialRoute: '/',
+      initialRoute: '/splash',
       routes: {
+        '/splash': (context) => const SplashPage(),
         '/': (context) => const LoginSelectionScreen(),
         '/main': (context) => const MainNavigation(),
         '/resepsionis': (context) => const ResepsionisHome(),
