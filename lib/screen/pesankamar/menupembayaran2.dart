@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class MenuPembayaran2 extends StatelessWidget {
-  const MenuPembayaran2({super.key, required totalHarga});
+  final int totalHarga;
+
+  const MenuPembayaran2({super.key, required this.totalHarga});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +24,9 @@ class MenuPembayaran2 extends StatelessWidget {
                 const SizedBox(height: 16),
                 ClipRRect(
                   borderRadius: BorderRadius.circular(12),
-                  child: Image.network('https://instapay.id/blog/wp-content/uploads/2023/05/penginapan-1024x682.jpg'),
+                  child: Image.network(
+                    'https://instapay.id/blog/wp-content/uploads/2023/05/penginapan-1024x682.jpg',
+                  ),
                 ),
                 const SizedBox(height: 16),
                 const Center(
@@ -45,14 +49,14 @@ class MenuPembayaran2 extends StatelessWidget {
                 const Divider(height: 32),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const [
-                    Text(
+                  children: [
+                    const Text(
                       "Total Price",
                       style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                     ),
                     Text(
-                      "Rp 1.850.000",
-                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                      "Rp $totalHarga",
+                      style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                     ),
                   ],
                 ),
@@ -79,7 +83,7 @@ class MenuPembayaran2 extends StatelessWidget {
                           onPressed: () {
                             showDialog(
                               context: context,
-                              builder: (context) => const OrderSuccessPopup(),
+                              builder: (context) => OrderSuccessPopup(totalHarga: totalHarga),
                             );
                           },
                           style: ElevatedButton.styleFrom(
@@ -128,7 +132,9 @@ class MenuPembayaran2 extends StatelessWidget {
 }
 
 class OrderSuccessPopup extends StatelessWidget {
-  const OrderSuccessPopup({super.key});
+  final int totalHarga;
+
+  const OrderSuccessPopup({super.key, required this.totalHarga});
 
   @override
   Widget build(BuildContext context) {
@@ -169,7 +175,10 @@ class OrderSuccessPopup extends StatelessWidget {
             const SizedBox(height: 10),
             ClipRRect(
               borderRadius: BorderRadius.circular(10),
-              child: Image.network('https://instapay.id/blog/wp-content/uploads/2023/05/penginapan-1024x682.jpg', height: 80),
+              child: Image.network(
+                'https://instapay.id/blog/wp-content/uploads/2023/05/penginapan-1024x682.jpg',
+                height: 80,
+              ),
             ),
             const SizedBox(height: 10),
             const Text(
@@ -178,10 +187,10 @@ class OrderSuccessPopup extends StatelessWidget {
               style: TextStyle(fontSize: 14),
             ),
             const SizedBox(height: 6),
-            const Text(
-              "Room Price\nRp 1.850.000",
+            Text(
+              "Room Price\nRp $totalHarga",
               textAlign: TextAlign.center,
-              style: TextStyle(fontWeight: FontWeight.bold),
+              style: const TextStyle(fontWeight: FontWeight.bold),
             ),
             const Divider(height: 30),
             const Text("Hi Dear, Thanks For Order <3"),
@@ -227,60 +236,11 @@ class LocationPopup extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(12),
-              ),
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-              child: Row(
-                children: const [
-                  Icon(Icons.calendar_today, size: 20),
-                  SizedBox(width: 12),
-                  Text("Check-in"),
-                ],
-              ),
-            ),
+            _infoBox(Icons.calendar_today, "Check-in"),
             const SizedBox(height: 12),
-            Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(12),
-              ),
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-              child: Row(
-                children: const [
-                  Icon(Icons.calendar_today, size: 20),
-                  SizedBox(width: 12),
-                  Text("Check-out"),
-                ],
-              ),
-            ),
+            _infoBox(Icons.calendar_today, "Check-out"),
             const SizedBox(height: 12),
-            Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(12),
-              ),
-              padding: const EdgeInsets.all(12),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
-                  Icon(Icons.location_on),
-                  SizedBox(width: 10),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text("Seminyak, Bali", style: TextStyle(fontWeight: FontWeight.bold)),
-                        SizedBox(height: 4),
-                        Text("Jl. Plawa Gg. Ratna No.13 D, Seminyak, Kec. Kuta, Kabupaten Badung, Bali 80361"),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
+            _locationBox(),
             const SizedBox(height: 20),
             SizedBox(
               width: double.infinity,
@@ -298,6 +258,50 @@ class LocationPopup extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _infoBox(IconData icon, String text) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(12),
+      ),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+      child: Row(
+        children: [
+          Icon(icon, size: 20),
+          const SizedBox(width: 12),
+          Text(text),
+        ],
+      ),
+    );
+  }
+
+  Widget _locationBox() {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(12),
+      ),
+      padding: const EdgeInsets.all(12),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: const [
+          Icon(Icons.location_on),
+          SizedBox(width: 10),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text("Seminyak, Bali", style: TextStyle(fontWeight: FontWeight.bold)),
+                SizedBox(height: 4),
+                Text("Jl. Plawa Gg. Ratna No.13 D, Seminyak, Kec. Kuta, Kabupaten Badung, Bali 80361"),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
