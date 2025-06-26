@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_inapkita/screen/diskon/menudiskon.dart';
+import '/screen/diskon/menudiskon.dart';
 import 'menupembayaran.dart';
 
 class MenuDeskripsi2 extends StatelessWidget {
@@ -160,7 +160,7 @@ class MenuDeskripsi2 extends StatelessWidget {
                 ),
                 const SizedBox(width: 8),
                 Text(
-                  "Rp $totalHarga",
+                  "Rp Rp $hargaNormal",
                   style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(width: 4),

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'menupembayaran2.dart';
 
 class MenuPembayaran extends StatelessWidget {
-  const MenuPembayaran({super.key, required int totalHarga});
+  final int totalHarga;
+
+  const MenuPembayaran({super.key, required this.totalHarga});
 
   @override
   Widget build(BuildContext context) {
@@ -11,20 +14,18 @@ class MenuPembayaran extends StatelessWidget {
         child: ListView(
           padding: const EdgeInsets.all(16),
           children: [
-            // Logo pakai image.network
             Center(
               child: Image.network(
-                'https://i.imgur.com/otiEOBD.png', // Logo InapKita
+                'https://i.imgur.com/otiEOBD.png',
                 height: 40,
               ),
             ),
             const SizedBox(height: 16),
 
-            // Gambar kamar pakai image.network
             ClipRRect(
               borderRadius: BorderRadius.circular(12),
               child: Image.network(
-                'https://instapay.id/blog/wp-content/uploads/2023/05/penginapan-1024x682.jpg', 
+                'https://instapay.id/blog/wp-content/uploads/2023/05/penginapan-1024x682.jpg',
               ),
             ),
             const SizedBox(height: 16),
@@ -54,14 +55,14 @@ class MenuPembayaran extends StatelessWidget {
 
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
-                Text(
+              children: [
+                const Text(
                   "Total Price",
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                 ),
                 Text(
-                  "Rp 1.850.000",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                  "Rp $totalHarga",
+                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                 ),
               ],
             ),
@@ -100,7 +101,12 @@ class MenuPembayaran extends StatelessWidget {
                     width: double.infinity,
                     child: ElevatedButton(
                       onPressed: () {
-                        Navigator.pushNamed(context, '/pembayaran2');
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => MenuPembayaran2(totalHarga: totalHarga),
+                          ),
+                        );
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.grey[700],
@@ -124,7 +130,6 @@ class MenuPembayaran extends StatelessWidget {
     );
   }
 
-  // Metode pembayaran pakai image.network
   Widget buildPaymentMethod(String imageUrl, String label) {
     return Container(
       decoration: BoxDecoration(

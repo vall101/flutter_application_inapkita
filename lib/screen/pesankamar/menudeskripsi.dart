@@ -1,15 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_inapkita/screen/diskon/menudiskon.dart';
+import '/screen/diskon/menudiskon.dart';
 import 'menudeskripsi2.dart';
 
 class MenuDeskripsi extends StatefulWidget {
+  final String title;
+  final String description;
+  final String imagePath;
+
+  const MenuDeskripsi({
+    super.key,
+    required this.title,
+    required this.description,
+    required this.imagePath,
+  });
+
   @override
   State<MenuDeskripsi> createState() => _MenuDeskripsiState();
 }
 
 class _MenuDeskripsiState extends State<MenuDeskripsi> {
   bool isRoomInfoVisible = true;
-  int totalHarga = 1850000; // harga default sebelum promo
+  int totalHarga = 1850000;
 
   @override
   Widget build(BuildContext context) {
@@ -21,22 +32,17 @@ class _MenuDeskripsiState extends State<MenuDeskripsi> {
           children: [
             Center(
               child: Image.network(
-                'https://i.imgur.com/otiEOBD.png', // Logo InapKita
+                'https://i.imgur.com/otiEOBD.png',
                 height: 40,
               ),
             ),
             const SizedBox(height: 12),
-
-            // Gambar villa
             SizedBox(
               height: 200,
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: [
-                  Image.network(
-                    'https://semenmerahputih.com/_ipx/f_webp/https://cms.semenmerahputih.com/storage/4878/conversions/desain-kamar-mandi-converted.jpg',
-                    width: 300,
-                  ),
+                  Image.asset(widget.imagePath, width: 300),
                   const SizedBox(width: 8),
                   Image.network(
                     'https://instapay.id/blog/wp-content/uploads/2023/05/penginapan-1024x682.jpg',
@@ -46,7 +52,7 @@ class _MenuDeskripsiState extends State<MenuDeskripsi> {
                   Image.network(
                     'https://www.saniharto.com/assets/gallery/3d-rendering-modern-interior-designjpg.jpeg',
                     width: 300,
-                  ), 
+                  ),
                   const SizedBox(width: 8),
                   Image.network(
                     'https://editorial.femaledaily.com/wp-content/uploads/2022/06/tips-mudah-dekor-dapur-dan-ruang-makan-dari-IKEA-1.jpg',
@@ -56,30 +62,24 @@ class _MenuDeskripsiState extends State<MenuDeskripsi> {
               ),
             ),
             const SizedBox(height: 16),
-
-            const Text("The Villa in Bali", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+            Text(widget.title, style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
             const SizedBox(height: 12),
-
             Container(
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
                 color: Colors.grey[200],
                 borderRadius: BorderRadius.circular(12),
               ),
-              child: const Column(
+              child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Exclusive Room", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-                  SizedBox(height: 8),
-                  Text(
-                    "This is one type of villa at Exclusive Bali that can accommodate 3 people and is free of 2 children under 10 years old. This type is equipped with 2 queen-size beds (160 × 200 cm), a private swimming pool, kitchen, bathtub, air conditioner, gazebo, bathroom with water heater, smart TV with Netflix, and complete amenities.\n\n"
-                    "This is one type of villa at Bohemian Jogja Villas that can accommodate 3 person and free of charge for 2 children (less than 10 y.o). This type equipped with 2 queen bed, private pool, kitchen, Bath tub, Air conditioner, private gazebo, bathroom with water heater, smartTV with netflix, and full amenities",
-                  ),
+                  const Text("Exclusive Room", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                  const SizedBox(height: 8),
+                  Text(widget.description),
                 ],
               ),
             ),
             const SizedBox(height: 12),
-
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -114,19 +114,16 @@ class _MenuDeskripsiState extends State<MenuDeskripsi> {
               ],
             ),
             const SizedBox(height: 16),
-
             ElevatedButton.icon(
               onPressed: () async {
                 final promoHarga = await Navigator.push<int>(
                   context,
                   MaterialPageRoute(builder: (_) => const MenuDiskonPage()),
                 );
-
                 if (promoHarga != null) {
                   setState(() {
                     totalHarga = promoHarga;
                   });
-
                   Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -147,7 +144,6 @@ class _MenuDeskripsiState extends State<MenuDeskripsi> {
               ),
             ),
             const SizedBox(height: 12),
-
             Row(
               children: [
                 InkWell(

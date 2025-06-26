@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'screen/resepsionis/resepsionis.dart';
 import 'screen/beranda/beranda.dart';
-import 'screen/beranda/riwayat_pesan.dart'; // Tidak dipakai jika sudah ganti dengan MenuDiskonPage
+import 'screen/beranda/riwayat_pesan.dart';
 import 'screen/beranda/profile.dart';
 import 'screen/pesankamar/menupembayaran.dart';
 import 'screen/pesankamar/menupembayaran2.dart';
@@ -10,9 +10,7 @@ import 'screen/pesankamar/menudeskripsi2.dart';
 import 'screen/login/login_selection_screen.dart';
 import 'screen/rating/rating.dart';
 import 'screen/rating/input_rating.dart';
-import 'screen/diskon/menudiskon.dart'; // Pastikan file ini ada
-import 'screen/pemilik/home_page.dart';
-import 'splash_page.dart';
+import 'screen/diskon/menudiskon.dart';
 
 void main() {
   runApp(const InapKitaApp());
@@ -29,22 +27,32 @@ class InapKitaApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       debugShowCheckedModeBanner: false,
-      initialRoute: '/splash',
+      initialRoute: '/',
       routes: {
-        '/splash': (context) => const SplashPage(),
         '/': (context) => const LoginSelectionScreen(),
         '/main': (context) => const MainNavigation(),
         '/resepsionis': (context) => const ResepsionisHome(),
-        '/deskripsi': (context) => MenuDeskripsi(),
         '/chatAdmin': (context) => const ChatAdminPage(),
         '/review': (context) => const Rating(),
         '/pesanKamar': (context) => const PesanKamarPage(),
         '/inputRating': (context) => const InputRating(),
         '/rating': (context) => const Rating(),
-        '/diskon': (context) => const MenuDiskonPage(), // Route untuk diskon
-        '/pemilikHome': (context) => const HomePage(), // Route untuk HomePage Pemilik
+        '/diskon': (context) => const MenuDiskonPage(),
+        '/pembayaran': (context) => const MenuPembayaran(totalHarga: 1850000),
+        '/pembayaran2': (context) => const MenuPembayaran2(totalHarga: 1850000),
       },
       onGenerateRoute: (settings) {
+        if (settings.name == '/deskripsi') {
+          final args = settings.arguments as Map<String, String>;
+          return MaterialPageRoute(
+            builder: (_) => MenuDeskripsi(
+              title: args['title']!,
+              description: args['description']!,
+              imagePath: args['imagePath']!,
+            ),
+          );
+        }
+
         if (settings.name == '/deskripsi2') {
           final args = settings.arguments as Map<String, dynamic>;
           return MaterialPageRoute(
@@ -91,9 +99,9 @@ class _MainNavigationState extends State<MainNavigation> {
   int _selectedIndex = 0;
 
   final List<Widget> _pages = [
-    const BerandaPage(),
+    const Beranda(),
     const RiwayatPemesananPage(),
-    const MenuDiskonPage(), // Gantikan kosong dengan menu diskon
+    const MenuDiskonPage(),
     const ProfilePage(),
   ];
 
