@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'ketersediaan_kamar.dart';
-
+import 'ketersediaan_kamar.dart'; 
 
 class ResepsionisHome extends StatelessWidget {
+  const ResepsionisHome({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,21 +14,31 @@ class ResepsionisHome extends StatelessWidget {
           child: Column(
             children: [
               Center(
-                child: Image.asset('assets/inapkita_logo.png', height: 40),
+                child: Image.network(
+                  'https://i.imgur.com/otiEOBD.png', // Ganti dengan URL untuk foto profil
+                  height: 40,
+                  errorBuilder: (context, error, stackTrace) =>
+                      const Icon(Icons.error),
+                ),
               ),
               const SizedBox(height: 12),
 
               // Informasi User
               Row(
                 children: [
-                  const CircleAvatar(
-                    radius: 25,
-                    backgroundImage: AssetImage('assets/ujang.jpg'),
+                  CircleAvatar(
+                      radius: 25,
+                      backgroundImage: NetworkImage('https://i.imgur.com/jytf69h.jpeg'),
+                      onBackgroundImageError: (error, stackTrace) {
+                      debugPrint('Gagal memuat foto profil: $error');
+                    },
                   ),
                   const SizedBox(width: 10),
                   Container(
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 30, vertical: 8),
+                      horizontal: 30,
+                      vertical: 8,
+                    ),
                     decoration: BoxDecoration(
                       color: Colors.blue[100],
                       borderRadius: BorderRadius.circular(12),
@@ -38,8 +49,6 @@ class ResepsionisHome extends StatelessWidget {
               ),
 
               const SizedBox(height: 20),
-
-
               Container(
                 padding: const EdgeInsets.all(35),
                 decoration: BoxDecoration(
@@ -50,7 +59,7 @@ class ResepsionisHome extends StatelessWidget {
                       color: Colors.grey.shade300,
                       blurRadius: 5,
                       offset: const Offset(0, 3),
-                    )
+                    ),
                   ],
                 ),
                 child: Column(
@@ -79,14 +88,16 @@ class ResepsionisHome extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => KetersediaanKamarScreen(),
+                      builder: (context) => const KetersediaanKamarScreen(),
                     ),
                   );
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFF3E5A88),
                   padding: const EdgeInsets.symmetric(
-                      horizontal: 40, vertical: 16),
+                    horizontal: 40,
+                    vertical: 16,
+                  ),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
                   ),
@@ -110,19 +121,9 @@ class ResepsionisHome extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 4),
       child: Row(
         children: [
-          const CircleAvatar(
-            radius: 10,
-            backgroundColor: Colors.blue,
-          ),
-          const SizedBox(width: 10),
-          Expanded(
-            child: Text(title),
-          ),
-          Text(
-            count.toString(),
-            style: const TextStyle(fontWeight: FontWeight.bold),
-          ),
-        ],
+          Text(title),
+          Text(count.toString()),
+        ], //
       ),
     );
   }

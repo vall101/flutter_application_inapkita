@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 void main() {
   runApp(const InapKitaApp());
 }
+
 class InapKitaApp extends StatelessWidget {
   const InapKitaApp({super.key});
 
@@ -14,6 +15,10 @@ class InapKitaApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: const Color.fromARGB(255, 94, 103, 171),
         fontFamily: 'Roboto',
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: const Color.fromARGB(255, 94, 103, 171),
+        ),
+        useMaterial3: true,
       ),
       home: const RegisterPage(),
     );
@@ -44,6 +49,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
   @override
   void dispose() {
+    // Selalu dispose controller untuk menghindari memory leak
     _usernameController.dispose();
     _fullNameController.dispose();
     _phoneController.dispose();
@@ -53,6 +59,7 @@ class _RegisterPageState extends State<RegisterPage> {
     super.dispose();
   }
 
+  // Fungsi helper untuk membuat InputDecoration agar tidak berulang
   InputDecoration _inputDecoration(String placeholder, {Widget? suffixIcon}) {
     return InputDecoration(
       filled: true,
@@ -80,6 +87,7 @@ class _RegisterPageState extends State<RegisterPage> {
     );
   }
 
+  // Widget untuk dropdown kode negara
   Widget _buildCountryCodeDropdown() {
     return Container(
       width: 80,
@@ -136,6 +144,7 @@ class _RegisterPageState extends State<RegisterPage> {
     );
   }
 
+  // Mendapatkan URL bendera berdasarkan kode negara
   String _flagUrl(String code) {
     switch (code) {
       case '+62':
@@ -154,34 +163,35 @@ class _RegisterPageState extends State<RegisterPage> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 94, 103, 171),
-        elevation: 0,
-        automaticallyImplyLeading: true,
-        centerTitle: true,
-        title: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Image.asset(
-              'assets/images/Logo_login.png',
-              width: 30,
-              height: 30,
-              fit: BoxFit.contain,
-              errorBuilder: (context, error, stackTrace) =>
-                  const SizedBox(width: 30, height: 30),
-            ),
-            const SizedBox(width: 0),
-            const Text(
-              'InapKita',
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                fontSize: 16,
-              ),
-            ),
-          ],
-        ),
+appBar: AppBar(
+  backgroundColor: const Color.fromARGB(255, 94, 103, 171),
+  elevation: 0,
+  automaticallyImplyLeading: true,
+  centerTitle: true,
+  title: Padding(
+    padding: const EdgeInsets.only(top: 1.0),
+    child: Center(
+      child: Image.network(
+        'https://i.imgur.com/IeE0SSZ.png',
+        width: 150,
+        height: 100,
+        fit: BoxFit.contain,
+        semanticLabel: 'InapKita logo',
+        loadingBuilder: (context, child, loadingProgress) {
+          if (loadingProgress == null) return child;
+          return const SizedBox(
+            width: 24,
+            height: 24,
+            child: CircularProgressIndicator(strokeWidth: 2),
+          );
+        },
+        errorBuilder: (context, error, stackTrace) {
+          return const Icon(Icons.error, color: Colors.red);
+        },
       ),
+    ),
+  ),
+),
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.fromLTRB(20, 8, 20, 24),
@@ -191,11 +201,11 @@ class _RegisterPageState extends State<RegisterPage> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 const SizedBox(height: 8),
-                Text(
+                const Text(
                   'Create Account',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    color: const Color.fromARGB(255, 94, 103, 171),
+                    color: Color.fromARGB(255, 94, 103, 171),
                     fontWeight: FontWeight.bold,
                     fontSize: 25,
                   ),
@@ -353,11 +363,16 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
+                        // TODO: Tambahkan logika registrasi yang sebenarnya
                         print('Username: ${_usernameController.text}');
                         print('Full Name: ${_fullNameController.text}');
-                        print('Phone: $_selectedCountryCode${_phoneController.text}');
+                        print(
+                            'Phone: $_selectedCountryCode${_phoneController.text}');
                         print('Email: ${_emailController.text}');
                         print('Password: ${_passwordController.text}');
+                         ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(content: Text('Registrasi berhasil')),
+                        );
                       }
                     },
                     child: const Text('Simpan'),
