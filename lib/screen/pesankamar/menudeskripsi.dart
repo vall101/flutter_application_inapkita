@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_inapkita/screen/resepsionis/menupromo.dart';
+import 'screen/diskon/menupromo.dart';
 import 'menudeskripsi2.dart';
-
 
 class MenuDeskripsi extends StatefulWidget {
   @override
@@ -20,18 +19,39 @@ class _MenuDeskripsiState extends State<MenuDeskripsi> {
         child: ListView(
           padding: const EdgeInsets.all(16),
           children: [
-            Center(child: Image.asset('assets/inapkita_logo.png', height: 40)),
+            Center(
+              child: Image.network(
+                'https://i.imgur.com/otiEOBD.png', // Logo InapKita
+                height: 50,
+              ),
+            ),
             const SizedBox(height: 12),
 
-            // Ganti image carousel pakai asset lokal
+            // Gambar villa
             SizedBox(
               height: 200,
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: [
-                  Image.asset('assets/images/villa1.png', width: 300),
+                  Image.network(
+                    'https://i.imgur.com/vbas2rr.jpeg',
+                    width: 300,
+                  ),
                   const SizedBox(width: 8),
-                  Image.asset('assets/images/villa2.png', width: 300),
+                  Image.network(
+                    'https://i.imgur.com/XTpB6ae.jpeg',
+                    width: 300,
+                  ),
+                  const SizedBox(width: 8),
+                  Image.network(
+                    'https://i.imgur.com/HT1LJSs.png',
+                    width: 300,
+                  ), 
+                  const SizedBox(width: 8),
+                  Image.network(
+                    'https://i.imgur.com/MKDPsCT.jpeg',
+                    width: 300,
+                  ),
                 ],
               ),
             ),
@@ -60,7 +80,6 @@ class _MenuDeskripsiState extends State<MenuDeskripsi> {
             ),
             const SizedBox(height: 12),
 
-            // Room info dan Check Review
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -96,12 +115,11 @@ class _MenuDeskripsiState extends State<MenuDeskripsi> {
             ),
             const SizedBox(height: 16),
 
-            // Tombol Use Promo
             ElevatedButton.icon(
               onPressed: () async {
                 final promoHarga = await Navigator.push<int>(
                   context,
-                  MaterialPageRoute(builder: (_) => const MenuDiskonPage()),
+                  MaterialPageRoute(builder: (_) => const MenuPromo()),
                 );
 
                 if (promoHarga != null) {
@@ -109,15 +127,15 @@ class _MenuDeskripsiState extends State<MenuDeskripsi> {
                     totalHarga = promoHarga;
                   });
 
-                Navigator.push(
-  context,
-  MaterialPageRoute(
-    builder: (_) => MenuDeskripsi2(
-      totalHarga: promoHarga,
-      diskonPersen: 10,
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => MenuDeskripsi2(
+                        totalHarga: promoHarga,
+                        diskonPersen: 10,
+                      ),
                     ),
-                  )
-                );
+                  );
                 }
               },
               icon: const Icon(Icons.local_offer, color: Colors.white),
@@ -130,7 +148,6 @@ class _MenuDeskripsiState extends State<MenuDeskripsi> {
             ),
             const SizedBox(height: 12),
 
-            // Total dan Reservation
             Row(
               children: [
                 InkWell(
@@ -148,11 +165,11 @@ class _MenuDeskripsiState extends State<MenuDeskripsi> {
                 const Spacer(),
                 ElevatedButton(
                   onPressed: () {
-  Navigator.pushNamed(
-    context,
-    '/pembayaran',
-    arguments: {'totalHarga': totalHarga},
-  );
+                    Navigator.pushNamed(
+                      context,
+                      '/pembayaran',
+                      arguments: {'totalHarga': totalHarga},
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blueGrey,
