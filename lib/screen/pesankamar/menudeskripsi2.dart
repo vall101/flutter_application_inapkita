@@ -22,18 +22,40 @@ class MenuDeskripsi2 extends StatelessWidget {
         child: ListView(
           padding: const EdgeInsets.all(16),
           children: [
-            Center(child: Image.asset('assets/inapkita_logo.png', height: 40)),
+            // Logo pakai image.network
+            Center(
+              child: Image.network(
+                'https://i.imgur.com/otiEOBD.png', // Logo InapKita
+                height: 40,
+              ),
+            ),
             const SizedBox(height: 12),
 
-            // Gambar villa
+            // Gambar villa 
             SizedBox(
               height: 200,
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: [
-                  Image.asset('assets/images/villa1.png', width: 300),
+                  Image.network(
+                    'https://semenmerahputih.com/_ipx/f_webp/https://cms.semenmerahputih.com/storage/4878/conversions/desain-kamar-mandi-converted.jpg',
+                    width: 300,
+                  ),
                   const SizedBox(width: 8),
-                  Image.asset('assets/images/villa2.png', width: 300),
+                  Image.network(
+                    'https://instapay.id/blog/wp-content/uploads/2023/05/penginapan-1024x682.jpg',
+                    width: 300,
+                  ),
+                  const SizedBox(width: 8),
+                  Image.network(
+                    'https://www.saniharto.com/assets/gallery/3d-rendering-modern-interior-designjpg.jpeg',
+                    width: 300,
+                  ), 
+                  const SizedBox(width: 8),
+                  Image.network(
+                    'https://editorial.femaledaily.com/wp-content/uploads/2022/06/tips-mudah-dekor-dapur-dan-ruang-makan-dari-IKEA-1.jpg',
+                    width: 300,
+                  ),
                 ],
               ),
             ),
@@ -42,7 +64,6 @@ class MenuDeskripsi2 extends StatelessWidget {
             const Text("The Villa in Bali", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
             const SizedBox(height: 12),
 
-            // Deskripsi
             Container(
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
@@ -63,7 +84,6 @@ class MenuDeskripsi2 extends StatelessWidget {
             ),
             const SizedBox(height: 12),
 
-            // Tombol review
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -96,7 +116,6 @@ class MenuDeskripsi2 extends StatelessWidget {
             ),
             const SizedBox(height: 16),
 
-            // Tombol Use Promo kembali ke halaman voucher
             ElevatedButton.icon(
               onPressed: () {
                 Navigator.push(
@@ -114,7 +133,6 @@ class MenuDeskripsi2 extends StatelessWidget {
             ),
             const SizedBox(height: 12),
 
-            // Chat & Harga
             Row(
               children: [
                 InkWell(
@@ -126,8 +144,7 @@ class MenuDeskripsi2 extends StatelessWidget {
                     ],
                   ),
                 ),
-
-                // Diskon & harga coret
+                const SizedBox(width: 8), // Add spacing between chat and price info
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -142,26 +159,22 @@ class MenuDeskripsi2 extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(width: 8),
-
-                // Harga promo
                 Text(
-                  "Rp $totalHarga",
+                  "Rp Rp $hargaNormal",
                   style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(width: 4),
                 const Text("Total Payment", style: TextStyle(fontWeight: FontWeight.bold)),
                 const Spacer(),
-
-                // Tombol Reservation
                 ElevatedButton(
-  onPressed: () {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (_) => MenuPembayaran(
-          totalHarga: totalHarga,
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => MenuPembayaran(
+                          totalHarga: totalHarga,
+                        ),
                       ),
-      ),
                     );
                   },
                   style: ElevatedButton.styleFrom(

@@ -8,15 +8,15 @@ class InputRating extends StatefulWidget {
 }
 
 class _InputRatingState extends State<InputRating> {
-  // int _rating = 0;
-  // TextEditingController _reviewController = TextEditingController();
+  int _rating = 0;
+  TextEditingController _reviewController = TextEditingController();
 
   @override
   void dispose() {
     _reviewController.dispose();
     super.dispose();
   }
-  
+
 //halaman input rating
   @override
   Widget build(BuildContext context) {
@@ -29,10 +29,14 @@ class _InputRatingState extends State<InputRating> {
         title: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Image.asset(
-              'assets/logoinapkita.png',
-              height: 30,
+            Image.network(
+              'https://i.imgur.com/otiEOBD.png',
+              height: 70,
+              errorBuilder: (context, error, stackTrace) {
+                return Icon(Icons.error, color: Colors.red);
+              },
             ),
+            Image.asset('assets/logoinapkita.png', height: 30),
             const SizedBox(width: 8),
             Text(
               'InapKita',
@@ -50,10 +54,20 @@ class _InputRatingState extends State<InputRating> {
         children: [
           Row(
             children: [
-              CircleAvatar(
-                radius: 30,
-                backgroundImage: AssetImage('assets/villa.jpg'),
+               ClipRRect(
+                borderRadius: BorderRadius.circular(16),
+                child: Image.network(
+                  'https://www.topacapulcohotels.com/data/Pics/450x450w/16562/1656218/1656218557/pic-desa-di-bali-villas-kerobokan-80361-kerobokan-bali-1.JPEG',
+                  height: 60,
+                  width: 60, 
+                  fit: BoxFit.cover, 
+                  errorBuilder: (context, error, stackTrace) {
+                    return Icon(Icons.error, color: Colors.red);
+                  },
+                ),
               ),
+
+
               SizedBox(width: 12),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -94,11 +108,17 @@ class _InputRatingState extends State<InputRating> {
           ),
           SizedBox(height: 16),
           ClipRRect(
-            borderRadius: BorderRadius.circular(16),
-            child: Image.asset('assets/room.jpg'),
+          borderRadius: BorderRadius.circular(16),
+          child: Image.network(
+            'https://instapay.id/blog/wp-content/uploads/2023/05/penginapan-1024x682.jpg',
+            height: 180, 
+            fit: BoxFit.cover, 
+            errorBuilder: (context, error, stackTrace) {
+              return Icon(Icons.error, color: Colors.red);
+            },
           ),
+        ),
           SizedBox(height: 16),
-
           // Review dan Rating
           Container(
             width: double.infinity,
@@ -158,7 +178,7 @@ class _InputRatingState extends State<InputRating> {
                       radius: 12,
                     ),
                     SizedBox(width: 8),
-                    Text('Imbuh'),
+                    Text('User'),
                   ],
                 ),
                 const SizedBox(height: 12),
@@ -188,7 +208,7 @@ class _InputRatingState extends State<InputRating> {
                             context,
                             '/rating',
                             arguments: {
-                              'nama': 'Imbuh',
+                              'nama': 'User',
                               'komentar': _reviewController.text,
                               'rating': _rating,
                             },
@@ -201,6 +221,7 @@ class _InputRatingState extends State<InputRating> {
               ],
             ),
           ),
+          //tombol review
           SizedBox(height: 16),
           Padding(
             padding: const EdgeInsets.all(8.0),

@@ -6,9 +6,55 @@ class Rating extends StatefulWidget {
   @override
   State<Rating> createState() => _RatingState();
 }
+
 class _RatingState extends State<Rating> {
+  // Add the controller for review input
+  late final TextEditingController _reviewController;
+
+  @override
+  void initState() {
+    super.initState();
+    _reviewController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    _reviewController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
+    final Map<String, dynamic>? newReview =
+        ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>?;
+
+    List<Map<String, dynamic>> reviews = [
+      {
+        'nama': 'Imbuh',
+        'komentar': 'Tempatnya sangat nyaman dan bersih',
+        'rating': 5,
+      },
+      {
+        'nama': 'Vanilaa',
+        'komentar': 'Tempatnya sangat luas dan fasilitasnya lengkap',
+        'rating': 5,
+      },
+      {
+        'nama': 'Nopal Pangestu',
+        'komentar': 'Tempatnya sangat aesthetic',
+        'rating': 4,
+      },
+      {
+        'nama': 'Imbuh 2',
+        'komentar': 'Fasilitas yang disediakan sangat bagus',
+        'rating': 5,
+      },
+    ];
+
+    if (newReview != null) {
+      reviews.add(newReview);
+    }
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -18,10 +64,14 @@ class _RatingState extends State<Rating> {
         title: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Image.asset(
-              'assets/logoinapkita.png',
-              height: 30,
+            Image.network(
+              'https://i.imgur.com/otiEOBD.png', //logo inapkita
+              height: 70,
+              errorBuilder: (context, error, stackTrace) {
+                return Icon(Icons.error, color: Colors.red);
+              },
             ),
+            Image.asset('assets/logo.png', height: 30),
             const SizedBox(width: 8),
             Text(
               'InapKita',
@@ -34,44 +84,58 @@ class _RatingState extends State<Rating> {
           ],
         ),
       ),
-
       body: ListView(
         padding: const EdgeInsets.all(16.0),
         children: [
           Row(
             children: [
-              CircleAvatar(
+              ClipRRect(
+                borderRadius: BorderRadius.circular(16),
+                child: Image.network(
+                  'https://www.topacapulcohotels.com/data/Pics/450x450w/16562/1656218/1656218557/pic-desa-di-bali-villas-kerobokan-80361-kerobokan-bali-1.JPEG',
+                  height: 60,
+                  width: 60,
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) {
+                    return Icon(Icons.error, color: Colors.red);
+                  },
+                ),
+              ),
+              const CircleAvatar(
                 radius: 30,
                 backgroundImage: AssetImage('assets/villa.jpg'),
               ),
-              SizedBox(width: 12),
+              const SizedBox(width: 12),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                     'The Villa in Bali',
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                   Row(
-                    children: [
+                    children: const [
                       Icon(Icons.star, color: Colors.amber, size: 16),
-                      Text(' 4.8 (36k+ reviews)', style: TextStyle(fontSize: 12)),
-                   ],
+                      Text(
+                        ' 4.8 (36k+ reviews)',
+                        style: TextStyle(fontSize: 12),
+                      ),
+                    ],
                   ),
                 ],
               ),
             ],
           ),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           Container(
-            padding: EdgeInsets.all(12),
+            padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(
-              color: Colors.blue[50], 
+              color: Colors.blue[50],
               borderRadius: BorderRadius.circular(12),
             ),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
+              children: const [
                 Icon(Icons.location_on, color: Colors.black),
                 SizedBox(width: 8),
                 Expanded(
@@ -82,8 +146,174 @@ class _RatingState extends State<Rating> {
               ],
             ),
           ),
+          const SizedBox(height: 16),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(16),
+            child: Image.network(
+              'https://instapay.id/blog/wp-content/uploads/2023/05/penginapan-1024x682.jpg',
+              height: 180,
+              fit: BoxFit.cover,
+              errorBuilder: (context, error, stackTrace) {
+                return Icon(Icons.error, color: Colors.red);
+              },
+            ),
+          ),
+          const SizedBox(height: 16),
+          Container(
+            width: double.infinity,
+            padding: const EdgeInsets.all(16),
+            decoration: BoxDecoration(
+              color: Colors.blue[50],
+              borderRadius: BorderRadius.circular(16),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const Text(
+                  'Review and Rating The Villa in Bali',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 8),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: List.generate(5, (index) {
+                    return IconButton(
+                      icon: const Icon(Icons.star, color: Colors.amber),
+                      onPressed: () {
+                        setState(() {});
+                      },
+                    );
+                  }),
+                ),
+                const Icon(Icons.emoji_emotions, color: Colors.blue),
+                const SizedBox(height: 16),
+                // Add a TextField for review input
+                TextField(
+                  controller: _reviewController,
+                  decoration: const InputDecoration(
+                    hintText: 'Tulis review Anda di sini...',
+                    border: OutlineInputBorder(),
+                  ),
+                  maxLines: 2,
+                ),
+                const SizedBox(height: 8),
+                ElevatedButton(
+                  onPressed: () {
+                    // Example: Add review to the list (you can implement your own logic)
+                    if (_reviewController.text.trim().isNotEmpty) {
+                      setState(() {
+                        reviews.add({
+                          'nama': 'Anda',
+                          'komentar': _reviewController.text.trim(),
+                          'rating': 5, // You can add rating selection logic
+                        });
+                        _reviewController.clear();
+                      });
+                    }
+                  },
+                  child: const Text('Kirim Review'),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 20),
+          Container(
+            padding: const EdgeInsets.all(16),
+            decoration: BoxDecoration(
+              color: Colors.blue[50],
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  'Review Traveler The Villa in Bali',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                ),
+                const SizedBox(height: 16),
+                Column(
+                  children:
+                      reviews
+                          .map(
+                            (r) => _buildReviewItem(
+                              r['nama'],
+                              r['komentar'],
+                              r['rating'],
+                            ),
+                          )
+                          .toList(),
+                ),
+              ],
+            ),
+          ),
         ],
       ),
-    ); 
+      bottomNavigationBar: Container(
+        decoration: const BoxDecoration(
+          color: Color(0xFF3E5A88),
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(20),
+            topRight: Radius.circular(20),
+          ),
+        ),
+        child: BottomNavigationBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          type: BottomNavigationBarType.fixed,
+          selectedItemColor: Colors.white,
+          unselectedItemColor: Colors.white,
+          showSelectedLabels: false,
+          showUnselectedLabels: false,
+          items: const [
+            BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
+            BottomNavigationBarItem(icon: Icon(Icons.history), label: ''),
+            BottomNavigationBarItem(icon: Icon(Icons.local_offer), label: ''),
+            BottomNavigationBarItem(icon: Icon(Icons.person), label: ''),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildReviewItem(String nama, String komentar, int rating) {
+    return Container(
+      margin: const EdgeInsets.only(bottom: 12),
+      padding: const EdgeInsets.all(12),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(16),
+      ),
+      child: Row(
+        children: [
+          CircleAvatar(
+            backgroundColor: Colors.blue,
+            child: Text(
+              nama.trim().isNotEmpty ? nama.trim()[0].toUpperCase() : '',
+              style: const TextStyle(color: Colors.white),
+            ),
+          ),
+          const SizedBox(width: 12),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(nama, style: const TextStyle(fontWeight: FontWeight.bold)),
+                Text(komentar, style: const TextStyle(color: Colors.black54)),
+                Row(
+                  children: List.generate(
+                    5,
+                    (index) => Icon(
+                      Icons.star,
+                      color: index < rating ? Colors.amber : Colors.grey[300],
+                      size: 16,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }

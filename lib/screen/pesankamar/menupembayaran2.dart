@@ -101,7 +101,10 @@ class OrderSuccessPopup extends StatelessWidget {
             const SizedBox(height: 10),
             ClipRRect(
               borderRadius: BorderRadius.circular(10),
-              child: Image.asset('assets/images/kamar1.jpg', height: 80),
+              child: Image.network(
+                'https://instapay.id/blog/wp-content/uploads/2023/05/penginapan-1024x682.jpg',
+                height: 80,
+              ),
             ),
             const SizedBox(height: 10),
             const Text(
@@ -154,6 +157,7 @@ class LocationPopup extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
+
             buildInfo(Icons.calendar_today, "Check-in"),
             const SizedBox(height: 12),
             buildInfo(Icons.calendar_today, "Check-out"),
@@ -181,6 +185,7 @@ class LocationPopup extends StatelessWidget {
   Widget buildInfo(IconData icon, String label) {
     return Container(
       decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(12)),
+
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       child: Row(
         children: [

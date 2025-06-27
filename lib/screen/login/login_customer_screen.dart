@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_inapkita/screen/login/login_customer_form.dart';
 import 'package:flutter_application_inapkita/screen/login/register_customer_screen.dart';
 
+
 void main() {
   runApp(const InapKitaApp());
 }
@@ -24,7 +25,7 @@ class InapKitaApp extends StatelessWidget {
 }
 
 class LoginCustomerScreen extends StatelessWidget {
-  const LoginCustomerScreen({Key? key}) : super(key: key);
+  const LoginCustomerScreen({super.key});
 
   static const Color blueColor = Color.fromARGB(255, 94, 103, 171);
 
@@ -38,31 +39,21 @@ class LoginCustomerScreen extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Image.asset(
-                'assets/images/Logo_apk.png',
-                width: 80,
-                height: 80,
+              Image.network(
+                'https://i.imgur.com/SbeKTyI.png',
+                width: 200,
+                height: 200,
                 fit: BoxFit.contain,
                 semanticLabel:
-                    'InapKita logo with a blue person shape and a white house inside',
-              ),
-              const SizedBox(height: 0),
-              Text(
-                'InapKita',
-                style: TextStyle(
-                  color: blueColor,
-                  fontSize: 20,
-                  fontWeight: FontWeight.w600,
-                  shadows: const [
-                    Shadow(
-                      offset: Offset(0, 2),
-                      blurRadius: 2,
-                      color: Color.fromRGBO(0, 0, 0, 0.3),
+                'InapKita logo with a blue person shape and a white house inside',
+                loadingBuilder: (context, child, loadingProgress) {
+                  if (loadingProgress == null) return child;
+                  return const CircularProgressIndicator();
+                  },
+                  errorBuilder: (context, error, stackTrace) {
+                    return const Icon(Icons.error, color: Colors.red);
+                    },
                     ),
-                  ],
-                ),
-              ),
-              const SizedBox(height: 40),
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
@@ -70,7 +61,7 @@ class LoginCustomerScreen extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const LoginPage(),
+                        builder: (context) => const LoginCustomerForm(),
                       ),
                     );
                   },

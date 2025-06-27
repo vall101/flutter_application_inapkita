@@ -15,20 +15,20 @@ class InapKitaLoginApp extends StatelessWidget {
         primaryColor: const Color.fromARGB(255, 152, 85, 59),
         fontFamily: 'Inter',
       ),
-      home: const LoginPage(),
+      // home: const LoginCustomerForm(),
       debugShowCheckedModeBanner: false,
     );
   }
 }
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class LoginCustomerForm extends StatefulWidget {
+  const LoginCustomerForm({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<LoginCustomerForm> createState() => _LoginCustomerFormState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _LoginCustomerFormState extends State<LoginCustomerForm> {
   bool _obscurePassword = true;
 
   @override
@@ -36,33 +36,35 @@ class _LoginPageState extends State<LoginPage> {
     final primaryColor = Theme.of(context).primaryColor;
 
     return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 94, 103, 171),
-        centerTitle: true,
-        title: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Image.asset(
-              'assets/images/Logo_login.png',
-              width: 24,
-              height: 24,
-              fit: BoxFit.contain,
-              semanticLabel: 'InapKita logo icon, white abstract shape',
-            ),
-            const SizedBox(width: 4),
-            const Text(
-              'InapKita',
-              style: TextStyle(
-                fontWeight: FontWeight.w600,
-                fontSize: 18,
-                color: Colors.white,
-              ),
-            ),
-          ],
-        ),
-        elevation: 0,
+    appBar: AppBar(
+  backgroundColor: const Color.fromARGB(255, 94, 103, 171),
+  elevation: 0,
+  automaticallyImplyLeading: true,
+  centerTitle: true,
+  title: Padding(
+    padding: const EdgeInsets.only(top: 1.0),
+    child: Center(
+      child: Image.network(
+        'https://i.imgur.com/IeE0SSZ.png',
+        width: 150,
+        height: 100,
+        fit: BoxFit.contain,
+        semanticLabel: 'InapKita logo',
+        loadingBuilder: (context, child, loadingProgress) {
+          if (loadingProgress == null) return child;
+          return const SizedBox(
+            width: 24,
+            height: 24,
+            child: CircularProgressIndicator(strokeWidth: 2),
+          );
+        },
+        errorBuilder: (context, error, stackTrace) {
+          return const Icon(Icons.error, color: Colors.red);
+        },
       ),
+    ),
+  ),
+),
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 32),

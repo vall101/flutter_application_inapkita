@@ -27,8 +27,7 @@ class _MenuPembayaranState extends State<MenuPembayaran> {
       body: SafeArea(
         child: ListView(
           padding: const EdgeInsets.all(16),
-          children: [
-            Center(child: Image.asset('assets/inapkita_logo.png', height: 40)),
+          children: [            Center(child: Image.asset('assets/inapkita_logo.png', height: 40)),
             const SizedBox(height: 12),
 
             // Gambar villa
@@ -62,8 +61,6 @@ class _MenuPembayaranState extends State<MenuPembayaran> {
               ),
             ),
             const SizedBox(height: 12),
-
-            // Total harga setelah diskon
             Container(
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
@@ -151,4 +148,3 @@ class _MenuPembayaranState extends State<MenuPembayaran> {
       ),
     );
   }
-}
