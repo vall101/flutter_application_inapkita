@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '/screen/diskon/menudiskon.dart';
+import 'package:flutter_application_inapkita/screen/diskon/menudiskon.dart';
 import 'menudeskripsi2.dart';
 
 class MenuDeskripsi extends StatefulWidget {
@@ -32,30 +32,34 @@ class _MenuDeskripsiState extends State<MenuDeskripsi> {
           children: [
             Center(
               child: Image.network(
-                'https://i.imgur.com/otiEOBD.png',
-                height: 40,
+                'https://i.imgur.com/otiEOBD.png', // Logo InapKita
+                height: 50,
               ),
             ),
             const SizedBox(height: 12),
+
             SizedBox(
               height: 200,
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: [
-                  Image.asset(widget.imagePath, width: 300),
-                  const SizedBox(width: 8),
                   Image.network(
-                    'https://instapay.id/blog/wp-content/uploads/2023/05/penginapan-1024x682.jpg',
+                    'https://i.imgur.com/vbas2rr.jpeg',
                     width: 300,
                   ),
                   const SizedBox(width: 8),
                   Image.network(
-                    'https://www.saniharto.com/assets/gallery/3d-rendering-modern-interior-designjpg.jpeg',
+                    'https://i.imgur.com/XTpB6ae.jpeg',
                     width: 300,
                   ),
                   const SizedBox(width: 8),
                   Image.network(
-                    'https://editorial.femaledaily.com/wp-content/uploads/2022/06/tips-mudah-dekor-dapur-dan-ruang-makan-dari-IKEA-1.jpg',
+                    'https://i.imgur.com/HT1LJSs.png',
+                    width: 300,
+                  ), 
+                  const SizedBox(width: 8),
+                  Image.network(
+                    'https://i.imgur.com/MKDPsCT.jpeg',
                     width: 300,
                   ),
                 ],
@@ -118,7 +122,7 @@ class _MenuDeskripsiState extends State<MenuDeskripsi> {
               onPressed: () async {
                 final promoHarga = await Navigator.push<int>(
                   context,
-                  MaterialPageRoute(builder: (_) => const MenuDiskonPage()),
+                  MaterialPageRoute(builder: (_) => const Diskon()),
                 );
                 if (promoHarga != null) {
                   setState(() {

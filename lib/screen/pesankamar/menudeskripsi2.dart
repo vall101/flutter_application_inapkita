@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '/screen/diskon/menudiskon.dart';
+import 'package:flutter_application_inapkita/screen/diskon/menudiskon.dart';
 import 'menupembayaran.dart';
 
 class MenuDeskripsi2 extends StatelessWidget {
