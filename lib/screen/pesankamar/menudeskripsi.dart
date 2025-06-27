@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'screen/diskon/menupromo.dart';
+import 'package:flutter_application_inapkita/screen/diskon/menudiskon.dart';
 import 'menudeskripsi2.dart';
 
 class MenuDeskripsi extends StatefulWidget {
@@ -119,7 +119,7 @@ class _MenuDeskripsiState extends State<MenuDeskripsi> {
               onPressed: () async {
                 final promoHarga = await Navigator.push<int>(
                   context,
-                  MaterialPageRoute(builder: (_) => const MenuPromo()),
+                  MaterialPageRoute(builder: (_) => const Diskon()),
                 );
 
                 if (promoHarga != null) {
