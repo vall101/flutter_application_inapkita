@@ -109,7 +109,8 @@ class _MenuDeskripsiState extends State<MenuDeskripsi> {
                     backgroundColor: Colors.blueGrey,
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
                   ),
-                  child: const Text("Check Review"),
+                  child: const Text("Check Review", style: TextStyle(color: Colors.white),
+                ),
                 ),
               ],
             ),
@@ -150,15 +151,6 @@ class _MenuDeskripsiState extends State<MenuDeskripsi> {
 
             Row(
               children: [
-                InkWell(
-                  onTap: () => Navigator.pushNamed(context, '/chatAdmin'),
-                  child: Row(
-                    children: const [
-                      Icon(Icons.chat_bubble_outline, size: 28),
-                      SizedBox(width: 4),
-                    ],
-                  ),
-                ),
                 Text("Rp ${totalHarga.toString()}", style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
                 const SizedBox(width: 4),
                 const Text("Total Payment", style: TextStyle(fontWeight: FontWeight.bold)),
