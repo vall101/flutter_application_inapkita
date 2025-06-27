@@ -123,7 +123,7 @@ class _MenuDeskripsiState extends State<MenuDeskripsi> {
               onPressed: () async {
                 final promoHarga = await Navigator.push<int>(
                   context,
-                  MaterialPageRoute(builder: (_) => const Diskon()),
+                  MaterialPageRoute(builder: (_) => const MenuDiskonPage()),
                 );
                 if (promoHarga != null) {
                   setState(() {
