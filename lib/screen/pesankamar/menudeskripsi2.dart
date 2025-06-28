@@ -38,22 +38,22 @@ class MenuDeskripsi2 extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 children: [
                  Image.network(
-                    'https://i.imgur.com/vbas2rr.jpeg',
+                    'https://i.imgur.com/vbas2rr.jpeg', // Gambar villa 1
                     width: 300,
                   ),
                   const SizedBox(width: 8),
                   Image.network(
-                    'https://i.imgur.com/XTpB6ae.jpeg',
+                    'https://i.imgur.com/XTpB6ae.jpeg', // Gambar villa 2
                     width: 300,
                   ),
                   const SizedBox(width: 8),
                   Image.network(
-                    'https://i.imgur.com/HT1LJSs.png',
+                    'https://i.imgur.com/HT1LJSs.png',// Gambar villa 3
                     width: 300,
                   ), 
                   const SizedBox(width: 8),
                   Image.network(
-                    'https://i.imgur.com/MKDPsCT.jpeg',
+                    'https://i.imgur.com/MKDPsCT.jpeg', // Gambar villa 4
                     width: 300,
                   ),
                 ],

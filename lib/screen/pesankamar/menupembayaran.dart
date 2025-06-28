@@ -14,10 +14,26 @@ class _MenuPembayaranState extends State<MenuPembayaran> {
   String? selectedPayment;
 
   final List<Map<String, dynamic>> paymentMethods = [
-    {"name": "BRI Virtual Account", "icon": "assets/images/bri.png", "value": "BRI"},
-    {"name": "BCA", "icon": "assets/images/bca.png", "value": "BCA"},
-    {"name": "Livin’ by Mandiri", "icon": "assets/images/mandiri.png", "value": "Mandiri"},
-    {"name": "Dana", "icon": "assets/images/dana.png", "value": "Dana"},
+    {
+      "name": "BRI Virtual Account",
+      "icon": "https://i.imgur.com/TMCDPWz.jpeg",
+      "value": "BRI"
+    },
+    {
+      "name": "BCA",
+      "icon": "https://i.imgur.com/Mm9isGx.png",
+      "value": "BCA"
+    },
+    {
+      "name": "Livin’ by Mandiri",
+      "icon": "https://i.imgur.com/amuD90E.png",
+      "value": "Mandiri"
+    },
+    {
+      "name": "Dana",
+      "icon": "https://i.imgur.com/Khv9OHQ.png",
+      "value": "Dana"
+    },
   ];
 
   @override
@@ -27,13 +43,21 @@ class _MenuPembayaranState extends State<MenuPembayaran> {
       body: SafeArea(
         child: ListView(
           padding: const EdgeInsets.all(16),
-          children: [            Center(child: Image.asset('assets/inapkita_logo.png', height: 40)),
+          children: [
+            Center(
+              child: Image.network(
+                'https://i.imgur.com/otiEOBD.png', // logo InapKita
+                height: 50,
+              ),
+            ),
             const SizedBox(height: 12),
 
             // Gambar villa
             ClipRRect(
               borderRadius: BorderRadius.circular(16),
-              child: Image.asset('assets/images/villa1.png'),
+              child: Image.network(
+                'https://i.imgur.com/XTpB6ae.jpeg', // gambar villa 
+              ),
             ),
             const SizedBox(height: 16),
 
@@ -61,6 +85,8 @@ class _MenuPembayaranState extends State<MenuPembayaran> {
               ),
             ),
             const SizedBox(height: 12),
+
+            // Total harga setelah diskon
             Container(
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
@@ -105,7 +131,7 @@ class _MenuPembayaranState extends State<MenuPembayaran> {
                       ),
                       child: Row(
                         children: [
-                          Image.asset(method["icon"], width: 30),
+                          Image.network(method["icon"], width: 30),
                           const SizedBox(width: 12),
                           Text(
                             method["name"],
