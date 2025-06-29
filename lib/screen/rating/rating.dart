@@ -8,7 +8,6 @@ class Rating extends StatefulWidget {
 }
 
 class _RatingState extends State<Rating> {
-  // Add the controller for review input
   late final TextEditingController _reviewController;
 
   @override
@@ -39,6 +38,7 @@ class _RatingState extends State<Rating> {
       reviews.add(newReview);
     }
 
+    //Logo inap kita
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -50,25 +50,16 @@ class _RatingState extends State<Rating> {
           children: [
             Image.network(
               'https://i.imgur.com/otiEOBD.png', //image
-              'https://i.imgur.com/otiEOBD.png', //logo inapkita
               height: 70,
               errorBuilder: (context, error, stackTrace) {
                 return Icon(Icons.error, color: Colors.red);
               },
             ),
-            Image.asset('assets/logo.png', height: 30),
-            const SizedBox(width: 8),
-            Text(
-              'InapKita',
-              style: TextStyle(
-                color: Colors.blue[800],
-                fontWeight: FontWeight.bold,
-                fontSize: 18,
-              ),
-            ),
           ],
         ),
       ),
+
+      // Gambar Profile villa
       body: ListView(
         padding: const EdgeInsets.all(16.0),
         children: [
@@ -77,7 +68,7 @@ class _RatingState extends State<Rating> {
               ClipRRect(
                 borderRadius: BorderRadius.circular(16),
                 child: Image.network(
-                  'https://www.topacapulcohotels.com/data/Pics/450x450w/16562/1656218/1656218557/pic-desa-di-bali-villas-kerobokan-80361-kerobokan-bali-1.JPEG',
+                  'https://i.imgur.com/Hfa0CjA.jpeg',
                   height: 60,
                   width: 60,
                   fit: BoxFit.cover,
@@ -86,11 +77,6 @@ class _RatingState extends State<Rating> {
                   },
                 ),
               ),
-              const CircleAvatar(
-                radius: 30,
-                backgroundImage: AssetImage('assets/villa.jpg'),
-              ),
-              const SizedBox(width: 12),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -109,6 +95,8 @@ class _RatingState extends State<Rating> {
             ],
           ),
           const SizedBox(height: 16),
+
+          // Alamat lokasi villa
           Container(
             padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(
@@ -128,11 +116,13 @@ class _RatingState extends State<Rating> {
               ],
             ),
           ),
+
+          // Gambar villa besar
           const SizedBox(height: 16),
           ClipRRect(
             borderRadius: BorderRadius.circular(16),
             child: Image.network(
-              'https://instapay.id/blog/wp-content/uploads/2023/05/penginapan-1024x682.jpg',
+              'https://i.imgur.com/XTpB6ae.jpeg',
               height: 180,
               fit: BoxFit.cover,
               errorBuilder: (context, error, stackTrace) {
@@ -141,6 +131,8 @@ class _RatingState extends State<Rating> {
             ),
           ),
           const SizedBox(height: 16),
+
+          // Input rating
           Container(
             width: double.infinity,
             padding: const EdgeInsets.all(16),
@@ -172,36 +164,13 @@ class _RatingState extends State<Rating> {
                 ),
                 const Icon(Icons.emoji_emotions, color: Colors.blue),
                 const SizedBox(height: 16),
-                // Add a TextField for review input
-                TextField(
-                  controller: _reviewController,
-                  decoration: const InputDecoration(
-                    hintText: 'Tulis review Anda di sini...',
-                    border: OutlineInputBorder(),
-                  ),
-                  maxLines: 2,
-                ),
                 const SizedBox(height: 8),
-                ElevatedButton(
-                  onPressed: () {
-                    // Example: Add review to the list (you can implement your own logic)
-                    if (_reviewController.text.trim().isNotEmpty) {
-                      setState(() {
-                        reviews.add({
-                          'nama': 'Anda',
-                          'komentar': _reviewController.text.trim(),
-                          'rating': 5, // You can add rating selection logic
-                        });
-                        _reviewController.clear();
-                      });
-                    }
-                  },
-                  child: const Text('Kirim Review'),
-                ),
               ],
             ),
           ),
           const SizedBox(height: 20),
+
+          // Daftar Review
           Container(
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
@@ -226,6 +195,8 @@ class _RatingState extends State<Rating> {
           ),
         ],
       ),
+
+      // Tombol Navigasi
       bottomNavigationBar: Container(
         decoration: const BoxDecoration(
           color: Color(0xFF3E5A88),
@@ -252,7 +223,8 @@ class _RatingState extends State<Rating> {
       ),
     );
   }
-
+  
+  // Latar belakang
   Widget _buildReviewItem(String nama, String komentar, int rating) {
     return Container(
       margin: const EdgeInsets.only(bottom: 12),
@@ -295,3 +267,5 @@ class _RatingState extends State<Rating> {
     );
   }
 }
+
+
