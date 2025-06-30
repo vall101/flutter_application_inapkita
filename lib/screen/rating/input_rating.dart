@@ -9,7 +9,7 @@ class InputRating extends StatefulWidget {
 
 class _InputRatingState extends State<InputRating> {
   int _rating = 0;
-  TextEditingController _reviewController = TextEditingController();
+  final TextEditingController _reviewController = TextEditingController();
 
   @override
   void dispose() {
@@ -17,7 +17,7 @@ class _InputRatingState extends State<InputRating> {
     super.dispose();
   }
 
-//halaman input rating
+  // Logo InapKita
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,19 +36,11 @@ class _InputRatingState extends State<InputRating> {
                 return Icon(Icons.error, color: Colors.red);
               },
             ),
-            Image.asset('assets/logoinapkita.png', height: 30),
-            const SizedBox(width: 8),
-            Text(
-              'InapKita',
-              style: TextStyle(
-                color: Colors.blue[800],
-                fontWeight: FontWeight.bold,
-                fontSize: 18,
-              ),
-            ),
           ],
         ),
       ),
+
+      // Gambar Profile Villa
       body: ListView(
         padding: const EdgeInsets.all(16.0),
         children: [
@@ -57,7 +49,7 @@ class _InputRatingState extends State<InputRating> {
                ClipRRect(
                 borderRadius: BorderRadius.circular(16),
                 child: Image.network(
-                  'https://www.topacapulcohotels.com/data/Pics/450x450w/16562/1656218/1656218557/pic-desa-di-bali-villas-kerobokan-80361-kerobokan-bali-1.JPEG',
+                  'https://i.imgur.com/Hfa0CjA.jpeg',
                   height: 60,
                   width: 60, 
                   fit: BoxFit.cover, 
@@ -66,8 +58,6 @@ class _InputRatingState extends State<InputRating> {
                   },
                 ),
               ),
-
-
               SizedBox(width: 12),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -86,6 +76,8 @@ class _InputRatingState extends State<InputRating> {
               ),
             ],
           ),
+
+          // Alamat lokasi villa
           SizedBox(height: 16),
           Container(
             padding: EdgeInsets.all(12),
@@ -106,11 +98,13 @@ class _InputRatingState extends State<InputRating> {
               ],
             ),
           ),
+
+          // Gambar villa besar
           SizedBox(height: 16),
           ClipRRect(
           borderRadius: BorderRadius.circular(16),
           child: Image.network(
-            'https://instapay.id/blog/wp-content/uploads/2023/05/penginapan-1024x682.jpg',
+            'https://i.imgur.com/XTpB6ae.jpeg',
             height: 180, 
             fit: BoxFit.cover, 
             errorBuilder: (context, error, stackTrace) {
@@ -118,8 +112,9 @@ class _InputRatingState extends State<InputRating> {
             },
           ),
         ),
+
+        // Input rating (bintang)
           SizedBox(height: 16),
-          // Review dan Rating
           Container(
             width: double.infinity,
             padding: EdgeInsets.all(16),
@@ -135,6 +130,8 @@ class _InputRatingState extends State<InputRating> {
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
                 SizedBox(height: 8),
+
+                //input bintang
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: List.generate(5, (index) {
@@ -155,6 +152,8 @@ class _InputRatingState extends State<InputRating> {
               ],
             ),
           ),
+
+          // Daftar review dan input review (komentar)
           SizedBox(height: 20),
           Container(
             padding: const EdgeInsets.all(16),
@@ -221,7 +220,8 @@ class _InputRatingState extends State<InputRating> {
               ],
             ),
           ),
-          //tombol review
+
+          //tombol lihat review
           SizedBox(height: 16),
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -239,6 +239,8 @@ class _InputRatingState extends State<InputRating> {
           ),
         ],
       ),
+
+      // tombol navigasi
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
           color: Color(0xFF3E5A88),

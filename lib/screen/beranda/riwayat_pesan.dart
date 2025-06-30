@@ -3,8 +3,9 @@ import '../widget/riwayat.dart';
 import '/screen/beranda/beranda.dart';
 import '/screen/beranda/profile.dart';
 import '/screen/diskon/menudiskon.dart';
-
-
+import '/screen/beranda/beranda.dart'; 
+import '/screen/diskon/menudiskon.dart'; 
+import '/screen/beranda/profile.dart'; 
 
 class RiwayatPemesananPage extends StatelessWidget {
   const RiwayatPemesananPage({super.key});

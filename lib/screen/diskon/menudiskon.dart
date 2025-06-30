@@ -1,10 +1,29 @@
 import 'package:flutter/material.dart';
+import '/screen/beranda/beranda.dart'; 
+import '/screen/beranda/riwayat_pesan.dart';
+import '/screen/beranda/profile.dart';
 
 class MenuDiskonPage extends StatelessWidget {
   const MenuDiskonPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    double hargaNormal = 1850000;
+
+    // Fungsi untuk navigasi ke MenuDeskripsi2 dengan diskon
+    void navigateWithPromo(double diskon) {
+      double hargaPromo = hargaNormal - (hargaNormal * diskon);
+
+      Navigator.pushReplacementNamed(
+        context,
+        '/deskripsi2',
+        arguments: {
+          'totalHarga': hargaPromo.toInt(),
+          'diskonPersen': (diskon * 100).toInt(),
+        },
+      );
+    }
+
     return Scaffold(
       backgroundColor: Colors.white,
 
@@ -137,21 +156,25 @@ class MenuDiskonPage extends StatelessWidget {
                 // Kartu Diskon
                 Column(
                   children: [
-                    _buildDiskonCard(
-                        '10% New User',
-                        () => _useVoucher(context, '10% New User')
+                    PromoCard(
+                      title: "10% New User",
+                      description:
+                          "2x coupon discount - No Minimum Purchase",
+                      onTap: () => navigateWithPromo(0.10),
                     ),
-                    _buildDiskonCard(
-                        '30% New User',
-                        () => _useVoucher(context, '30% New User')
+                    PromoCard(
+                      title: "30% Special Deal",
+                      description:
+                          "Applicable for bookings above Rp1.000.000",
+                      onTap: () => navigateWithPromo(0.30),
                     ),
-                    _buildDiskonCard(
-                        '50% New User',
-                        () => _useVoucher(context, '50% New User')
+                    PromoCard(
+                      title: "50% Flash Sale",
+                      description: "Limited time only!",
+                      onTap: () => navigateWithPromo(0.50),
                     ),
                   ],
                 ),
-
               ],
             ),
           ),
@@ -176,6 +199,25 @@ class MenuDiskonPage extends StatelessWidget {
           unselectedItemColor: Colors.white,
           showSelectedLabels: false,
           showUnselectedLabels: false,
+        currentIndex: 0,
+        onTap: (index) {
+            if (index == 0) {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const Beranda()),
+              );
+            } else if (index == 1) {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const RiwayatPemesananPage()),
+              );
+            } else if (index == 3) {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const ProfilePage()),
+              );
+            }
+          },
           items: const [
             BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
             BottomNavigationBarItem(icon: Icon(Icons.history), label: ''),
@@ -186,32 +228,26 @@ class MenuDiskonPage extends StatelessWidget {
       ),
     );
   }
-//}
+}
 
-  // Fungsi untuk menampilkan dialog saat voucher digunakan
-  static void _useVoucher(BuildContext context, String voucherName) {
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: const Text('Voucher Digunakan'),
-        content: Text('Kamu telah menggunakan voucher: $voucherName'),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text('OK'),
-          ),
-        ],
-      ),
-    );
-  }
+  class PromoCard extends StatelessWidget {
+  final String title;
+  final String description;
+  final VoidCallback onTap;
 
-  // Kartu diskon builder dengan onTap // NEW BAGIAN VoidCallBack OnTap // 
-  static Widget _buildDiskonCard(String title, VoidCallback onTap) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 8),
-      child: InkWell(
-        onTap: onTap,
-        borderRadius: BorderRadius.circular(12),
+  const PromoCard({
+    super.key,
+    required this.title,
+    required this.description,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 8),
         child: Container(
           padding: const EdgeInsets.all(15),
           decoration: BoxDecoration(
@@ -228,15 +264,13 @@ class MenuDiskonPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                title,
-                style:
-                    const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-              ),
+              Text(title,
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold, fontSize: 16)),
               const SizedBox(height: 4),
-              const Text(
-                '· 2x coupon discount - No Minimum Purchase',
-                style: TextStyle(color: Colors.black54, fontSize: 13),
+              Text(
+                description,
+                style: const TextStyle(color: Colors.black54, fontSize: 13),
               )
             ],
           ),

@@ -37,25 +37,34 @@ class _MenuDeskripsiState extends State<MenuDeskripsi> {
               ),
             ),
             const SizedBox(height: 12),
+                'https://i.imgur.com/otiEOBD.png', // Logo InapKita
+                height: 50,
+              ),
+            ),
+            const SizedBox(height: 12),
             SizedBox(
               height: 200,
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: [
                   Image.asset(widget.imagePath, width: 300),
-                  const SizedBox(width: 8),
                   Image.network(
-                    'https://instapay.id/blog/wp-content/uploads/2023/05/penginapan-1024x682.jpg',
+                    'https://i.imgur.com/vbas2rr.jpeg',
                     width: 300,
                   ),
                   const SizedBox(width: 8),
                   Image.network(
-                    'https://www.saniharto.com/assets/gallery/3d-rendering-modern-interior-designjpg.jpeg',
+                    'https://i.imgur.com/XTpB6ae.jpeg',
                     width: 300,
                   ),
                   const SizedBox(width: 8),
                   Image.network(
-                    'https://editorial.femaledaily.com/wp-content/uploads/2022/06/tips-mudah-dekor-dapur-dan-ruang-makan-dari-IKEA-1.jpg',
+                    'https://i.imgur.com/HT1LJSs.png',
+                    width: 300,
+                  ),
+                  const SizedBox(width: 8),
+                  Image.network(
+                    'https://i.imgur.com/MKDPsCT.jpeg',
                     width: 300,
                   ),
                 ],
@@ -109,7 +118,8 @@ class _MenuDeskripsiState extends State<MenuDeskripsi> {
                     backgroundColor: Colors.blueGrey,
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
                   ),
-                  child: const Text("Check Review"),
+                  child: const Text("Check Review", style: TextStyle(color: Colors.white),
+                ),
                 ),
               ],
             ),
@@ -146,15 +156,6 @@ class _MenuDeskripsiState extends State<MenuDeskripsi> {
             const SizedBox(height: 12),
             Row(
               children: [
-                InkWell(
-                  onTap: () => Navigator.pushNamed(context, '/chatAdmin'),
-                  child: Row(
-                    children: const [
-                      Icon(Icons.chat_bubble_outline, size: 28),
-                      SizedBox(width: 4),
-                    ],
-                  ),
-                ),
                 Text("Rp ${totalHarga.toString()}", style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
                 const SizedBox(width: 4),
                 const Text("Total Payment", style: TextStyle(fontWeight: FontWeight.bold)),

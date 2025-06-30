@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '/screen/diskon/menudiskon.dart';
+import 'package:flutter_application_inapkita/screen/resepsionis/menupromo.dart';
 import 'menupembayaran.dart';
 
 class MenuDeskripsi2 extends StatelessWidget {
@@ -26,7 +27,7 @@ class MenuDeskripsi2 extends StatelessWidget {
             Center(
               child: Image.network(
                 'https://i.imgur.com/otiEOBD.png', // Logo InapKita
-                height: 40,
+                height: 50,
               ),
             ),
             const SizedBox(height: 12),
@@ -37,23 +38,23 @@ class MenuDeskripsi2 extends StatelessWidget {
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: [
-                  Image.network(
-                    'https://semenmerahputih.com/_ipx/f_webp/https://cms.semenmerahputih.com/storage/4878/conversions/desain-kamar-mandi-converted.jpg',
+                 Image.network(
+                    'https://i.imgur.com/vbas2rr.jpeg', // Gambar villa 1
                     width: 300,
                   ),
                   const SizedBox(width: 8),
                   Image.network(
-                    'https://instapay.id/blog/wp-content/uploads/2023/05/penginapan-1024x682.jpg',
+                    'https://i.imgur.com/XTpB6ae.jpeg', // Gambar villa 2
                     width: 300,
                   ),
                   const SizedBox(width: 8),
                   Image.network(
-                    'https://www.saniharto.com/assets/gallery/3d-rendering-modern-interior-designjpg.jpeg',
+                    'https://i.imgur.com/HT1LJSs.png',// Gambar villa 3
                     width: 300,
                   ), 
                   const SizedBox(width: 8),
                   Image.network(
-                    'https://editorial.femaledaily.com/wp-content/uploads/2022/06/tips-mudah-dekor-dapur-dan-ruang-makan-dari-IKEA-1.jpg',
+                    'https://i.imgur.com/MKDPsCT.jpeg', // Gambar villa 4
                     width: 300,
                   ),
                 ],
@@ -110,7 +111,8 @@ class MenuDeskripsi2 extends StatelessWidget {
                     backgroundColor: Colors.blueGrey,
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
                   ),
-                  child: const Text("Check Review"),
+                  child: const Text("Check Review",style: TextStyle(color: Colors.white),
+                ),
                 ),
               ],
             ),
@@ -135,16 +137,6 @@ class MenuDeskripsi2 extends StatelessWidget {
 
             Row(
               children: [
-                InkWell(
-                  onTap: () => Navigator.pushNamed(context, '/chatAdmin'),
-                  child: const Row(
-                    children: [
-                      Icon(Icons.chat_bubble_outline, size: 28),
-                      SizedBox(width: 4),
-                    ],
-                  ),
-                ),
-                const SizedBox(width: 8), // Add spacing between chat and price info
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -159,6 +151,7 @@ class MenuDeskripsi2 extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(width: 8),
+
                 Text(
                   "Rp Rp $hargaNormal",
                   style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
@@ -166,6 +159,7 @@ class MenuDeskripsi2 extends StatelessWidget {
                 const SizedBox(width: 4),
                 const Text("Total Payment", style: TextStyle(fontWeight: FontWeight.bold)),
                 const Spacer(),
+
                 ElevatedButton(
                   onPressed: () {
                     Navigator.push(
@@ -182,7 +176,8 @@ class MenuDeskripsi2 extends StatelessWidget {
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
                     padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
                   ),
-                  child: const Text("Reservation"),
+                  child: const Text("Reservation",style: TextStyle(color: Colors.white),
+                ),
                 ),
               ],
             ),

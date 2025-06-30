@@ -4,12 +4,35 @@ class MenuPembayaran2 extends StatelessWidget {
   final int totalHarga;
 
   const MenuPembayaran2({super.key, required this.totalHarga});
+class MenuPembayaran2 extends StatefulWidget {
+  final int totalHarga;
+
+  const MenuPembayaran2({super.key, required this.totalHarga});
+
+  @override
+  State<MenuPembayaran2> createState() => _MenuPembayaran2State();
+}
+
+class _MenuPembayaran2State extends State<MenuPembayaran2> {
+  @override
+  void initState() {
+    super.initState();
+
+    // Tampilkan popup saat halaman dibuka
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      showDialog(
+        context: context,
+        builder: (context) => OrderSuccessPopup(totalHarga: widget.totalHarga),
+      );
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Stack(
+      body: ListView(
+        padding: const EdgeInsets.all(16),
         children: [
           SafeArea(
             child: ListView(
@@ -103,27 +126,39 @@ class MenuPembayaran2 extends StatelessWidget {
                   ),
                 ),
               ],
+          Center(
+            child: Image.network(
+              'https://i.imgur.com/otiEOBD.png', // Logo InapKita
+              height: 50,
             ),
           ),
-        ],
-      ),
-    );
-  }
-
-  Widget buildPaymentMethod(String imageUrl, String label) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(12),
-      ),
-      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 12),
-      child: Row(
-        children: [
-          Image.network(imageUrl, height: 32),
-          const SizedBox(width: 12),
-          Text(
-            label,
-            style: const TextStyle(fontSize: 16),
+          const SizedBox(height: 16),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(12),
+            child: Image.network(
+              'https://i.imgur.com/XTpB6ae.jpeg',
+            ),
+          ),
+          const SizedBox(height: 16),
+          const Center(
+            child: Text(
+              "The Villa in Bali",
+              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+            ),
+          ),
+          const SizedBox(height: 20),
+          const Text("Price Details", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+          const SizedBox(height: 8),
+          const Text("Room Price"),
+          const Text("Exclusive Room With 1 Queen Bed - Without Breakfast (1 malam)",
+              style: TextStyle(color: Colors.grey)),
+          const Divider(height: 32),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Text("Total Price", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+              Text("Rp ${widget.totalHarga}", style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+            ],
           ),
         ],
       ),
@@ -157,10 +192,7 @@ class OrderSuccessPopup extends StatelessWidget {
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Text(
-                      "Order Successful",
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
+                    Text("Order Successful", style: TextStyle(fontWeight: FontWeight.bold)),
                     SizedBox(width: 6),
                     Icon(Icons.check_circle, color: Colors.green),
                   ],
@@ -168,15 +200,13 @@ class OrderSuccessPopup extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 16),
-            const Text(
-              "The Villa in Bali",
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            ),
+            const Text("The Villa in Bali", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
             const SizedBox(height: 10),
             ClipRRect(
               borderRadius: BorderRadius.circular(10),
               child: Image.network(
                 'https://instapay.id/blog/wp-content/uploads/2023/05/penginapan-1024x682.jpg',
+                'https://i.imgur.com/XTpB6ae.jpeg',
                 height: 80,
               ),
             ),
@@ -195,10 +225,7 @@ class OrderSuccessPopup extends StatelessWidget {
             const Divider(height: 30),
             const Text("Hi Dear, Thanks For Order <3"),
             const SizedBox(height: 4),
-            const Text(
-              "Check your booking history for the order",
-              textAlign: TextAlign.center,
-            ),
+            const Text("Check your booking history for the order", textAlign: TextAlign.center),
             const SizedBox(height: 16),
             ElevatedButton(
               onPressed: () {
@@ -210,9 +237,7 @@ class OrderSuccessPopup extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.black,
                 padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
               ),
               child: const Text("Details", style: TextStyle(color: Colors.white)),
             ),
@@ -241,6 +266,11 @@ class LocationPopup extends StatelessWidget {
             _infoBox(Icons.calendar_today, "Check-out"),
             const SizedBox(height: 12),
             _locationBox(),
+            buildInfo(Icons.calendar_today, "Check-in"),
+            const SizedBox(height: 12),
+            buildInfo(Icons.calendar_today, "Check-out"),
+            const SizedBox(height: 12),
+            buildLocation(),
             const SizedBox(height: 20),
             SizedBox(
               width: double.infinity,
@@ -249,9 +279,7 @@ class LocationPopup extends StatelessWidget {
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.grey,
                   padding: const EdgeInsets.symmetric(vertical: 14),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
                 ),
                 child: const Text("Confirm", style: TextStyle(color: Colors.white)),
               ),
@@ -268,6 +296,9 @@ class LocationPopup extends StatelessWidget {
         color: Colors.white,
         borderRadius: BorderRadius.circular(12),
       ),
+  Widget buildInfo(IconData icon, String label) {
+    return Container(
+      decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(12)),
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       child: Row(
         children: [
@@ -285,6 +316,15 @@ class LocationPopup extends StatelessWidget {
         color: Colors.white,
         borderRadius: BorderRadius.circular(12),
       ),
+          Text(label),
+        ],
+      ),
+    );
+  }
+
+  Widget buildLocation() {
+    return Container(
+      decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(12)),
       padding: const EdgeInsets.all(12),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,

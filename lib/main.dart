@@ -12,6 +12,8 @@ import 'screen/rating/rating.dart';
 import 'screen/rating/input_rating.dart';
 import 'screen/diskon/menudiskon.dart';
 
+import 'splash_page.dart';
+
 void main() {
   runApp(const InapKitaApp());
 }
@@ -40,6 +42,8 @@ class InapKitaApp extends StatelessWidget {
         '/diskon': (context) => const MenuDiskonPage(),
         '/pembayaran': (context) => const MenuPembayaran(totalHarga: 1850000),
         '/pembayaran2': (context) => const MenuPembayaran2(totalHarga: 1850000),
+        '/splash': (context) => const SplashPage(),
+
       },
       onGenerateRoute: (settings) {
         if (settings.name == '/deskripsi') {
