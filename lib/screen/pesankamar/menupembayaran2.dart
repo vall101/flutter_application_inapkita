@@ -1,348 +1,226 @@
 import 'package:flutter/material.dart';
+import '/screen/beranda/beranda.dart'; 
+import '/screen/beranda/riwayat_pesan.dart';
+import '/screen/beranda/profile.dart';
 
-class MenuPembayaran2 extends StatelessWidget {
-  final int totalHarga;
-
-  const MenuPembayaran2({super.key, required this.totalHarga});
-class MenuPembayaran2 extends StatefulWidget {
-  final int totalHarga;
-
-  const MenuPembayaran2({super.key, required this.totalHarga});
-
-  @override
-  State<MenuPembayaran2> createState() => _MenuPembayaran2State();
-}
-
-class _MenuPembayaran2State extends State<MenuPembayaran2> {
-  @override
-  void initState() {
-    super.initState();
-
-    // Tampilkan popup saat halaman dibuka
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      showDialog(
-        context: context,
-        builder: (context) => OrderSuccessPopup(totalHarga: widget.totalHarga),
-      );
-    });
-  }
+class MenuDiskonPage extends StatelessWidget {
+  const MenuDiskonPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: ListView(
-        padding: const EdgeInsets.all(16),
+      body: Stack(
         children: [
-          SafeArea(
-            child: ListView(
-              padding: const EdgeInsets.all(16),
+          Container(
+            height: 220,
+            decoration: const BoxDecoration(
+              color: Color(0xFF3E5A88),
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(30),
+                bottomRight: Radius.circular(30),
+              ),
+            ),
+          ),
+          SingleChildScrollView(
+            padding: const EdgeInsets.only(top: 50, bottom: 80),
+            child: Column(
               children: [
-                Center(
-                  child: Image.network(
-                    'https://i.imgur.com/otiEOBD.png', // Logo InapKita
-                    height: 40,
-                  ),
-                ),
-                const SizedBox(height: 16),
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(12),
-                  child: Image.network(
-                    'https://instapay.id/blog/wp-content/uploads/2023/05/penginapan-1024x682.jpg',
-                  ),
-                ),
-                const SizedBox(height: 16),
-                const Center(
-                  child: Text(
-                    "The Villa in Bali",
-                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-                  ),
-                ),
-                const SizedBox(height: 20),
-                const Text(
-                  "Price Details",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-                ),
-                const SizedBox(height: 8),
-                const Text("Room Price"),
-                const Text(
-                  "Exclusive Room With 1 Queen Bed - Without Breakfast (1 malam)",
-                  style: TextStyle(color: Colors.grey),
-                ),
-                const Divider(height: 32),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const Text(
-                      "Total Price",
-                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-                    ),
-                    Text(
-                      "Rp $totalHarga",
-                      style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 24),
-                Container(
-                  decoration: BoxDecoration(
-                    color: const Color(0xFF4C5C88),
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                  padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
-                  child: Column(
-                    children: [
-                      buildPaymentMethod('https://buatlogoonline.com/wp-content/uploads/2022/10/Logo-Bank-BRI.png', 'BRI Virtual Account'),
-                      const SizedBox(height: 12),
-                      buildPaymentMethod('https://asset-2.tstatic.net/bangka/foto/bank/images/20220117-logo-bca.jpg', 'BCA'),
-                      const SizedBox(height: 12),
-                      buildPaymentMethod('https://cdn.idntimes.com/content-images/post/20240430/livin-by-mandiri-d26f696e05b637e5c8f4878f7f040f96.png', 'Livin’ by Mandiri'),
-                      const SizedBox(height: 12),
-                      buildPaymentMethod('https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Logo_dana_blue.svg/2560px-Logo_dana_blue.svg.png', 'Dana'),
-                      const SizedBox(height: 24),
-                      SizedBox(
-                        width: double.infinity,
-                        child: ElevatedButton(
-                          onPressed: () {
-                            showDialog(
-                              context: context,
-                              builder: (context) => OrderSuccessPopup(totalHarga: totalHarga),
-                            );
-                          },
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.grey[700],
-                            padding: const EdgeInsets.symmetric(vertical: 16),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(12),
-                            ),
-                          ),
-                          child: const Text(
-                            "Payment",
-                            style: TextStyle(color: Colors.white, fontSize: 16),
-                          ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: const [
+                      Text(
+                        'Discount Package',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
+                      Icon(Icons.menu, color: Colors.white, size: 30),
                     ],
                   ),
                 ),
-              ],
-          Center(
-            child: Image.network(
-              'https://i.imgur.com/otiEOBD.png', // Logo InapKita
-              height: 50,
-            ),
-          ),
-          const SizedBox(height: 16),
-          ClipRRect(
-            borderRadius: BorderRadius.circular(12),
-            child: Image.network(
-              'https://i.imgur.com/XTpB6ae.jpeg',
-            ),
-          ),
-          const SizedBox(height: 16),
-          const Center(
-            child: Text(
-              "The Villa in Bali",
-              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-            ),
-          ),
-          const SizedBox(height: 20),
-          const Text("Price Details", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
-          const SizedBox(height: 8),
-          const Text("Room Price"),
-          const Text("Exclusive Room With 1 Queen Bed - Without Breakfast (1 malam)",
-              style: TextStyle(color: Colors.grey)),
-          const Divider(height: 32),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const Text("Total Price", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
-              Text("Rp ${widget.totalHarga}", style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class OrderSuccessPopup extends StatelessWidget {
-  final int totalHarga;
-
-  const OrderSuccessPopup({super.key, required this.totalHarga});
-
-  @override
-  Widget build(BuildContext context) {
-    return Dialog(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-      backgroundColor: Colors.white,
-      child: Container(
-        padding: const EdgeInsets.all(16),
-        width: 300,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Container(
-              padding: const EdgeInsets.symmetric(vertical: 8),
-              decoration: BoxDecoration(
-                color: Colors.grey[300],
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: const Center(
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
+                const SizedBox(height: 25),
+                Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 30),
+                  padding: const EdgeInsets.all(20),
+                  decoration: BoxDecoration(
+                    color: const Color(0xFF166AB2),
+                    borderRadius: BorderRadius.circular(20),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.3),
+                        blurRadius: 6,
+                        offset: const Offset(0, 4),
+                      ),
+                    ],
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const [
+                      Icon(Icons.local_offer, color: Colors.white, size: 30),
+                      SizedBox(width: 12),
+                      Text(
+                        'Extra Discount',
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 20),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.white,
+                      foregroundColor: Colors.black,
+                      shadowColor: Colors.black26,
+                      elevation: 5,
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 15, horizontal: 25),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                    ),
+                    onPressed: () {},
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: const [
+                        Text(
+                          'View my coupon',
+                          style: TextStyle(
+                              fontSize: 16, fontWeight: FontWeight.bold),
+                        ),
+                        Icon(Icons.arrow_forward_ios),
+                      ],
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 20),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25),
+                  child: Row(
+                    children: const [
+                      Icon(Icons.card_giftcard, size: 30),
+                      SizedBox(width: 10),
+                      Expanded(
+                        child: Text(
+                          'User discount coupon: 10% off',
+                          style: TextStyle(
+                              fontSize: 16, fontWeight: FontWeight.bold),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 10),
+                Column(
                   children: [
-                    Text("Order Successful", style: TextStyle(fontWeight: FontWeight.bold)),
-                    SizedBox(width: 6),
-                    Icon(Icons.check_circle, color: Colors.green),
+                    _buildDiskonCard(context, '10% New User', 0.10),
+                    _buildDiskonCard(context, '30% Special Deal', 0.30),
+                    _buildDiskonCard(context, '50% Flash Sale', 0.50),
                   ],
                 ),
-              ),
-            ),
-            const SizedBox(height: 16),
-            const Text("The Villa in Bali", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-            const SizedBox(height: 10),
-            ClipRRect(
-              borderRadius: BorderRadius.circular(10),
-              child: Image.network(
-                'https://instapay.id/blog/wp-content/uploads/2023/05/penginapan-1024x682.jpg',
-                'https://i.imgur.com/XTpB6ae.jpeg',
-                height: 80,
-              ),
-            ),
-            const SizedBox(height: 10),
-            const Text(
-              "Exclusive Room With 1 Queen Bed - Without Breakfast (1 malam)",
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 14),
-            ),
-            const SizedBox(height: 6),
-            Text(
-              "Room Price\nRp $totalHarga",
-              textAlign: TextAlign.center,
-              style: const TextStyle(fontWeight: FontWeight.bold),
-            ),
-            const Divider(height: 30),
-            const Text("Hi Dear, Thanks For Order <3"),
-            const SizedBox(height: 4),
-            const Text("Check your booking history for the order", textAlign: TextAlign.center),
-            const SizedBox(height: 16),
-            ElevatedButton(
-              onPressed: () {
-                showDialog(
-                  context: context,
-                  builder: (context) => const LocationPopup(),
-                );
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.black,
-                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-              ),
-              child: const Text("Details", style: TextStyle(color: Colors.white)),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class LocationPopup extends StatelessWidget {
-  const LocationPopup({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Dialog(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-      backgroundColor: const Color(0xFF4C5C88),
-      child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            _infoBox(Icons.calendar_today, "Check-in"),
-            const SizedBox(height: 12),
-            _infoBox(Icons.calendar_today, "Check-out"),
-            const SizedBox(height: 12),
-            _locationBox(),
-            buildInfo(Icons.calendar_today, "Check-in"),
-            const SizedBox(height: 12),
-            buildInfo(Icons.calendar_today, "Check-out"),
-            const SizedBox(height: 12),
-            buildLocation(),
-            const SizedBox(height: 20),
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                onPressed: () => Navigator.pop(context),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.grey,
-                  padding: const EdgeInsets.symmetric(vertical: 14),
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-                ),
-                child: const Text("Confirm", style: TextStyle(color: Colors.white)),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _infoBox(IconData icon, String text) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(12),
-      ),
-  Widget buildInfo(IconData icon, String label) {
-    return Container(
-      decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(12)),
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-      child: Row(
-        children: [
-          Icon(icon, size: 20),
-          const SizedBox(width: 12),
-          Text(text),
-        ],
-      ),
-    );
-  }
-
-  Widget _locationBox() {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(12),
-      ),
-          Text(label),
-        ],
-      ),
-    );
-  }
-
-  Widget buildLocation() {
-    return Container(
-      decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(12)),
-      padding: const EdgeInsets.all(12),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: const [
-          Icon(Icons.location_on),
-          SizedBox(width: 10),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text("Seminyak, Bali", style: TextStyle(fontWeight: FontWeight.bold)),
-                SizedBox(height: 4),
-                Text("Jl. Plawa Gg. Ratna No.13 D, Seminyak, Kec. Kuta, Kabupaten Badung, Bali 80361"),
               ],
             ),
           ),
         ],
       ),
+      bottomNavigationBar: BottomNavigationBar(
+  type: BottomNavigationBarType.fixed,
+  selectedItemColor: Colors.blue[700],
+  unselectedItemColor: Colors.grey,
+  currentIndex: 2, // Icon diskon aktif
+  onTap: (index) {
+    if (index == 0) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const Beranda()),
+      );
+    } else if (index == 1) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const RiwayatPemesananPage()),
+      );
+    } else if (index == 2) {
+      // Tetap di halaman diskon
+    } else if (index == 3) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const ProfilePage()),
+      );
+    }
+  },
+  items: const [
+    BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
+    BottomNavigationBarItem(icon: Icon(Icons.history), label: ''),
+    BottomNavigationBarItem(icon: Icon(Icons.local_offer), label: ''),
+    BottomNavigationBarItem(icon: Icon(Icons.person), label: ''),
+  ],
+),
+
+    );
+  }
+
+  static Widget _buildDiskonCard(BuildContext context, String title, double diskon) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 8),
+      child: InkWell(
+        onTap: () => _navigateWithPromo(context, diskon),
+        borderRadius: BorderRadius.circular(12),
+        child: Container(
+          padding: const EdgeInsets.all(15),
+          decoration: BoxDecoration(
+            color: Colors.blueGrey[50],
+            borderRadius: BorderRadius.circular(12),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.shade300,
+                blurRadius: 3,
+                offset: const Offset(0, 2),
+              ),
+            ],
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                title,
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16,
+                ),
+              ),
+              const SizedBox(height: 4),
+              const Text(
+                '· 2x coupon discount - No Minimum Purchase',
+                style: TextStyle(color: Colors.black54, fontSize: 13),
+              )
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  static void _navigateWithPromo(BuildContext context, double diskon) {
+    double hargaNormal = 1850000;
+    double hargaPromo = hargaNormal - (hargaNormal * diskon);
+
+    Navigator.pushReplacementNamed(
+      context,
+      '/deskripsi2',
+      arguments: {
+        'totalHarga': hargaPromo.toInt(),
+        'diskonPersen': (diskon * 100).toInt(),
+      },
     );
   }
 }

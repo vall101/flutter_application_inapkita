@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import '../widget/riwayat.dart';
-import '/screen/beranda/beranda.dart';
-import '/screen/beranda/profile.dart';
-import '/screen/diskon/menudiskon.dart';
-import '/screen/beranda/beranda.dart'; 
-import '/screen/diskon/menudiskon.dart'; 
-import '/screen/beranda/profile.dart'; 
+import '/screen/beranda/beranda.dart'; // Pastikan path sesuai
+import '/screen/diskon/menudiskon.dart'; // Pastikan path sesuai
+import '/screen/beranda/profile.dart'; // Ganti sesuai lokasi file RiwayatPemesananPage
+
+
 
 class RiwayatPemesananPage extends StatelessWidget {
   const RiwayatPemesananPage({super.key});
@@ -84,7 +83,7 @@ class RiwayatPemesananPage extends StatelessWidget {
         type: BottomNavigationBarType.fixed,
         selectedItemColor: Colors.blue[700],
         unselectedItemColor: Colors.grey,
-        currentIndex: 0,
+        currentIndex: 1,
         onTap: (index) {
             if (index == 0) {
               Navigator.push(
