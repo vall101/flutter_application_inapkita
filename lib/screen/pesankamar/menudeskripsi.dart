@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_inapkita/screen/diskon/menudiskon.dart';
+import '/screen/diskon/menudiskon.dart';
 import 'menudeskripsi2.dart';
 
 class MenuDeskripsi extends StatefulWidget {
@@ -32,17 +32,22 @@ class _MenuDeskripsiState extends State<MenuDeskripsi> {
           children: [
             Center(
               child: Image.network(
+                'https://i.imgur.com/otiEOBD.png',
+                height: 40,
+              ),
+            ),
+            const SizedBox(height: 12),
                 'https://i.imgur.com/otiEOBD.png', // Logo InapKita
                 height: 50,
               ),
             ),
             const SizedBox(height: 12),
-
             SizedBox(
               height: 200,
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: [
+                  Image.asset(widget.imagePath, width: 300),
                   Image.network(
                     'https://i.imgur.com/vbas2rr.jpeg',
                     width: 300,
@@ -56,7 +61,7 @@ class _MenuDeskripsiState extends State<MenuDeskripsi> {
                   Image.network(
                     'https://i.imgur.com/HT1LJSs.png',
                     width: 300,
-                  ), 
+                  ),
                   const SizedBox(width: 8),
                   Image.network(
                     'https://i.imgur.com/MKDPsCT.jpeg',

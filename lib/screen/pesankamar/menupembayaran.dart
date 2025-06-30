@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'menupembayaran2.dart';
 
+class MenuPembayaran extends StatelessWidget {
+  final int totalHarga;
+
+  const MenuPembayaran({super.key, required this.totalHarga});
 class MenuPembayaran extends StatefulWidget {
   final int totalHarga;
 
@@ -46,17 +50,19 @@ class _MenuPembayaranState extends State<MenuPembayaran> {
           children: [
             Center(
               child: Image.network(
+                'https://i.imgur.com/otiEOBD.png',
+                height: 40,
                 'https://i.imgur.com/otiEOBD.png', // logo InapKita
                 height: 50,
               ),
             ),
             const SizedBox(height: 12),
 
-            // Gambar villa
             ClipRRect(
               borderRadius: BorderRadius.circular(16),
               child: Image.network(
-                'https://i.imgur.com/XTpB6ae.jpeg', // gambar villa 
+                'https://instapay.id/blog/wp-content/uploads/2023/05/penginapan-1024x682.jpg',
+                'https://i.imgur.com/XTpB6ae.jpeg', 
               ),
             ),
             const SizedBox(height: 16),
@@ -67,7 +73,19 @@ class _MenuPembayaranState extends State<MenuPembayaran> {
             ),
             const SizedBox(height: 12),
 
-            // Detail harga
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text(
+                  "Total Price",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                ),
+                Text(
+                  "Rp $totalHarga",
+                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                ),
+              ],
+
             Container(
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
@@ -86,7 +104,7 @@ class _MenuPembayaranState extends State<MenuPembayaran> {
             ),
             const SizedBox(height: 12),
 
-            // Total harga setelah diskon
+            
             Container(
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
@@ -106,7 +124,24 @@ class _MenuPembayaranState extends State<MenuPembayaran> {
             ),
             const SizedBox(height: 20),
 
-            // Metode pembayaran
+                  SizedBox(
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => MenuPembayaran2(totalHarga: totalHarga),
+                          ),
+                        );
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.grey[700],
+                        padding: const EdgeInsets.symmetric(vertical: 16),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+            
             Container(
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
@@ -174,4 +209,25 @@ class _MenuPembayaranState extends State<MenuPembayaran> {
       ),
     );
   }
+
+  Widget buildPaymentMethod(String imageUrl, String label) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(12),
+      ),
+      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 12),
+      child: Row(
+        children: [
+          Image.network(imageUrl, height: 32),
+          const SizedBox(width: 12),
+          Text(
+            label,
+            style: const TextStyle(fontSize: 16),
+          ),
+        ],
+      ),
+    );
+  }
+}
 }

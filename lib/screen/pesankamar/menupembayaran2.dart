@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+class MenuPembayaran2 extends StatelessWidget {
+  final int totalHarga;
+
+  const MenuPembayaran2({super.key, required this.totalHarga});
 class MenuPembayaran2 extends StatefulWidget {
   final int totalHarga;
 
@@ -30,6 +34,98 @@ class _MenuPembayaran2State extends State<MenuPembayaran2> {
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
+          SafeArea(
+            child: ListView(
+              padding: const EdgeInsets.all(16),
+              children: [
+                Center(
+                  child: Image.network(
+                    'https://i.imgur.com/otiEOBD.png', // Logo InapKita
+                    height: 40,
+                  ),
+                ),
+                const SizedBox(height: 16),
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(12),
+                  child: Image.network(
+                    'https://instapay.id/blog/wp-content/uploads/2023/05/penginapan-1024x682.jpg',
+                  ),
+                ),
+                const SizedBox(height: 16),
+                const Center(
+                  child: Text(
+                    "The Villa in Bali",
+                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                  ),
+                ),
+                const SizedBox(height: 20),
+                const Text(
+                  "Price Details",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                ),
+                const SizedBox(height: 8),
+                const Text("Room Price"),
+                const Text(
+                  "Exclusive Room With 1 Queen Bed - Without Breakfast (1 malam)",
+                  style: TextStyle(color: Colors.grey),
+                ),
+                const Divider(height: 32),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text(
+                      "Total Price",
+                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                    ),
+                    Text(
+                      "Rp $totalHarga",
+                      style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 24),
+                Container(
+                  decoration: BoxDecoration(
+                    color: const Color(0xFF4C5C88),
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
+                  child: Column(
+                    children: [
+                      buildPaymentMethod('https://buatlogoonline.com/wp-content/uploads/2022/10/Logo-Bank-BRI.png', 'BRI Virtual Account'),
+                      const SizedBox(height: 12),
+                      buildPaymentMethod('https://asset-2.tstatic.net/bangka/foto/bank/images/20220117-logo-bca.jpg', 'BCA'),
+                      const SizedBox(height: 12),
+                      buildPaymentMethod('https://cdn.idntimes.com/content-images/post/20240430/livin-by-mandiri-d26f696e05b637e5c8f4878f7f040f96.png', 'Livin’ by Mandiri'),
+                      const SizedBox(height: 12),
+                      buildPaymentMethod('https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Logo_dana_blue.svg/2560px-Logo_dana_blue.svg.png', 'Dana'),
+                      const SizedBox(height: 24),
+                      SizedBox(
+                        width: double.infinity,
+                        child: ElevatedButton(
+                          onPressed: () {
+                            showDialog(
+                              context: context,
+                              builder: (context) => OrderSuccessPopup(totalHarga: totalHarga),
+                            );
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.grey[700],
+                            padding: const EdgeInsets.symmetric(vertical: 16),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                          ),
+                          child: const Text(
+                            "Payment",
+                            style: TextStyle(color: Colors.white, fontSize: 16),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
           Center(
             child: Image.network(
               'https://i.imgur.com/otiEOBD.png', // Logo InapKita
@@ -109,6 +205,7 @@ class OrderSuccessPopup extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(10),
               child: Image.network(
+                'https://instapay.id/blog/wp-content/uploads/2023/05/penginapan-1024x682.jpg',
                 'https://i.imgur.com/XTpB6ae.jpeg',
                 height: 80,
               ),
@@ -164,6 +261,11 @@ class LocationPopup extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
+            _infoBox(Icons.calendar_today, "Check-in"),
+            const SizedBox(height: 12),
+            _infoBox(Icons.calendar_today, "Check-out"),
+            const SizedBox(height: 12),
+            _locationBox(),
             buildInfo(Icons.calendar_today, "Check-in"),
             const SizedBox(height: 12),
             buildInfo(Icons.calendar_today, "Check-out"),
@@ -188,6 +290,12 @@ class LocationPopup extends StatelessWidget {
     );
   }
 
+  Widget _infoBox(IconData icon, String text) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(12),
+      ),
   Widget buildInfo(IconData icon, String label) {
     return Container(
       decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(12)),
@@ -196,6 +304,18 @@ class LocationPopup extends StatelessWidget {
         children: [
           Icon(icon, size: 20),
           const SizedBox(width: 12),
+          Text(text),
+        ],
+      ),
+    );
+  }
+
+  Widget _locationBox() {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(12),
+      ),
           Text(label),
         ],
       ),

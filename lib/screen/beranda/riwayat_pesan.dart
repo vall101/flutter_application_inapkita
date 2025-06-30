@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import '../widget/riwayat.dart';
-import '/screen/beranda/beranda.dart'; // Pastikan path sesuai
-import '/screen/diskon/menudiskon.dart'; // Pastikan path sesuai
-import '/screen/beranda/profile.dart'; // Ganti sesuai lokasi file RiwayatPemesananPage
-
-
+import '/screen/beranda/beranda.dart';
+import '/screen/beranda/profile.dart';
+import '/screen/diskon/menudiskon.dart';
+import '/screen/beranda/beranda.dart'; 
+import '/screen/diskon/menudiskon.dart'; 
+import '/screen/beranda/profile.dart'; 
 
 class RiwayatPemesananPage extends StatelessWidget {
   const RiwayatPemesananPage({super.key});
