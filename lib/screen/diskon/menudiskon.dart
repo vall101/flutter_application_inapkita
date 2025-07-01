@@ -29,7 +29,6 @@ class MenuDiskonPage extends StatelessWidget {
 
       body: Stack(
         children: [
-          // Latar belakang biru dengan lengkungan bawah
           Container(
             height: 220,
             decoration: const BoxDecoration(

@@ -157,7 +157,7 @@ class _MenuPembayaranState extends State<MenuPembayaran> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (_) => MenuDiskonPage(totalHarga: widget.totalHarga),
+                          builder: (_) => MenuPembayaran2(totalHarga: widget.totalHarga),
                         ),
                       );
                     }
