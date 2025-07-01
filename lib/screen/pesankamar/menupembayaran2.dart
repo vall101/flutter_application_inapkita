@@ -4,7 +4,7 @@ import '/screen/beranda/riwayat_pesan.dart';
 import '/screen/beranda/profile.dart';
 
 class MenuDiskonPage extends StatelessWidget {
-  const MenuDiskonPage({Key? key}) : super(key: key);
+  const MenuDiskonPage({Key? key, required int totalHarga}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
