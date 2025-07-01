@@ -40,7 +40,7 @@ class InapKitaApp extends StatelessWidget {
         '/rating': (context) => const Rating(),
         '/diskon': (context) => const MenuDiskonPage(),
         '/pembayaran': (context) => const MenuPembayaran(totalHarga: 1850000),
-        '/pembayaran2': (context) => const MenuDiskonPage(totalHarga: 1850000),
+        '/menupembayaran2': (context) => const MenuPembayaran2(totalHarga: 1850000),
       },
       onGenerateRoute: (settings) {
         if (settings.name == '/deskripsi') {
@@ -76,7 +76,7 @@ class InapKitaApp extends StatelessWidget {
         if (settings.name == '/pembayaran2') {
           final args = settings.arguments as Map<String, dynamic>;
           return MaterialPageRoute(
-            builder: (_) => MenuDiskonPage(
+            builder: (_) => MenuPembayaran2(
               totalHarga: args['totalHarga'],
             ),
           );
