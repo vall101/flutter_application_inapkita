@@ -13,6 +13,8 @@ class _MenuPembayaran2State extends State<MenuPembayaran2> {
   @override
   void initState() {
     super.initState();
+
+    // Tampilkan popup saat halaman dibuka
     WidgetsBinding.instance.addPostFrameCallback((_) {
       showDialog(
         context: context,
@@ -30,7 +32,7 @@ class _MenuPembayaran2State extends State<MenuPembayaran2> {
         children: [
           Center(
             child: Image.network(
-              'https://i.imgur.com/otiEOBD.png',
+              'https://i.imgur.com/otiEOBD.png', // Logo InapKita
               height: 50,
             ),
           ),
@@ -52,7 +54,8 @@ class _MenuPembayaran2State extends State<MenuPembayaran2> {
           const Text("Price Details", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
           const SizedBox(height: 8),
           const Text("Room Price"),
-          const Text("Exclusive Room With 1 Queen Bed - Without Breakfast (1 malam)", style: TextStyle(color: Colors.grey)),
+          const Text("Exclusive Room With 1 Queen Bed - Without Breakfast (1 malam)",
+              style: TextStyle(color: Colors.grey)),
           const Divider(height: 32),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -129,10 +132,7 @@ class OrderSuccessPopup extends StatelessWidget {
             const SizedBox(height: 16),
             ElevatedButton(
               onPressed: () {
-                showDialog(
-                  context: context,
-                  builder: (context) => const LocationPopup(),
-                );
+                Navigator.pushNamed(context, '/riwayat');
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.black,
@@ -143,90 +143,6 @@ class OrderSuccessPopup extends StatelessWidget {
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class LocationPopup extends StatelessWidget {
-  const LocationPopup({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Dialog(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-      backgroundColor: const Color(0xFF4C5C88),
-      child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            _infoBox(Icons.calendar_today, "Check-in"),
-            const SizedBox(height: 12),
-            _infoBox(Icons.calendar_today, "Check-out"),
-            const SizedBox(height: 12),
-            _locationBox(),
-            const SizedBox(height: 20),
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                onPressed: () => Navigator.pop(context),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.grey,
-                  padding: const EdgeInsets.symmetric(vertical: 14),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                ),
-                child: const Text("Confirm", style: TextStyle(color: Colors.white)),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _infoBox(IconData icon, String text) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(12),
-      ),
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-      child: Row(
-        children: [
-          Icon(icon, size: 20),
-          const SizedBox(width: 12),
-          Text(text),
-        ],
-      ),
-    );
-  }
-
-  Widget _locationBox() {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(12),
-      ),
-      padding: const EdgeInsets.all(12),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: const [
-          Icon(Icons.location_on),
-          SizedBox(width: 10),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text("Seminyak, Bali", style: TextStyle(fontWeight: FontWeight.bold)),
-                SizedBox(height: 4),
-                Text("Jl. Plawa Gg. Ratna No.13 D, Seminyak, Kec. Kuta, Kabupaten Badung, Bali 80361"),
-              ],
-            ),
-          ),
-        ],
       ),
     );
   }
