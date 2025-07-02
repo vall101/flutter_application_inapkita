@@ -9,38 +9,38 @@ class Beranda extends StatelessWidget {
   const Beranda({super.key});
 
   Widget buildTopSpotCard(
-  BuildContext context,
-  String imagePath,
-  String title,
-  String description,
-) {
-  return GestureDetector(
-    onTap: () {
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => MenuDeskripsi(
-            title: title,
-            description: description,
-            imagePath: imagePath,
+    BuildContext context,
+    String imagePath,
+    String title,
+    String description,
+  ) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => MenuDeskripsi(
+              title: title,
+              description: description,
+              imagePath: imagePath,
+            ),
+          ),
+        );
+      },
+      child: Padding(
+        padding: const EdgeInsets.only(right: 12),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(12),
+          child: Image.network(
+            imagePath,
+            height: 100,
+            width: 100,
+            fit: BoxFit.cover,
           ),
         ),
-      );
-    },
-    child: Padding(
-      padding: const EdgeInsets.only(right: 12),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(12),
-        child: Image.asset(
-          imagePath,
-          height: 100,
-          width: 100,
-          fit: BoxFit.cover,
-        ),
       ),
-    ),
-  );
-}
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -55,19 +55,22 @@ class Beranda extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
-                  children: [
-                    const Icon(Icons.home, color: Colors.blue, size: 32),
-                    const SizedBox(width: 8),
-                    Text(
-                      "InapKita",
-                      style: TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold,
-                        color: themeColor,
-                      ),
-                    ),
-                  ],
+                // Logo seperti di halaman login
+                Center(
+                  child: Image.network(
+                    'https://i.imgur.com/SbeKTyI.png',
+                    width: 200,
+                    height: 200,
+                    fit: BoxFit.contain,
+                    semanticLabel: 'InapKita logo with a blue person shape and a white house inside',
+                    loadingBuilder: (context, child, loadingProgress) {
+                      if (loadingProgress == null) return child;
+                      return const CircularProgressIndicator();
+                    },
+                    errorBuilder: (context, error, stackTrace) {
+                      return const Icon(Icons.error, color: Colors.red);
+                    },
+                  ),
                 ),
                 const SizedBox(height: 12),
                 const Text(
@@ -108,8 +111,8 @@ class Beranda extends StatelessWidget {
                 const SizedBox(height: 12),
                 ClipRRect(
                   borderRadius: BorderRadius.circular(16),
-                  child: Image.asset(
-                    "assets/img1.jpg",
+                  child: Image.network(
+                    "https://i.pinimg.com/736x/84/f7/34/84f734b07a720ff604c8443118f34d7e.jpg",
                     height: 180,
                     width: double.infinity,
                     fit: BoxFit.cover,
@@ -126,39 +129,39 @@ class Beranda extends StatelessWidget {
                     Icon(Icons.location_on, color: Colors.red),
                   ],
                 ),
+                const SizedBox(height: 12),
                 SizedBox(
-                    height: 100,
-                    child: ListView(
-                      scrollDirection: Axis.horizontal,
-                      children: [
-                        buildTopSpotCard(
-                          context,
-                          "assets/img2.jpg",
-                          "Villa Bali",
-                          "Beautiful villa with private pool in Bali",
-                        ),
-                        buildTopSpotCard(
-                          context,
-                          "assets/img3.jpg",
-                          "Ubud Cottage",
-                          "Quiet and green environment for a peaceful stay",
-                        ),
-                        // Gambar ke-3 dan ke-4 tidak diklik, hanya sebagai tampilan biasa
-                        Padding(
-                          padding: const EdgeInsets.only(right: 12),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(12),
-                            child: Image.asset(
-                              "assets/img4.jpg",
-                              height: 100,
-                              width: 100,
-                              fit: BoxFit.cover,
-                            ),
+                  height: 100,
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: [
+                      buildTopSpotCard(
+                        context,
+                        "https://i.pinimg.com/736x/56/8b/eb/568bebd896ee3289d83af1900df44e19.jpg",
+                        "Villa Bali",
+                        "Beautiful villa with private pool in Bali",
+                      ),
+                      buildTopSpotCard(
+                        context,
+                        "https://i.pinimg.com/736x/28/9a/78/289a78e7b9b61f52c241901b394a2e1d.jpg",
+                        "Ubud Cottage",
+                        "Quiet and green environment for a peaceful stay",
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(right: 12),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(12),
+                          child: Image.network(
+                            "https://i.pinimg.com/736x/11/1f/a5/111fa5a3ff652c883ad09da3850e322b.jpg",
+                            height: 100,
+                            width: 100,
+                            fit: BoxFit.cover,
                           ),
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
+                ),
                 const SizedBox(height: 24),
                 const Text(
                   "Iconic Places to Visit",
@@ -167,8 +170,8 @@ class Beranda extends StatelessWidget {
                 const SizedBox(height: 12),
                 ClipRRect(
                   borderRadius: BorderRadius.circular(16),
-                  child: Image.asset(
-                    "assets/img5.jpg",
+                  child: Image.network(
+                    "https://i.pinimg.com/736x/56/dc/7c/56dc7c97d9f2710a59622cf48536afab.jpg",
                     height: 180,
                     width: double.infinity,
                     fit: BoxFit.cover,

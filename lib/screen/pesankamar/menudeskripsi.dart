@@ -160,7 +160,7 @@ class _MenuDeskripsiState extends State<MenuDeskripsi> {
           padding: const EdgeInsets.all(16),
           children: [
             Center(
-              child: Image.network('https://i.imgur.com/otiEOBD.png', height: 40),
+              child: Image.network('https://i.pinimg.com/736x/0b/9a/39/0b9a399f6284022da96fc0aa9a37c0c4.jpg', height: 40),
             ),
             const SizedBox(height: 12),
             SizedBox(
@@ -170,11 +170,11 @@ class _MenuDeskripsiState extends State<MenuDeskripsi> {
                 children: [
                   Image.asset(widget.imagePath, width: 300),
                   const SizedBox(width: 8),
-                  Image.network('https://i.imgur.com/vbas2rr.jpeg', width: 300),
+                  Image.network('https://i.pinimg.com/736x/fd/16/32/fd163276e64fe3a76b3ea08490e641a9.jpg', width: 300),
                   const SizedBox(width: 8),
-                  Image.network('https://i.imgur.com/HT1LJSs.png', width: 300),
+                  Image.network('https://i.pinimg.com/736x/09/66/c5/0966c5c293b81eb8294ef33a8f6ca97e.jpg', width: 300),
                   const SizedBox(width: 8),
-                  Image.network('https://i.imgur.com/MKDPsCT.jpeg', width: 300),
+                  Image.network('https://i.pinimg.com/736x/b4/ca/08/b4ca08cb7c80755298c6e5e04771e92b.jpg', width: 300),
                 ],
               ),
             ),
