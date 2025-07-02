@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'ketersediaan_kamar.dart'; 
+import 'ketersediaan_kamar.dart';
 
 class ResepsionisHome extends StatelessWidget {
   const ResepsionisHome({super.key});
@@ -13,32 +13,24 @@ class ResepsionisHome extends StatelessWidget {
           padding: const EdgeInsets.all(16),
           child: Column(
             children: [
-              Center(
-                child: Image.network(
-                  'https://i.imgur.com/otiEOBD.png', // Ganti dengan URL untuk foto profil
-                  height: 40,
-                  errorBuilder: (context, error, stackTrace) =>
-                      const Icon(Icons.error),
-                ),
+              Image.network(
+                'https://i.imgur.com/otiEOBD.png',
+                height: 40,
+                errorBuilder: (context, error, stackTrace) =>
+                    const Icon(Icons.error),
               ),
               const SizedBox(height: 12),
-
-              // Informasi User
               Row(
                 children: [
-                  CircleAvatar(
-                      radius: 25,
-                      backgroundImage: NetworkImage('https://i.imgur.com/jytf69h.jpeg'),
-                      onBackgroundImageError: (error, stackTrace) {
-                      debugPrint('Gagal memuat foto profil: $error');
-                    },
+                  const CircleAvatar(
+                    radius: 25,
+                    backgroundImage:
+                        NetworkImage('https://i.imgur.com/jytf69h.jpeg'),
                   ),
                   const SizedBox(width: 10),
                   Container(
                     padding: const EdgeInsets.symmetric(
-                      horizontal: 30,
-                      vertical: 8,
-                    ),
+                        horizontal: 30, vertical: 8),
                     decoration: BoxDecoration(
                       color: Colors.blue[100],
                       borderRadius: BorderRadius.circular(12),
@@ -47,7 +39,6 @@ class ResepsionisHome extends StatelessWidget {
                   ),
                 ],
               ),
-
               const SizedBox(height: 20),
               Container(
                 padding: const EdgeInsets.all(35),
@@ -67,37 +58,30 @@ class ResepsionisHome extends StatelessWidget {
                   children: [
                     const Text(
                       'Ringkasan Hari Ini',
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
+                      style:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(height: 12),
-                    summaryItem('Check-in', 5),
-                    summaryItem('Check-out', 2),
-                    summaryItem('Daftar Tamu', 3),
+                    _summaryItem('Check-in', 5),
+                    _summaryItem('Check-out', 2),
+                    _summaryItem('Daftar Tamu', 3),
                   ],
                 ),
               ),
-
               const Spacer(),
-
-              // Tombol Cek Kamar
               ElevatedButton(
                 onPressed: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const KetersediaanKamarScreen(),
+                      builder: (_) => const KetersediaanKamarScreen(),
                     ),
                   );
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFF3E5A88),
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 40,
-                    vertical: 16,
-                  ),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 40, vertical: 16),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
                   ),
@@ -107,7 +91,6 @@ class ResepsionisHome extends StatelessWidget {
                   style: TextStyle(fontSize: 16, color: Colors.white),
                 ),
               ),
-
               const SizedBox(height: 20),
             ],
           ),
@@ -116,14 +99,15 @@ class ResepsionisHome extends StatelessWidget {
     );
   }
 
-  Widget summaryItem(String title, int count) {
+  Widget _summaryItem(String title, int count) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(title),
-          Text(count.toString()),
-        ], //
+          Text('$count'),
+        ],
       ),
     );
   }

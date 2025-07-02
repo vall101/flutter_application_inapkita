@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import '../widget/riwayat.dart';
-import '/screen/beranda/beranda.dart'; // Pastikan path sesuai
-import '/screen/diskon/menudiskon.dart'; // Pastikan path sesuai
-import '/screen/beranda/profile.dart'; // Ganti sesuai lokasi file RiwayatPemesananPage
+import '/screen/beranda/beranda.dart'; 
+import '/screen/diskon/menudiskon.dart'; 
+import '/screen/beranda/profile.dart'; 
 
 class RiwayatPemesananPage extends StatelessWidget {
   const RiwayatPemesananPage({super.key});
@@ -44,32 +44,18 @@ class RiwayatPemesananPage extends StatelessWidget {
               child: ListView(
                 children: const [
                   RiwayatCard(
-                    imagePath: 'assets/images/contoh1.jpg',
+                    imagePath: 'https://i.pinimg.com/736x/6e/ac/2a/6eac2ae7668708f5c306d6030a557d78.jpg',
                     title:
                         'The Villa in Bali - Jl. Plawa Gg. Ratna No.13 D, Seminyak, Kuta, Bali 80361',
                     date: '1 Januari 2025',
                     totalOrder: 'Rp 1.850.000',
                   ),
                   RiwayatCard(
-                    imagePath: 'assets/images/contoh2.jpg',
+                    imagePath: 'https://i.pinimg.com/736x/84/f7/34/84f734b07a720ff604c8443118f34d7e.jpg',
                     title:
                         'Seminyak Square Hotel - Jl. Kayu Aya No.10, Seminyak, Bali 80361',
                     date: '3 Januari 2025',
                     totalOrder: 'Rp 2.790.000',
-                  ),
-                  RiwayatCard(
-                    imagePath: 'assets/images/contoh1.jpg',
-                    title:
-                        'Rama Phala Resort & Spa - Jl. Pengosekan, Ubud, Gianyar, Bali 80571',
-                    date: '5 Januari 2025',
-                    totalOrder: 'Rp 3.850.000',
-                  ),
-                  RiwayatCard(
-                    imagePath: 'assets/images/contoh2.jpg',
-                    title:
-                        'Pradha Villas - Jl. Kayu Jati No. 5 Seminyak, Kuta, Bali 80361',
-                    date: '8 Januari 2025',
-                    totalOrder: 'Rp 5.850.000',
                   ),
                 ],
               ),

@@ -168,9 +168,8 @@ class _MenuDeskripsiState extends State<MenuDeskripsi> {
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: [
-                  Image.asset(widget.imagePath, width: 300),
                   const SizedBox(width: 8),
-                  Image.network('https://i.pinimg.com/736x/fd/16/32/fd163276e64fe3a76b3ea08490e641a9.jpg', width: 300),
+                  Image.network('https://i.pinimg.com/736x/84/f7/34/84f734b07a720ff604c8443118f34d7e.jpg', width: 300),
                   const SizedBox(width: 8),
                   Image.network('https://i.pinimg.com/736x/09/66/c5/0966c5c293b81eb8294ef33a8f6ca97e.jpg', width: 300),
                   const SizedBox(width: 8),
@@ -198,20 +197,6 @@ class _MenuDeskripsiState extends State<MenuDeskripsi> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 if (isRoomInfoVisible)
-                  Container(
-                    decoration: BoxDecoration(color: Colors.grey[400], borderRadius: BorderRadius.circular(12)),
-                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                    child: Row(
-                      children: [
-                        const Text("Room available\n2 rooms available currently", style: TextStyle(color: Colors.white)),
-                        const SizedBox(width: 8),
-                        GestureDetector(
-                          onTap: () => setState(() => isRoomInfoVisible = false),
-                          child: const Icon(Icons.close, color: Colors.white),
-                        ),
-                      ],
-                    ),
-                  ),
                 ElevatedButton(
                   onPressed: () => Navigator.pushNamed(context, '/review'),
                   style: ElevatedButton.styleFrom(
@@ -220,6 +205,7 @@ class _MenuDeskripsiState extends State<MenuDeskripsi> {
                   ),
                   child: const Text("Check Review"),
                 ),
+
               ],
             ),
             const SizedBox(height: 16),
@@ -264,7 +250,7 @@ class _MenuDeskripsiState extends State<MenuDeskripsi> {
                     ],
                   ),
                 ),
-                Text("Rp $totalHarga", style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                Text("Rp $totalHarga", style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
                 const SizedBox(width: 4),
                 const Text("Total Payment", style: TextStyle(fontWeight: FontWeight.bold)),
                 const Spacer(),
