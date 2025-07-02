@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_inapkita/screen/beranda/beranda.dart';
+
 
 void main() {
   runApp(const InapKitaLoginApp());
@@ -165,7 +167,10 @@ class _LoginCustomerFormState extends State<LoginCustomerForm> {
               // Tombol Login
               ElevatedButton(
                 onPressed: () {
-                  // Login action
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => const Beranda()),
+                  );
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color.fromARGB(255, 94, 103, 171),
@@ -181,6 +186,7 @@ class _LoginCustomerFormState extends State<LoginCustomerForm> {
                 ),
                 child: const Text('Login'),
               ),
+
               const SizedBox(height: 24),
               const Divider(color: Colors.grey, thickness: 1),
               const SizedBox(height: 16),

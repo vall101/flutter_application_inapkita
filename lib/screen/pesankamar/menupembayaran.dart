@@ -44,7 +44,7 @@ class _MenuPembayaranState extends State<MenuPembayaran> {
         child: ListView(
           padding: const EdgeInsets.all(16),
           children: [
-            Center(child: Image.network('https://i.imgur.com/otiEOBD.png', height: 50)),
+            Center(child: Image.network('https://i.pinimg.com/736x/84/f7/34/84f734b07a720ff604c8443118f34d7e.jpg', height: 50)),
             const SizedBox(height: 12),
             ClipRRect(
               borderRadius: BorderRadius.circular(16),
